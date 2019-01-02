@@ -10,14 +10,18 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load(getClass().getResource("test.fxml"));
+        primaryStage.setTitle("Thermal Image");
+        primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show();
     }
 
 
     public static void main(String[] args) {
-        launch(args);
+        //launch(args);
+
+        PythonProgramm pythonProgramm = new PythonProgramm();
+        // pythonProgramm.run("test.py");
+
     }
 }
