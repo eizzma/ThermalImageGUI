@@ -30,6 +30,7 @@ public class PythonProgramm {
             // ProcessBuilder pb = new ProcessBuilder("python", "" + programm);
             // Process p = pb.start();
 
+
             Process p = Runtime.getRuntime().exec("python " + programm);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
