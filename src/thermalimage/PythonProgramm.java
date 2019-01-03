@@ -2,44 +2,38 @@ package thermalimage;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PythonProgramm {
 
     private String cwd = System.getProperty("user.dir");
 
-    private String test = cwd + "test.py";
-
     private String imageAnalysis = cwd + "Path/to/imagaAnalysis";
 
     private String csvAnalysis = "Path/to/csv.py";
 
-    public boolean run(String programm) {
-        try {
+    public int run(String programm) {
 
-            // String prg = "import sys\nprint int(sys.argv[1])+int(sys.argv[2])\n";
-            // String prg = "import sys\nprint int";
-            // BufferedWriter out = new BufferedWriter(new FileWriter("test.py"));
-            // out.write(prg);
-            // out.close();
-            int number1 = 10;
-            int number2 = 32;
+        List<String> commands = new ArrayList<String>();
+        commands.add("python");
+        commands.add(cwd + "/python/" + programm);
+        SystemCommandExecutor systemCommandExecutor = new SystemCommandExecutor(commands);
+        int result = systemCommandExecutor.executeCommand();
 
-            // ProcessBuilder pb = new ProcessBuilder("python", "" + programm);
-            // Process p = pb.start();
+        // get the stdout and stderr from the command that was run
+        StringBuilder stdout = systemCommandExecutor.getStandardOutputFromCommand();
+        StringBuilder stderr = systemCommandExecutor.getStandardErrorFromCommand();
 
-
-            Process p = Runtime.getRuntime().exec("python " + programm);
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            String answer = new String(in.readLine());
-            // int ret = new Integer(in.readLine()).intValue();
-            // System.out.println("value is : " + ret);
-
-            System.out.println(answer);
-        } catch (Exception e) {
-            System.out.println(e);
+        // print the stdout and stderr
+        System.out.println("The numeric result of the command was: " + result);
+        System.out.println("STDOUT:");
+        System.out.println(stdout);
+        if (stderr != null) {
+            System.out.println("STDERR:");
+            System.out.println(stderr);
         }
-        return true;
+        return result;
     }
 
 }

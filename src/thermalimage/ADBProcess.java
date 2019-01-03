@@ -9,17 +9,21 @@ public class ADBProcess {
      * 25   volume down
      * 26   power
      * 27   camera
-     *
+     * <p>
      * command:
      * adb shell input keyevent keycode number
-     *
      */
 
     //TODO call adb Process to take pictures triggered by Volume Button
 
+    //needed for wireless ADB connection
     private int ipAddress;
-
     private int portNumber;
+
+    public ADBProcess(int ipAddress, int portNumber) {
+        this.ipAddress = ipAddress;
+        this.portNumber = portNumber;
+    }
 
     //TODO implement a Timer that calls the methods in a constant time intervall
 
