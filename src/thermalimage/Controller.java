@@ -1,4 +1,4 @@
-package sample;
+package thermalimage;
 
 public class Controller {
 

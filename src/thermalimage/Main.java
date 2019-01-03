@@ -1,4 +1,4 @@
-package sample;
+package thermalimage;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,10 +18,14 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+
         //launch(args);
 
-        PythonProgramm pythonProgramm = new PythonProgramm();
-        // pythonProgramm.run("test.py");
+
+        // CWD: System.out.println("cwd: "+ System.getProperty("user.dir"));
+
+        Processbuilder processbuilder = new Processbuilder();
+        processbuilder.run("python test.py");
 
     }
 }
