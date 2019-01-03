@@ -30,5 +30,8 @@ public class Main {//extends Application {
         PythonProgramm pythonProgramm = new PythonProgramm();
         pythonProgramm.run("test.py");
 
+        AdbExecutor adbExecutor = new AdbExecutor("10.0.1.1");
+        adbExecutor.keyEvent(2,1,Keycode.MENU);
+
     }
 }
