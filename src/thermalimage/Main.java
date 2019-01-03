@@ -27,6 +27,8 @@ public class Main {//extends Application {
 
         // CWD: System.out.println("cwd: "+ System.getProperty("user.dir"));
 
+        PythonProgramm pythonProgramm = new PythonProgramm();
+        pythonProgramm.run("test.py");
 
     }
 }
