@@ -16,7 +16,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         launch(args);
 
@@ -28,6 +28,7 @@ public class Main extends Application {
 
         AdbExecutor adbExecutor = new AdbExecutor("10.0.1.1");
         adbExecutor.keyEvent(2,1,Keycode.MENU);
+        adbExecutor.listPictures();
 
     }
 }
