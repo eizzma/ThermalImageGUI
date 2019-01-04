@@ -28,8 +28,8 @@ public class PythonExecutor {
             commands.add(args);
         }
 
-        SystemCommandExecutor systemCommandExecutor = new SystemCommandExecutor(commands);
-        int result = systemCommandExecutor.executeCommand();
+        SystemCommandExecutor systemCommandExecutor = new SystemCommandExecutor();
+        int result = systemCommandExecutor.executeCommand(commands);
 
         // get the stdout and stderr from the command that was run
         StringBuilder stdout = systemCommandExecutor.getStandardOutputFromCommand();

@@ -32,6 +32,7 @@ public class AdbExecutor {
         commands.add(ipAddress);
         commandExecutor = new SystemCommandExecutor();
         commandExecutor.executeCommand(commands);
+
     }
 
     public AdbExecutor(String ipAddress, String portNumber) {
