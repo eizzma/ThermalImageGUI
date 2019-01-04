@@ -38,7 +38,7 @@ public class AdbExecutor {
         commands.add("devices");
         commandExecutor.executeCommand(commands);
 
-        System.out.println(commandExecutor.getStandardOutputFromCommand());
+        System.out.println("ADB says: " + commandExecutor.getStandardOutputFromCommand());
 
     }
 

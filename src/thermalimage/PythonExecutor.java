@@ -36,7 +36,6 @@ public class PythonExecutor {
         StringBuilder stderr = systemCommandExecutor.getStandardErrorFromCommand();
 
         // print the stdout and stderr
-        System.out.println("The numeric result of the command was: " + result);
         System.out.println("STDOUT:");
         System.out.println(stdout);
         if (stderr != null) {
