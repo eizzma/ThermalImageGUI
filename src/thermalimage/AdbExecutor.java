@@ -45,7 +45,7 @@ public class AdbExecutor {
         // SystemCommandExecutor commandExecutor = new SystemCommandExecutor(command);
     }
 
-    public void startApp() {
+    public void restartApp() {
         //TODO kill process of app running and restart the app via adb keyevents.
     }
 
