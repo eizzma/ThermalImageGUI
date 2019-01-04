@@ -30,6 +30,7 @@ public class AdbExecutor {
         commands.add("adb");
         commands.add("connect");
         commands.add(ipAddress);
+
         commandExecutor = new SystemCommandExecutor();
         commandExecutor.executeCommand(commands);
 

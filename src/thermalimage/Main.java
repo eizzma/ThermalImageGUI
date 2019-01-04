@@ -26,7 +26,7 @@ public class Main extends Application {
         PythonExecutor pythonProgramm = new PythonExecutor();
         pythonProgramm.run("test.py",null);
 
-        String ipAddress = "192.168.2.103";
+        String ipAddress = "192.168.178.22";
 
         AdbExecutor adbExecutor = new AdbExecutor(ipAddress);
         //adbExecutor.keyEvent(2,1,Keycode.MENU);
