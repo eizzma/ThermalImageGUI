@@ -9,8 +9,8 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {//extends Application {
-/*
+public class Main extends Application {
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("test.fxml"));
@@ -18,11 +18,10 @@ public class Main {//extends Application {
         primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show();
     }
-*/
 
     public static void main(String[] args) throws Exception {
 
-        //launch(args);
+        launch(args);
 
 
         // CWD: System.out.println("cwd: "+ System.getProperty("user.dir"));
