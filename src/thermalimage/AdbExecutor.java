@@ -25,6 +25,12 @@ public class AdbExecutor {
     public AdbExecutor(String ipAddress) {
         this.ipAddress = ipAddress;
         this.portNumber = "5555"; // default adb port
+        List<String> commands = new ArrayList<String>();
+        commands.add("adb");
+        commands.add("connect");
+        commands.add(ipAddress);
+        SystemCommandExecutor commandExecutor = new SystemCommandExecutor(commands);
+        commandExecutor.executeCommand();
     }
 
     public AdbExecutor(String ipAddress, String portNumber) {
