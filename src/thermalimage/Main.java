@@ -6,9 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main extends Application {
 
     @Override
@@ -26,7 +23,7 @@ public class Main extends Application {
 
         // CWD: System.out.println("cwd: "+ System.getProperty("user.dir"));
 
-        PythonProgramm pythonProgramm = new PythonProgramm();
+        PythonExecutor pythonProgramm = new PythonExecutor();
         pythonProgramm.run("test.py");
 
         AdbExecutor adbExecutor = new AdbExecutor("10.0.1.1");

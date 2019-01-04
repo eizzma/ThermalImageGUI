@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PythonProgramm {
+public class PythonExecutor {
 
     private String cwd = System.getProperty("user.dir");
 

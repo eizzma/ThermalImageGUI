@@ -41,11 +41,20 @@ public class AdbExecutor {
 
         System.out.println(command);
 
+        //TODO implement a Timer that calls the methods in a constant time intervall
+
         // SystemCommandExecutor commandExecutor = new SystemCommandExecutor(command);
     }
-    //TODO implement a Timer that calls the methods in a constant time intervall
 
-    //TODO implement a functionality to get/import pictures in a folder on the computer or the current working directory
-    //TODO optional delete the pictures on the phone after the import
+    public void startApp(){
+        //TODO kill process of app running and restart the app via adb keyevents.
+    }
+
+    public void transferPictures(){
+        //TODO implement a functionality to get/import pictures in a folder on the computer or the current working directory
+        //TODO optional delete the pictures on the phone after the import
+    }
+
+
 
 }
