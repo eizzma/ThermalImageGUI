@@ -26,9 +26,11 @@ public class Main extends Application {
         PythonExecutor pythonProgramm = new PythonExecutor();
         pythonProgramm.run("test.py",null);
 
-        AdbExecutor adbExecutor = new AdbExecutor("10.0.1.1");
-        adbExecutor.keyEvent(2,1,Keycode.MENU);
-        adbExecutor.listPictures();
+        String ipAddress = "192.168.2.103";
+
+        AdbExecutor adbExecutor = new AdbExecutor(ipAddress);
+        //adbExecutor.keyEvent(2,1,Keycode.MENU);
+        //adbExecutor.listPictures();
 
     }
 }

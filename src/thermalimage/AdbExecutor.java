@@ -33,6 +33,13 @@ public class AdbExecutor {
         commandExecutor = new SystemCommandExecutor();
         commandExecutor.executeCommand(commands);
 
+        commands.clear();
+        commands.add("adb");
+        commands.add("devices");
+        commandExecutor.executeCommand(commands);
+
+        System.out.println(commandExecutor.getStandardOutputFromCommand());
+
     }
 
     public AdbExecutor(String ipAddress, String portNumber) {
