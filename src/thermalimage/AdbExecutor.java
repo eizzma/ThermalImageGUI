@@ -6,7 +6,6 @@ import java.util.List;
 public class AdbExecutor {
 
 
-
     /**
      * adb keycode numbers:
      * 1    menu
@@ -28,12 +27,12 @@ public class AdbExecutor {
         this.portNumber = "5555"; // default adb port
     }
 
-    public AdbExecutor(String ipAddress, String portNumber){
+    public AdbExecutor(String ipAddress, String portNumber) {
         this.ipAddress = ipAddress;
         this.portNumber = portNumber;
     }
 
-    public void keyEvent(int intervall, int times, Keycode keycode){
+    public void keyEvent(int intervall, int times, Keycode keycode) {
 
         List<String> command = new ArrayList<String>();
         command.add("adb shell input keyevent");
@@ -46,15 +45,14 @@ public class AdbExecutor {
         // SystemCommandExecutor commandExecutor = new SystemCommandExecutor(command);
     }
 
-    public void startApp(){
+    public void startApp() {
         //TODO kill process of app running and restart the app via adb keyevents.
     }
 
-    public void transferPictures(){
+    public void transferPictures() {
         //TODO implement a functionality to get/import pictures in a folder on the computer or the current working directory
         //TODO optional delete the pictures on the phone after the import
     }
-
 
 
 }

@@ -14,7 +14,7 @@ public class PythonExecutor {
 
     private String csvAnalysis = "Path/to/csv.py";
 
-    public int run(String programmName) {
+    public int run(String programmName, String args) {
 
         List<String> commands = new ArrayList<String>();
         commands.add("python");
@@ -24,6 +24,10 @@ public class PythonExecutor {
             System.err.println("Python Programm: \"" + cwd + "/python/" + programmName + "\" not found");
             System.exit(-1);
         }
+        if (args != null) {
+            commands.add(args);
+        }
+
         SystemCommandExecutor systemCommandExecutor = new SystemCommandExecutor(commands);
         int result = systemCommandExecutor.executeCommand();
 
@@ -40,6 +44,17 @@ public class PythonExecutor {
             System.out.println(stderr);
         }
         return result;
+    }
+
+    public void evaluatePictures(List<String> pictures) {
+        for (picture:
+             pictures) {
+            //call evaluatePicture for each pic
+        }
+    }
+
+    public void plotGraph(String pathToCSV) {
+        run("plot.py", pathToCSV);
     }
 
 }

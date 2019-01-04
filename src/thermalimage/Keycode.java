@@ -6,14 +6,14 @@ package thermalimage;
 
 public enum Keycode {
 
-    UNKNOWN ("0"),
-    MENU ("1"),
+    UNKNOWN("0"),
+    MENU("1"),
     SOFT_RIGHT("2"),
     HOME("3"),
     BACK("4"),
     CALL("5"),
     ENDCALL("6"),
-    ZERO ("7"),
+    ZERO("7"),
     ONE("8"),
     TWO("9"),
     THREE("10"),
@@ -30,10 +30,10 @@ public enum Keycode {
     DPAD_LEFT("21"),
     DPAD_RIGHT("22"),
     DPAD_CENTER("23"),
-    VOLUMEUP ("24"),
-    VOLUMEDOWN ("25"),
-    POWER ("26"),
-    CAMERA ("27"),
+    VOLUMEUP("24"),
+    VOLUMEDOWN("25"),
+    POWER("26"),
+    CAMERA("27"),
     CLEAR("28"),
     A("29"),
     B("30"),
@@ -66,9 +66,11 @@ public enum Keycode {
 
     private final String number;
 
-    Keycode(String number){
+    Keycode(String number) {
         this.number = number;
     }
 
-    String getNumber(){ return number;}
+    String getNumber() {
+        return number;
+    }
 }
