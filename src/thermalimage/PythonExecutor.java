@@ -47,7 +47,7 @@ public class PythonExecutor {
     }
 
     public void evaluatePictures(List<String> pictures) {
-        for (picture:
+        for (String picture :
              pictures) {
             //call evaluatePicture for each pic
         }

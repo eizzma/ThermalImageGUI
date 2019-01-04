@@ -32,6 +32,15 @@ public class AdbExecutor {
         this.portNumber = portNumber;
     }
 
+    public void runOnShell(String command, SystemCommandExecutor commandExecutor) {
+        List<String> commands = new ArrayList<String>();
+        commands.add("adb shell");
+        commands.add(command);
+
+        commandExecutor = new SystemCommandExecutor(commands);
+        commandExecutor.executeCommand();
+    }
+
     public void keyEvent(int intervall, int times, Keycode keycode) {
 
         List<String> command = new ArrayList<String>();
@@ -52,6 +61,18 @@ public class AdbExecutor {
     public void transferPictures() {
         //TODO implement a functionality to get/import pictures in a folder on the computer or the current working directory
         //TODO optional delete the pictures on the phone after the import
+    }
+
+    public void deletePictures() {
+
+    }
+
+    public String listPictures() {
+        SystemCommandExecutor commandExecutor = null;
+        runOnShell("ls \\Phone\\DCIM\\Thermal\\ Camera", commandExecutor);
+        StringBuilder pictures = commandExecutor.getStandardOutputFromCommand();
+        System.out.println(pictures.toString());
+        return pictures.toString();
     }
 
 
