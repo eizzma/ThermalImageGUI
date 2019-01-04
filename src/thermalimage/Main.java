@@ -29,8 +29,12 @@ public class Main extends Application {
         String ipAddress = "192.168.178.22";
 
         AdbExecutor adbExecutor = new AdbExecutor(ipAddress);
-        //adbExecutor.keyEvent(2,1,Keycode.MENU);
-        //adbExecutor.listPictures();
+        adbExecutor.connect();
+        adbExecutor.devices();
 
+        //adbExecutor.keyEvent(1,1,Keycode.VOLUMEUP);
+        //adbExecutor.keyEvent(2,1,Keycode.MENU);
+        System.out.println("list pictures");
+        adbExecutor.listPictures();
     }
 }

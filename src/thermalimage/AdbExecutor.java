@@ -21,25 +21,11 @@ public class AdbExecutor {
     //needed for wireless ADB connection
     private String ipAddress;
     private String portNumber;
-    private SystemCommandExecutor commandExecutor;
+    private SystemCommandExecutor commandExecutor = new SystemCommandExecutor();
 
     public AdbExecutor(String ipAddress) {
         this.ipAddress = ipAddress;
         this.portNumber = "5555"; // default adb port
-        List<String> commands = new ArrayList<String>();
-        commands.add("adb");
-        commands.add("connect");
-        commands.add(ipAddress);
-
-        commandExecutor = new SystemCommandExecutor();
-        commandExecutor.executeCommand(commands);
-
-        commands.clear();
-        commands.add("adb");
-        commands.add("devices");
-        commandExecutor.executeCommand(commands);
-
-        System.out.println("ADB says: " + commandExecutor.getStandardOutputFromCommand());
 
     }
 
@@ -48,21 +34,33 @@ public class AdbExecutor {
         this.portNumber = portNumber;
     }
 
-    public void runOnShell(String command) {
+    public void connect(){
         List<String> commands = new ArrayList<String>();
-        commands.add("adb shell");
-        commands.add(command);
-
+        commands.add("adb");
+        commands.add("connect");
+        commands.add(ipAddress);
         commandExecutor.executeCommand(commands);
+        System.out.println("ADB says: " + commandExecutor.getStandardOutputFromCommand());
+    }
+
+    public void devices(){
+        List<String> commands = new ArrayList<String>();
+        commands.add("adb");
+        commands.add("devices");
+        commandExecutor.executeCommand(commands);
+        System.out.println("ADB devices: " + commandExecutor.getStandardOutputFromCommand());
     }
 
     public void keyEvent(int intervall, int times, Keycode keycode) {
 
         List<String> command = new ArrayList<String>();
-        command.add("adb shell input keyevent");
+        command.add("adb");
+        command.add("shell");
+        command.add("input");
+        command.add("keyevent");
         command.add(keycode.getNumber());
 
-        System.out.println(command);
+        commandExecutor.executeCommand(command);
 
         //TODO implement a Timer that calls the methods in a constant time intervall
 
@@ -83,9 +81,15 @@ public class AdbExecutor {
     }
 
     public String listPictures() {
-        SystemCommandExecutor commandExecutor = null;
-        runOnShell("ls \\Phone\\DCIM\\Thermal\\ Camera");
+
+        List<String> commands = new ArrayList<String>();
+        commands.add("adb");
+        commands.add("shell");
+        commands.add("ls");
+
+        commandExecutor.executeCommand(commands);
         StringBuilder pictures = commandExecutor.getStandardOutputFromCommand();
+
         System.out.println(pictures.toString());
         return pictures.toString();
     }

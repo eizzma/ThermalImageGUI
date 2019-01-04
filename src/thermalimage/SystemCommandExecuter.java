@@ -6,11 +6,14 @@ import java.util.List;
 
 class SystemCommandExecutor {
 
-    private StringBuilder inputBuffer = new StringBuilder();
+    private StringBuilder inputBuffer = null;
     private StringBuilder errorBuffer = null;
 
 
     public int executeCommand(final List<String> commandInformation) {
+        inputBuffer = new StringBuilder();
+        errorBuffer = new StringBuilder();
+
         int exitValue = -99;
 
         try {
