@@ -6,16 +6,11 @@ import java.util.List;
 
 class SystemCommandExecutor {
 
-    private List<String> commandInformation;
     private StringBuilder inputBuffer = new StringBuilder();
     private StringBuilder errorBuffer = null;
 
-    public SystemCommandExecutor(final List<String> commandInformation) {
-        if (commandInformation == null) throw new NullPointerException("The commandInformation is required.");
-        this.commandInformation = commandInformation;
-    }
 
-    public int executeCommand() {
+    public int executeCommand(final List<String> commandInformation) {
         int exitValue = -99;
 
         try {

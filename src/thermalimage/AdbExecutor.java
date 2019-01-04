@@ -21,6 +21,7 @@ public class AdbExecutor {
     //needed for wireless ADB connection
     private String ipAddress;
     private String portNumber;
+    private SystemCommandExecutor commandExecutor;
 
     public AdbExecutor(String ipAddress) {
         this.ipAddress = ipAddress;
@@ -29,8 +30,8 @@ public class AdbExecutor {
         commands.add("adb");
         commands.add("connect");
         commands.add(ipAddress);
-        SystemCommandExecutor commandExecutor = new SystemCommandExecutor(commands);
-        commandExecutor.executeCommand();
+        commandExecutor = new SystemCommandExecutor();
+        commandExecutor.executeCommand(commands);
     }
 
     public AdbExecutor(String ipAddress, String portNumber) {
@@ -38,13 +39,12 @@ public class AdbExecutor {
         this.portNumber = portNumber;
     }
 
-    public void runOnShell(String command, SystemCommandExecutor commandExecutor) {
+    public void runOnShell(String command) {
         List<String> commands = new ArrayList<String>();
         commands.add("adb shell");
         commands.add(command);
 
-        commandExecutor = new SystemCommandExecutor(commands);
-        commandExecutor.executeCommand();
+        commandExecutor.executeCommand(commands);
     }
 
     public void keyEvent(int intervall, int times, Keycode keycode) {
@@ -75,7 +75,7 @@ public class AdbExecutor {
 
     public String listPictures() {
         SystemCommandExecutor commandExecutor = null;
-        runOnShell("ls \\Phone\\DCIM\\Thermal\\ Camera", commandExecutor);
+        runOnShell("ls \\Phone\\DCIM\\Thermal\\ Camera");
         StringBuilder pictures = commandExecutor.getStandardOutputFromCommand();
         System.out.println(pictures.toString());
         return pictures.toString();

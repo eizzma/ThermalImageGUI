@@ -18,7 +18,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-        launch(args);
+        //launch(args);
 
 
         // CWD: System.out.println("cwd: "+ System.getProperty("user.dir"));
