@@ -24,7 +24,7 @@ public class Main extends Application {
         // CWD: System.out.println("cwd: "+ System.getProperty("user.dir"));
 
         PythonExecutor pythonProgramm = new PythonExecutor();
-        pythonProgramm.run("test.py", null);
+        pythonProgramm.run("test.py",null);
 
         AdbExecutor adbExecutor = new AdbExecutor("10.0.1.1");
         adbExecutor.keyEvent(2,1,Keycode.MENU);
