@@ -1,6 +1,7 @@
 package thermalimage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class AdbExecutor {
@@ -34,24 +35,24 @@ public class AdbExecutor {
         this.portNumber = portNumber;
     }
 
-    public void connect(){
-        List<String> commands = new ArrayList<String>();
-        commands.add("adb");
-        commands.add("connect");
-        commands.add(ipAddress);
-        commandExecutor.executeCommand(commands);
+    public void connect() {
+        List<String> command = new ArrayList<String>();
+        command.add("adb");
+        command.add("connect");
+        command.add(ipAddress);
+        commandExecutor.executeCommand(command);
         System.out.println("ADB says: " + commandExecutor.getStandardOutputFromCommand());
     }
 
-    public void devices(){
-        List<String> commands = new ArrayList<String>();
-        commands.add("adb");
-        commands.add("devices");
-        commandExecutor.executeCommand(commands);
+    public void devices() {
+        List<String> command = new ArrayList<String>();
+        command.add("adb");
+        command.add("devices");
+        commandExecutor.executeCommand(command);
         System.out.println("ADB devices: " + commandExecutor.getStandardOutputFromCommand());
     }
 
-    public void keyEvent(int intervall, int times, Keycode keycode) {
+    public void keyEvent(Keycode keycode) {
 
         List<String> command = new ArrayList<String>();
         command.add("adb");
@@ -64,34 +65,100 @@ public class AdbExecutor {
 
         //TODO implement a Timer that calls the methods in a constant time intervall
 
-        // SystemCommandExecutor commandExecutor = new SystemCommandExecutor(command);
     }
 
-    public void restartApp() {
-        //TODO kill process of app running and restart the app via adb keyevents.
+    public void wakeUp() {
+        keyEvent(Keycode.POWER);
     }
 
-    public void transferPictures() {
-        //TODO implement a functionality to get/import pictures in a folder on the computer or the current working directory
-        //TODO optional delete the pictures on the phone after the import
+
+    public void launchApp(String packagename) {
+        List<String> command = new ArrayList<String>();
+        command.add("adb");
+        command.add("shell");
+        command.add("monkey");
+        command.add("-p");
+        command.add(packagename);
+        command.add("-c");
+        command.add("android.intent.category.LAUNCHER");
+        command.add("1");
+
+        commandExecutor.executeCommand(command);
     }
 
-    public void deletePictures() {
+    public void killApp(String packagename) {
+        List<String> command = new ArrayList<String>();
+        command.add("adb");
+        command.add("shell");
+        command.add("am");
+        command.add("force-stop");
+        command.add(packagename);
 
+        commandExecutor.executeCommand(command);
     }
 
-    public String listPictures() {
+    public void listAllPackages() {
+        List<String> command = new ArrayList<String>();
+        command.add("adb");
+        command.add("shell");
+        command.add("pm");
+        command.add("list");
+        command.add("packages");
 
-        List<String> commands = new ArrayList<String>();
-        commands.add("adb");
-        commands.add("shell");
-        commands.add("ls");
+        commandExecutor.executeCommand(command);
+    }
 
-        commandExecutor.executeCommand(commands);
+    public void transferPictures(String localDirectory, String remoteDirectory, List<String> pictures,
+                                 boolean deleteAfterTransfer) {
+
+        List<String> command = new ArrayList<String>();
+        command.add("adb"); //index 0
+        command.add("pull"); // index 1
+        command.add("placeholder"); // index 2 will be overwritten for each picture
+        command.add(localDirectory); // index 3
+
+        //for (int i = 0; i < 5; i++) { // test with a few pictures TODO uncomment for loop with all pictures and delete this
+        //    String path = remoteDirectory + "/" + pictures.get(i);
+
+        for (String picture : pictures) {
+            String path = remoteDirectory + "/" + picture;
+            command.set(2, path); // index 2
+            commandExecutor.executeCommand(command);
+        }
+
+        if (deleteAfterTransfer) {
+            for (String picture : pictures) {
+                deletePicture(picture, remoteDirectory);
+            }
+
+        }
+    }
+
+    public void deletePicture(String picture, String directory) {
+
+        String filePath = directory + "/" + picture;
+
+        List<String> command = new ArrayList<String>();
+        command.add("adb");
+        command.add("shell");
+        command.add("rm");
+        command.add(filePath);
+
+        commandExecutor.executeCommand(command);
+    }
+
+    public List<String> listPictures(String dir) {
+
+        List<String> command = new ArrayList<String>();
+        command.add("adb");
+        command.add("shell");
+        command.add("ls");
+        command.add(dir);
+
+        commandExecutor.executeCommand(command);
         StringBuilder pictures = commandExecutor.getStandardOutputFromCommand();
 
-        System.out.println(pictures.toString());
-        return pictures.toString();
+        return Arrays.asList(pictures.toString().split("\\r?\\n"));
     }
 
 
