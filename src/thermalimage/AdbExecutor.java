@@ -6,27 +6,13 @@ import java.util.List;
 
 public class AdbExecutor {
 
-
-    /**
-     * adb keycode numbers:
-     * 1    menu
-     * 24   volume up
-     * 25   volume down
-     * 26   power
-     * 27   camera
-     * <p>
-     * command:
-     * adb shell input keyevent keycode number
-     */
-
-    //needed for wireless ADB connection
     private String ipAddress;
     private String portNumber;
     private SystemCommandExecutor commandExecutor = new SystemCommandExecutor();
 
     public AdbExecutor(String ipAddress) {
         this.ipAddress = ipAddress;
-        this.portNumber = "5555"; // default adb port
+        portNumber = "5555"; // default adb port
 
     }
 
@@ -160,6 +146,4 @@ public class AdbExecutor {
 
         return Arrays.asList(pictures.toString().split("\\r?\\n"));
     }
-
-
 }
