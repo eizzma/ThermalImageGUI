@@ -32,7 +32,7 @@ public class Controller {
     @FXML
     private void python(){
         PythonExecutor pythonExecutor = new PythonExecutor();
-        pythonExecutor.run("test.py", null);
+        System.out.println("result: " + pythonExecutor.run("test.py", null));
     }
 
     @FXML

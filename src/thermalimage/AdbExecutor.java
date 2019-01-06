@@ -26,13 +26,13 @@ public class AdbExecutor {
         command.add("adb");
         command.add("connect");
         command.add(ipAddress);
-        commandExecutor.executeCommand(command);
+        int returnvalue = commandExecutor.executeCommand(command);
+        System.out.println("returnvalue: " + returnvalue);
         for (String cmd : command){
             System.out.printf(cmd + " ");
         }
-        System.out.println();
         System.out.println("ADB connection: " + commandExecutor.getStandardOutputFromCommand());
-        System.out.printf("Error: " + commandExecutor.getStandardErrorFromCommand());
+        System.out.printf("Error: \n" + commandExecutor.getStandardErrorFromCommand());
     }
 
     public void devices() {
