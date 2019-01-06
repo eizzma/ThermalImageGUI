@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thermalimage.Controller">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="382.0" minWidth="-Infinity" prefWidth="227.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="598.0" minWidth="10.0" prefWidth="423.0" />
@@ -20,6 +20,7 @@
       <Button alignment="CENTER" mnemonicParsing="false" text="Einstellungen" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <Button mnemonicParsing="false" text="Hilfe" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <Button mnemonicParsing="false" text="neues Projekt" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-      <Button mnemonicParsing="false" text="Projekt laden" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Button id="load" mnemonicParsing="false" onAction="#printOutput" text="Projekt laden" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#python" text="python" />
    </children>
 </GridPane>

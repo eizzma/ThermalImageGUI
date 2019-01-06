@@ -27,7 +27,7 @@ public class AdbExecutor {
         command.add("connect");
         command.add(ipAddress);
         commandExecutor.executeCommand(command);
-        System.out.println("ADB says: " + commandExecutor.getStandardOutputFromCommand());
+        System.out.println("ADB connection: " + commandExecutor.getStandardOutputFromCommand());
     }
 
     public void devices() {
