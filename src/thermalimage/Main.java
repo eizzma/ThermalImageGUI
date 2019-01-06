@@ -18,7 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-        Parent rootLayout = FXMLLoader.load(getClass().getResource("gui.fxml"));
+        Parent rootLayout = FXMLLoader.load(getClass().getResource("thermalImageStart.fxml"));
         window.setTitle("Thermal Image");
         window.setScene(new Scene(rootLayout, width, heigth));
         window.show();
