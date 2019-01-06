@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 
 import java.awt.*;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
 
@@ -39,6 +41,19 @@ public class Controller {
     private void adb(){
         AdbExecutor adbExecutor = new AdbExecutor("192.168.178.22");
         adbExecutor.connect();
+    }
+
+    @FXML
+    private void befehlMumpitz(){
+        SystemCommandExecutor systemCommandExecutor = new SystemCommandExecutor();
+        List<String> irgendwas = new ArrayList<>();
+        irgendwas.add("mumpitz");
+
+        int wert = systemCommandExecutor.executeCommand(irgendwas);
+        System.out.println("mumpitz");
+        System.out.println(systemCommandExecutor.getStandardOutputFromCommand());
+        System.out.println(systemCommandExecutor.getStandardErrorFromCommand());
+        System.out.println("value: " + wert);
     }
 
 }
