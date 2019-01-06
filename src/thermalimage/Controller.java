@@ -35,4 +35,10 @@ public class Controller {
         pythonExecutor.run("test.py", null);
     }
 
+    @FXML
+    private void adb(){
+        AdbExecutor adbExecutor = new AdbExecutor("192.168.178.22");
+        adbExecutor.connect();
+    }
+
 }
