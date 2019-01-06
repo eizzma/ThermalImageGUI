@@ -21,6 +21,6 @@
       <Button mnemonicParsing="false" text="Hilfe" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <Button mnemonicParsing="false" text="neues Projekt" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
       <Button id="load" mnemonicParsing="false" onAction="#printOutput" text="Projekt laden" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-      <Button alignment="CENTER" mnemonicParsing="false" onAction="#python" text="python" />
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#python" text="python" GridPane.halignment="CENTER"/>
    </children>
 </GridPane>

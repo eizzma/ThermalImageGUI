@@ -8,12 +8,20 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    private int width = 600;
+
+    private int heigth = 600;
+
+    Stage window;
+    Scene scene1, scene2;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("gui.fxml"));
-        primaryStage.setTitle("Thermal Image");
-        primaryStage.setScene(new Scene(root, 600, 600));
-        primaryStage.show();
+        window = primaryStage;
+        Parent rootLayout = FXMLLoader.load(getClass().getResource("gui.fxml"));
+        window.setTitle("Thermal Image");
+        window.setScene(new Scene(rootLayout, width, heigth));
+        window.show();
     }
 
     public static void main(String[] args) {

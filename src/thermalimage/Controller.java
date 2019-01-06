@@ -26,7 +26,7 @@ public class Controller {
 
     @FXML
     private void printOutput(){
-        System.out.println("Hello World");
+        System.out.println("cwd: "+ System.getProperty("user.dir"));
     }
 
     @FXML
