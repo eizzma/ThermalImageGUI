@@ -17,6 +17,8 @@ public class Settings {
 
     public static String pythonPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI";
 
+    public static String projectPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/src/thermalImageProjects";
+
     public static void display() {
         Stage window = new Stage();
 
@@ -27,30 +29,38 @@ public class Settings {
         Label durationLabel = new Label();
         durationLabel.setText("Versuchsdauer:");
         TextField durationTextField = numeric(new TextField());
+        durationTextField.setAlignment(Pos.CENTER);
         durationTextField.setText("" + duration);
 
         Label timerLabel = new Label();
         timerLabel.setText("Auslöseintervall: ");
         TextField timerTextField = numeric(new TextField());
+        timerTextField.setAlignment(Pos.CENTER);
         timerTextField.setText("" + timer);
 
         Label pythonLabel = new Label();
-        pythonLabel.setText("Versuchsdauer:");
+        pythonLabel.setText("Pfad zu den Pythonprogrammen:");
         TextField pythonTextField = new TextField();
         pythonTextField.setText(pythonPath);
+
+        Label projectLabel = new Label();
+        projectLabel.setText("Pfad zu den Projekten:");
+        TextField projectTextField = new TextField();
+        projectTextField.setText(projectPath);
 
         Button button = new Button("ok");
         button.setOnAction(e -> {
             duration = Integer.parseInt(durationTextField.getText());
             timer = Integer.parseInt(timerTextField.getText());
             pythonPath = pythonTextField.getText();
+            projectPath = projectTextField.getText();
             System.out.println("duration: " + duration + ", timer: " + timer + ", pythonPath: " + pythonPath);
             window.close();
         });
 
         VBox layout = new VBox(10);
         layout.getChildren().addAll(durationLabel, durationTextField, timerLabel, timerTextField,
-                pythonLabel, pythonTextField, button);
+                pythonLabel, pythonTextField, projectLabel, projectTextField, button);
         layout.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(layout);
