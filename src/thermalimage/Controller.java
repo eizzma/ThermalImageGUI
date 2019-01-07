@@ -44,16 +44,8 @@ public class Controller {
     }
 
     @FXML
-    private void befehlMumpitz(){
-        SystemCommandExecutor systemCommandExecutor = new SystemCommandExecutor();
-        List<String> irgendwas = new ArrayList<>();
-        irgendwas.add("mumpitz");
-
-        int wert = systemCommandExecutor.executeCommand(irgendwas);
-        System.out.println("mumpitz");
-        System.out.println(systemCommandExecutor.getStandardOutputFromCommand());
-        System.out.println(systemCommandExecutor.getStandardErrorFromCommand());
-        System.out.println("value: " + wert);
+    private void settings(){
+        Settings.display();
     }
 
 }

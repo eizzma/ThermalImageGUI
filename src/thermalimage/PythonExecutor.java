@@ -6,11 +6,13 @@ import java.util.List;
 
 public class PythonExecutor {
 
-    private String cwd = System.getProperty("user.dir");
+    /*
+    this will not work when build as a jar file, because the current working directory is depending on where the jar will
+    be executed. When working with a jar-file for end-production the path to all python programms must be set static
+    */
+    //private String cwd = System.getProperty("user.dir");
 
-    private String imageAnalysis = cwd + "Path/to/imagaAnalysis";
-
-    private String csvAnalysis = "Path/to/csv.py";
+    private String cwd = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI";
 
     public int run(String programmName, String args) {
 
@@ -36,17 +38,16 @@ public class PythonExecutor {
         // print the stdout and stderr
         System.out.println("STDOUT:");
         System.out.println(stdout);
-        if (stderr != null) {
+        if (stderr.length() < 2) {
             System.out.println("STDERR:");
             System.out.println(stderr);
         }
         return result;
     }
 
-    public void evaluatePictures(List<String> pictures) {
-        for (String picture :
-             pictures) {
-            //call evaluatePicture for each pic
+    public void evaluatePictures(List<String> pictures, String localDirectory) {
+        for (String picture : pictures) {
+            run("images.py", localDirectory + "/" + picture);
         }
     }
 
