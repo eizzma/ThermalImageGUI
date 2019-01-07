@@ -22,7 +22,7 @@ public class Settings {
 
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Einstellungen");
-        window.setMinWidth(250);
+        window.setMinWidth(600);
 
         Label durationLabel = new Label();
         durationLabel.setText("Versuchsdauer:");
