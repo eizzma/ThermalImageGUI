@@ -28,8 +28,9 @@ public class Controller {
     }
 
     @FXML
-    private void printOutput(){
+    private void loadProject(){
         System.out.println("cwd: "+ System.getProperty("user.dir"));
+        Projects projects = new Projects();
     }
 
     @FXML

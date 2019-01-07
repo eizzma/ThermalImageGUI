@@ -15,9 +15,9 @@ public class Settings {
 
     public static int timer = 2;
 
-    public static String pythonPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI";
+    public static String pythonPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/python/";
 
-    public static String projectPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/src/thermalImageProjects";
+    public static String projectPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/thermalImageProjects";
 
     public static void display() {
         Stage window = new Stage();
@@ -53,6 +53,9 @@ public class Settings {
             duration = Integer.parseInt(durationTextField.getText());
             timer = Integer.parseInt(timerTextField.getText());
             pythonPath = pythonTextField.getText();
+            if (!pythonPath.endsWith("/")){
+                pythonPath = pythonPath + "/";
+            }
             projectPath = projectTextField.getText();
             System.out.println("duration: " + duration + ", timer: " + timer + ", pythonPath: " + pythonPath);
             window.close();

@@ -12,16 +12,14 @@ public class PythonExecutor {
     */
     //private String cwd = System.getProperty("user.dir");
 
-    private String cwd = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI";
-
     public int run(String programmName, String args) {
 
         List<String> commands = new ArrayList<String>();
         commands.add("python");
-        if (new File(cwd + "/python/" + programmName).exists()) {
-            commands.add(cwd + "/python/" + programmName);
+        if (new File(Settings.pythonPath + programmName).exists()) {
+            commands.add(Settings.pythonPath + programmName);
         } else {
-            System.err.println("Python Programm: \"" + cwd + "/python/" + programmName + "\" not found");
+            System.err.println("Python Programm: \"" + Settings.pythonPath + programmName + "\" not found");
             System.exit(-1);
         }
         if (args != null) {
