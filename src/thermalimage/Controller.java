@@ -29,8 +29,8 @@ public class Controller {
 
     @FXML
     private void loadProject(){
-        System.out.println("cwd: "+ System.getProperty("user.dir"));
-        Projects projects = new Projects();
+        AdbExecutor adbExecutor = new AdbExecutor("test");
+        adbExecutor.keyEvent(Keycode.M);
     }
 
     @FXML

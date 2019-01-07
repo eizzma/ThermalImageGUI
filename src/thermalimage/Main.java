@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    public Projects projects = new Projects();
+
     private int width = 600;
 
     private int heigth = 600;

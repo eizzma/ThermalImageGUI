@@ -1,8 +1,6 @@
 package thermalimage;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class AdbExecutor {
 
@@ -28,7 +26,7 @@ public class AdbExecutor {
         command.add(ipAddress);
         int returnvalue = commandExecutor.executeCommand(command);
         System.out.println("returnvalue: " + returnvalue);
-        for (String cmd : command){
+        for (String cmd : command) {
             System.out.printf(cmd + " ");
         }
         System.out.println("ADB connection: " + commandExecutor.getStandardOutputFromCommand());
@@ -54,8 +52,21 @@ public class AdbExecutor {
 
         commandExecutor.executeCommand(command);
 
-        //TODO implement a Timer that calls the methods in a constant time intervall
 
+        long duration = Settings.duration / Settings.timer;
+        Timer timer = new Timer();
+        TimerTask repeatedTask = new TimerTask() {
+            int timesexecuted = 0;
+
+            public void run() {
+                System.out.println("return: " + commandExecutor.executeCommand(command) + " executed: " + timesexecuted);
+                timesexecuted++;
+                if (timesexecuted > duration) {
+                    timer.cancel();
+                }
+            }
+        };
+        timer.schedule(repeatedTask, 0, Settings.timer * 1000);
     }
 
     public void wakeUp() {
