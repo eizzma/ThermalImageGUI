@@ -11,6 +11,8 @@ import javafx.scene.control.*;
 
 public class Settings {
 
+    public static String ipAddress = "10.90.1.223";
+
     public static int duration = 60;
 
     public static int timer = 2;
@@ -48,6 +50,12 @@ public class Settings {
         TextField projectTextField = new TextField();
         projectTextField.setText(projectPath);
 
+        Label ipLabel = new Label();
+        ipLabel.setText("Ip Addresse");
+        TextField ipTextField = new TextField();
+        ipTextField.setText(ipAddress);
+        ipTextField.setAlignment(Pos.CENTER);
+
         Button button = new Button("ok");
         button.setOnAction(e -> {
             duration = Integer.parseInt(durationTextField.getText());
@@ -57,13 +65,15 @@ public class Settings {
                 pythonPath = pythonPath + "/";
             }
             projectPath = projectTextField.getText();
-            System.out.println("duration: " + duration + ", timer: " + timer + ", pythonPath: " + pythonPath);
+            ipAddress = ipTextField.getText();
+            System.out.println("duration: " + duration + ", timer: " + timer + ", pythonPath: " + pythonPath +
+                    ", Ip Addresse: " + ipAddress);
             window.close();
         });
 
         VBox layout = new VBox(10);
         layout.getChildren().addAll(durationLabel, durationTextField, timerLabel, timerTextField,
-                pythonLabel, pythonTextField, projectLabel, projectTextField, button);
+                pythonLabel, pythonTextField, projectLabel, projectTextField, ipLabel, ipTextField, button);
         layout.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(layout);

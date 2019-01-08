@@ -24,12 +24,11 @@ public class Controller {
     @FXML
     private void initialize() {
         Projects projects = new Projects();
-
     }
 
     @FXML
     private void loadProject() {
-        AdbExecutor adbExecutor = new AdbExecutor("test");
+        AdbExecutor adbExecutor = new AdbExecutor();
         adbExecutor.keyEvent(Keycode.M);
     }
 
@@ -41,8 +40,16 @@ public class Controller {
 
     @FXML
     private void adb() {
-        AdbExecutor adbExecutor = new AdbExecutor("192.168.178.22");
-        adbExecutor.connect();
+        AdbExecutor adbExecutor = new AdbExecutor();
+        //adbExecutor.connect();
+
+
+        List<String> list = new ArrayList<>();
+        list = adbExecutor.listPictures();
+
+        //adbExecutor.testTransfer();
+        adbExecutor.transferPictures(false);
+
     }
 
     @FXML
