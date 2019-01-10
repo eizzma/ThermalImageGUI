@@ -1,6 +1,9 @@
 package thermalimage;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.stage.Stage;
 
 import java.awt.*;
 import java.io.File;
@@ -50,6 +53,12 @@ public class Controller {
         //adbExecutor.testTransfer();
         adbExecutor.transferPictures(false);
 
+    }
+
+    @FXML
+    private void newProject(ActionEvent event){
+        Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        NewProject.display(stageTheEventSourceNodeBelongs,null);
     }
 
     @FXML

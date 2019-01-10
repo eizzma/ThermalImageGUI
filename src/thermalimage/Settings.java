@@ -9,19 +9,19 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
 
-public class Settings {
+class Settings {
 
-    public static String ipAddress = "10.90.1.223";
+    static String ipAddress = "10.90.1.223";
 
-    public static int duration = 60;
+    static int duration = 60;
 
-    public static int timer = 2;
+    static int timer = 2;
 
-    public static String pythonPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/python/";
+    static String pythonPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/python/";
 
-    public static String projectPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/thermalImageProjects";
+    static String projectPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/thermalImageProjects";
 
-    public static void display() {
+    static void display() {
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
@@ -61,7 +61,7 @@ public class Settings {
             duration = Integer.parseInt(durationTextField.getText());
             timer = Integer.parseInt(timerTextField.getText());
             pythonPath = pythonTextField.getText();
-            if (!pythonPath.endsWith("/")){
+            if (!pythonPath.endsWith("/")) {
                 pythonPath = pythonPath + "/";
             }
             projectPath = projectTextField.getText();
@@ -81,14 +81,10 @@ public class Settings {
         window.showAndWait();
     }
 
-    public static TextField numeric(TextField textField) {
-        textField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    textField.setText(newValue.replaceAll("[^\\d]", ""));
-                }
+    private static TextField numeric(TextField textField) {
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                textField.setText(newValue.replaceAll("[^\\d]", ""));
             }
         });
         return textField;

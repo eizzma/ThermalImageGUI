@@ -44,6 +44,7 @@ public class Projects {
                 System.out.println("\tExperiment: " + experiment);
             }
         }
+        System.out.println();
     }
 
     public void scan() {
@@ -57,6 +58,7 @@ public class Projects {
                 if (!projectFolder.getFileName().toString().startsWith(".") && new File(projectFolder.toString()).isDirectory()) {
                     Path subdir = Paths.get(projectFolder.toAbsolutePath().toString());
                     HashSet tempSet = new HashSet();
+                    // scans the found projecte Folder for Subfolders (experimente)
                     try (DirectoryStream<Path> innerstream = Files.newDirectoryStream(subdir)) {
                         for (Path experimentFolder : innerstream) {
                             if (!experimentFolder.getFileName().toString().startsWith(".") && new File(experimentFolder.toString()).isDirectory()) {

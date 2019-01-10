@@ -7,41 +7,38 @@ public class AdbExecutor {
 
     private String packageName = "georg.com.thermal_camera_plus";
 
-    public String imgPath = "/sdcard/DCIM/Thermal Camera/";
+    private String imgPath = "/sdcard/DCIM/Thermal Camera/";
 
     private SystemCommandExecutor commandExecutor = new SystemCommandExecutor();
 
-    public AdbExecutor() {
+    AdbExecutor() {
 
     }
 
     public void connect() {
-        List<String> command = new ArrayList<String>();
+        List<String> command = new ArrayList<>();
         command.add("adb");
         command.add("connect");
         command.add(Settings.ipAddress);
         int returnvalue = commandExecutor.executeCommand(command);
         System.out.println("returnvalue: " + returnvalue);
-        for (String cmd : command) {
-            System.out.printf(cmd + " ");
-        }
         System.out.println("ADB connection: " + commandExecutor.getStandardOutputFromCommand());
         if (commandExecutor.getStandardErrorFromCommand().length() > 1) {
-            System.out.printf("Error: \n" + commandExecutor.getStandardErrorFromCommand());
+            System.out.println("Error: \n" + commandExecutor.getStandardErrorFromCommand());
         }
     }
 
     public void devices() {
-        List<String> command = new ArrayList<String>();
+        List<String> command = new ArrayList<>();
         command.add("adb");
         command.add("devices");
         commandExecutor.executeCommand(command);
         System.out.println("ADB devices: " + commandExecutor.getStandardOutputFromCommand());
     }
 
-    public void keyEvent(Keycode keycode) {
+    void keyEvent(Keycode keycode) {
 
-        List<String> command = new ArrayList<String>();
+        List<String> command = new ArrayList<>();
         command.add("adb");
         command.add("shell");
         command.add("input");
@@ -67,13 +64,13 @@ public class AdbExecutor {
         timer.schedule(repeatedTask, 0, Settings.timer * 1000);
     }
 
-    public void wakeUp() {
+    void wakeUp() {
         keyEvent(Keycode.POWER);
     }
 
 
-    public void launchApp() {
-        List<String> command = new ArrayList<String>();
+    void launchApp() {
+        List<String> command = new ArrayList<>();
         command.add("adb");
         command.add("shell");
         command.add("monkey");
@@ -86,8 +83,8 @@ public class AdbExecutor {
         commandExecutor.executeCommand(command);
     }
 
-    public void killApp() {
-        List<String> command = new ArrayList<String>();
+    void killApp() {
+        List<String> command = new ArrayList<>();
         command.add("adb");
         command.add("shell");
         command.add("am");
@@ -97,8 +94,8 @@ public class AdbExecutor {
         commandExecutor.executeCommand(command);
     }
 
-    public void listAllPackages() {
-        List<String> command = new ArrayList<String>();
+    void listAllPackages() {
+        List<String> command = new ArrayList<>();
         command.add("adb");
         command.add("shell");
         command.add("pm");
@@ -108,33 +105,28 @@ public class AdbExecutor {
         commandExecutor.executeCommand(command);
     }
 
-    public void transferPictures(boolean deleteAfterTransfer) {
+    void transferPictures(boolean deleteAfterTransfer) {
 
-        List<String> command = new ArrayList<String>();
+        List<String> command = new ArrayList<>();
         command.add("adb"); //index 0
         command.add("pull"); // index 1
         command.add("placeholder"); // index 2 will be overwritten for each picture
-        command.add(Settings.projectPath); // index 3
+        command.add(new File(Settings.projectPath).getAbsolutePath()); // index 3 //TODO ProjectPath + Projectname + Projectdir
 
         List<String> pictures = listPictures();
 
-
-
-
         for (String picture : pictures) {
-            String path = imgPath + picture;
-            File img = new File(path);
-            command.set(2, img.getAbsolutePath()); // index 2
+
+            File img = new File(imgPath + picture);
+
+            command.set(2, img.getAbsoluteFile().toString()); // index 2
+
+
+            // TODO
             int result = commandExecutor.executeCommand(command);
             StringBuilder sb = commandExecutor.getStandardOutputFromCommand();
             System.out.println("Output: " + sb.toString() + ", result: " + result);
 
-
-            for (String cmd : command) {
-                System.out.print(cmd + " ");
-            }
-
-            System.out.println();
         }
 
         if (deleteAfterTransfer) {
@@ -145,8 +137,8 @@ public class AdbExecutor {
         }
     }
 
-    public void testTransfer(){
-        List<String> command = new ArrayList<String>();
+    void testTransfer(){
+        List<String> command = new ArrayList<>();
         command.add("adb");
         command.add("pull");
         command.add("/sdcard/DCIM/Screenshots/1.jpg");
@@ -156,7 +148,7 @@ public class AdbExecutor {
 
     }
 
-    public void deletePicture(String picture, String directory) {
+    private void deletePicture(String picture, String directory) {
 
         String filePath = directory + "/" + picture;
 
@@ -169,9 +161,9 @@ public class AdbExecutor {
         commandExecutor.executeCommand(command);
     }
 
-    public List<String> listPictures() {
+    List<String> listPictures() {
 
-        List<String> command = new ArrayList<String>();
+        List<String> command = new ArrayList<>();
         command.add("adb");
         command.add("shell");
         command.add("ls");

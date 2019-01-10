@@ -4,7 +4,7 @@ package thermalimage;
 import java.io.*;
 import java.util.List;
 
-class SystemCommandExecutor {
+public class SystemCommandExecutor {
 
     private StringBuilder inputBuffer = null;
     private StringBuilder errorBuffer = null;

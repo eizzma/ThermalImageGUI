@@ -8,9 +8,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    private int width = 600;
+    private double width = 600;
 
-    private int heigth = 600;
+    private double heigth = 600;
 
     Stage window;
     Scene scene1, scene2;
@@ -20,7 +20,8 @@ public class Main extends Application {
         window = primaryStage;
         Parent rootLayout = FXMLLoader.load(getClass().getResource("thermalImageStart.fxml"));
         window.setTitle("Thermal Image");
-        window.setScene(new Scene(rootLayout, width, heigth));
+        Scene mainScene  = new Scene(rootLayout, width, heigth);
+        window.setScene(mainScene);
         window.show();
     }
 
