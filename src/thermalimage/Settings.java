@@ -5,9 +5,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
+import javafx.stage.Window;
+
+import java.io.File;
 
 class Settings {
 
@@ -45,11 +49,13 @@ class Settings {
         pythonLabel.setText("Pfad zu den Pythonprogrammen:");
         TextField pythonTextField = new TextField();
         appearanceTextField(pythonTextField, pythonPath);
+        HBox pythonBox = browse("Pfad zu den Pythonprogrammen:", projectPath, pythonTextField);
 
         Label projectLabel = new Label();
         projectLabel.setText("Pfad zu den Projekten:");
         TextField projectTextField = new TextField();
-        appearanceTextField(projectTextField,projectPath);
+        appearanceTextField(projectTextField, projectPath);
+        HBox projectBox = browse("Pfad zu den Projekten:", projectPath, projectTextField);
 
         Label ipLabel = new Label();
         ipLabel.setText("Ip Addresse");
@@ -68,9 +74,15 @@ class Settings {
             projectPath = projectTextField.getText();
             ipAddress = ipTextField.getText();
             System.out.println("duration: " + duration + ", timer: " + timer + ", pythonPath: " + pythonPath +
-                    ", Ip Addresse: " + ipAddress);
+                    ", projectPath: " + projectPath + ", Ip Addresse: " + ipAddress);
             window.close();
         });
+
+        // DirectoryChooser chooser = new DirectoryChooser();
+        // chooser.setTitle("JavaFX Projects");
+        // File defaultDirectory = new File("c:/dev/javafx");
+        // chooser.setInitialDirectory(defaultDirectory);
+        // File selectedDirectory = chooser.showDialog(new Stage());
 
         Button denyButton = new Button();
         denyButton.setText("Abbrechen");
@@ -82,7 +94,7 @@ class Settings {
 
         VBox layout = new VBox(20);
         layout.getChildren().addAll(durationLabel, durationTextField, timerLabel, timerTextField,
-                pythonLabel, pythonTextField, projectLabel, projectTextField, ipLabel, ipTextField, buttonBox);
+                pythonBox, pythonTextField, projectBox, projectTextField, ipLabel, ipTextField, buttonBox);
         layout.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(layout);
@@ -102,5 +114,24 @@ class Settings {
     private static void appearanceTextField(TextField textField, String text) {
         textField.setAlignment(Pos.CENTER);
         textField.setText(text);
+    }
+
+    private static HBox browse(String labelText, String path, TextField textField) {
+        Label label = new Label();
+        label.setText(labelText);
+        HBox hBox = new HBox(15);
+        Button browse = new Button();
+        browse.setText("browse");
+        browse.setOnAction(e -> {
+            DirectoryChooser chooser = new DirectoryChooser();
+            chooser.setTitle(labelText);
+            File defaultDirectory = new File(path);
+            chooser.setInitialDirectory(defaultDirectory);
+            File selectedDirectory = chooser.showDialog(new Stage());
+            textField.setText(selectedDirectory.toString());
+        });
+        hBox.getChildren().addAll(label, browse);
+        hBox.setAlignment(Pos.CENTER);
+        return hBox;
     }
 }
