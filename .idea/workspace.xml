@@ -6,18 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Projects Klasse">
-      <change afterPath="$PROJECT_DIR$/src/thermalimage/NewProject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/thermalimage/NextStep.java" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Fortschritt an der GUI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/thermalimage/AdbExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/AdbExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/thermalimage/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/thermalimage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/thermalimage/Projects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/Projects.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/thermalimage/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/thermalimage/SystemCommandExecuter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/SystemCommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/thermalimage/newProject.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/thermalimage/thermalImageStart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/thermalImageStart.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,18 +66,6 @@
         <state>
           <leaf>
             <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/thermalimage/Settings.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="15">
-                    <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-                    <folding>
-                      <element signature="imports" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/thermalimage/Main.java">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="574">
@@ -125,7 +104,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/thermalimage/SystemCommandExecutor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
+            <state relative-caret-position="-538">
               <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -139,7 +118,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/thermalimage/Projects.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
+            <state relative-caret-position="556">
               <caret line="46" column="27" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -164,8 +143,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/thermalimage/NextStep.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="12" column="73" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="73" />
+            <state relative-caret-position="70">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -174,10 +153,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/thermalimage/Settings.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-99">
+              <caret line="78" column="36" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/thermalimage/NewProject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="40" column="39" lean-forward="true" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+            <state relative-caret-position="204">
+              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
             </state>
           </provider>
         </entry>
@@ -243,7 +234,6 @@
         <option value="$PROJECT_DIR$/src/thermalimage/SystemCommandExecuter.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/AdbExecutor.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/AdbConnection.java" />
-        <option value="$PROJECT_DIR$/src/thermalimage/Settings.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/newProject.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/NewProject_Fabians-MacBook-Pro.local_Jan-10-103437-2019_CaseConflict.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/thermalImageStart.fxml" />
@@ -251,6 +241,7 @@
         <option value="$PROJECT_DIR$/src/thermalimage/NextStep.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/Controller.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/NewProject.java" />
+        <option value="$PROJECT_DIR$/src/thermalimage/Settings.java" />
       </list>
     </option>
   </component>
@@ -326,7 +317,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547118229144" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547119527340" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -751,11 +742,18 @@
       <option name="project" value="LOCAL" />
       <updated>1546950359343</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Fortschritt an der GUI">
+      <created>1547118254010</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1547118254010</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94361000" />
+    <option name="totallyTimeSpent" value="95654000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="0" />
@@ -805,7 +803,6 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="keycode updated" />
     <MESSAGE value="uncommented gui start" />
     <MESSAGE value="method skeleton added" />
     <MESSAGE value="adb list pictures" />
@@ -830,7 +827,8 @@
     <MESSAGE value="timer improved" />
     <MESSAGE value="push" />
     <MESSAGE value="Projects Klasse" />
-    <option name="LAST_COMMIT_MESSAGE" value="Projects Klasse" />
+    <MESSAGE value="Fortschritt an der GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fortschritt an der GUI" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -927,16 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/thermalimage/Projects.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="27" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/thermalimage/AdbConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1016,18 +1004,6 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/thermalimage/SystemCommandExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1710#1711#0" expanded="true" />
-            <element signature="e#1744#1745#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/thermalimage/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="436">
@@ -1040,10 +1016,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/NewProject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/thermalimage/NextStep.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="12" column="73" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="73" />
+        <state relative-caret-position="70">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1060,17 +1043,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/thermalimage/NewProject.java">
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/Projects.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="40" column="39" lean-forward="true" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+        <state relative-caret-position="556">
+          <caret line="46" column="27" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/SystemCommandExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-538">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1710#1711#0" expanded="true" />
+            <element signature="e#1744#1745#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/thermalimage/Settings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        <state relative-caret-position="-99">
+          <caret line="78" column="36" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

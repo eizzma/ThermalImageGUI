@@ -1,9 +1,9 @@
 package thermalimage;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import com.sun.tools.internal.xjc.model.CEnumConstant;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -26,38 +26,39 @@ class Settings {
 
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Einstellungen");
-        window.setMinWidth(600);
+        window.setMinWidth(500);
+        window.setMinHeight(500);
 
         Label durationLabel = new Label();
         durationLabel.setText("Versuchsdauer:");
         TextField durationTextField = numeric(new TextField());
-        durationTextField.setAlignment(Pos.CENTER);
-        durationTextField.setText("" + duration);
+        appearanceTextField(durationTextField, "" + duration);
+        durationTextField.setMaxWidth(50);
 
         Label timerLabel = new Label();
         timerLabel.setText("Auslöseintervall: ");
         TextField timerTextField = numeric(new TextField());
-        timerTextField.setAlignment(Pos.CENTER);
-        timerTextField.setText("" + timer);
+        appearanceTextField(timerTextField, "" + timer);
+        timerTextField.setMaxWidth(50);
 
         Label pythonLabel = new Label();
         pythonLabel.setText("Pfad zu den Pythonprogrammen:");
         TextField pythonTextField = new TextField();
-        pythonTextField.setText(pythonPath);
+        appearanceTextField(pythonTextField, pythonPath);
 
         Label projectLabel = new Label();
         projectLabel.setText("Pfad zu den Projekten:");
         TextField projectTextField = new TextField();
-        projectTextField.setText(projectPath);
+        appearanceTextField(projectTextField,projectPath);
 
         Label ipLabel = new Label();
         ipLabel.setText("Ip Addresse");
         TextField ipTextField = new TextField();
-        ipTextField.setText(ipAddress);
-        ipTextField.setAlignment(Pos.CENTER);
+        appearanceTextField(ipTextField, ipAddress);
+        ipTextField.setMaxWidth(200);
 
-        Button button = new Button("ok");
-        button.setOnAction(e -> {
+        Button okButton = new Button("Bestätigen");
+        okButton.setOnAction(e -> {
             duration = Integer.parseInt(durationTextField.getText());
             timer = Integer.parseInt(timerTextField.getText());
             pythonPath = pythonTextField.getText();
@@ -71,9 +72,17 @@ class Settings {
             window.close();
         });
 
-        VBox layout = new VBox(10);
+        Button denyButton = new Button();
+        denyButton.setText("Abbrechen");
+        denyButton.setOnAction(e -> window.close());
+
+        HBox buttonBox = new HBox(20);
+        buttonBox.getChildren().addAll(okButton, denyButton);
+        buttonBox.setAlignment(Pos.CENTER);
+
+        VBox layout = new VBox(20);
         layout.getChildren().addAll(durationLabel, durationTextField, timerLabel, timerTextField,
-                pythonLabel, pythonTextField, projectLabel, projectTextField, ipLabel, ipTextField, button);
+                pythonLabel, pythonTextField, projectLabel, projectTextField, ipLabel, ipTextField, buttonBox);
         layout.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(layout);
@@ -88,5 +97,10 @@ class Settings {
             }
         });
         return textField;
+    }
+
+    private static void appearanceTextField(TextField textField, String text) {
+        textField.setAlignment(Pos.CENTER);
+        textField.setText(text);
     }
 }
