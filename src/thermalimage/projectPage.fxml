@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thermalimage.Controller">
+<VBox prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thermalimage.ControllerProject">
     <children>
         <AnchorPane prefHeight="82.0" prefWidth="600.0">
             <children>
-                <Label id="projectName" alignment="CENTER" layoutX="262.0" layoutY="33.0" text="Projektname" />
                 <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#backToMainScreen" text="Zurück" />
+            <Label fx:id="label" layoutX="283.0" layoutY="33.0" text="Label" />
             </children>
         </AnchorPane>
         <SplitPane dividerPositions="0.7" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="600.0">
@@ -21,13 +21,13 @@
                     <children>
                         <Label text="Versuche" />
                         <Label text="Datum/Zeit" />
-                        <ScrollPane prefHeight="254.0" prefWidth="295.0" />
+                        <ScrollPane fx:id="scrollPane" prefHeight="254.0" prefWidth="295.0" />
                     </children>
                 </VBox>
                 <VBox alignment="CENTER" prefHeight="398.0" prefWidth="155.0" spacing="40.0">
                     <children>
                         <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="neuer Versuch" />
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Verusch betrachten" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Versuch betrachten" />
                         <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Auswertung" />
                     </children>
                 </VBox>

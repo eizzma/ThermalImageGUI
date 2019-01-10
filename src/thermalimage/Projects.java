@@ -18,6 +18,8 @@ public class Projects {
         }
     }
 
+    public int activeProject;
+
     private void printMap() {
         //a map with key type : String, value type : String
 
