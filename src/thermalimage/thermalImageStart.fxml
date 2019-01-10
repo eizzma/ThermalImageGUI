@@ -5,29 +5,21 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-          xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="thermalimage.Controller">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thermalimage.Controller">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="382.0" minWidth="-Infinity" prefWidth="227.0"/>
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="598.0" minWidth="10.0" prefWidth="423.0"/>
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="-Infinity" prefWidth="212.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="382.0" minWidth="-Infinity" prefWidth="165.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="598.0" minWidth="10.0" prefWidth="272.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="-Infinity" prefWidth="163.0" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints maxHeight="215.0" minHeight="200.0" prefHeight="168.0" vgrow="SOMETIMES"/>
-        <RowConstraints maxHeight="245.0" minHeight="200.0" prefHeight="198.0" vgrow="SOMETIMES"/>
-        <RowConstraints maxHeight="175.0" minHeight="-Infinity" prefHeight="175.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="215.0" minHeight="200.0" prefHeight="168.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="245.0" minHeight="200.0" prefHeight="198.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="175.0" minHeight="-Infinity" prefHeight="175.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Button alignment="CENTER" mnemonicParsing="false" onAction="#settings" text="Einstellungen"
-                GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER"/>
-        <Button mnemonicParsing="false" onAction="#adb" text="Hilfe" GridPane.columnIndex="2"
-                GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER"/>
-        <Button mnemonicParsing="false" onAction="#newProject" text="neues Projekt" GridPane.columnIndex="1"
-                GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER"/>
-        <Button id="load" mnemonicParsing="false" onAction="#loadProject" text="Projekt laden" GridPane.columnIndex="1"
-                GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
-        <Button alignment="CENTER" mnemonicParsing="false" onAction="#python" text="python"
-                GridPane.halignment="CENTER"/>
+        <Button alignment="CENTER" mnemonicParsing="false" onAction="#settings" prefHeight="50.0" prefWidth="120.0" text="Einstellungen" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+        <Button mnemonicParsing="false" onAction="#adb" prefHeight="50.0" prefWidth="120.0" text="Hilfe" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+        <Button mnemonicParsing="false" onAction="#newProject" prefHeight="70.0" prefWidth="200.0" text="neues Projekt" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+        <Button id="load" mnemonicParsing="false" onAction="#loadProject" prefHeight="70.0" prefWidth="200.0" text="Projekt laden" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
     </children>
 </GridPane>

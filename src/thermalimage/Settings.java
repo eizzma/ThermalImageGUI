@@ -49,7 +49,7 @@ class Settings {
         pythonLabel.setText("Pfad zu den Pythonprogrammen:");
         TextField pythonTextField = new TextField();
         appearanceTextField(pythonTextField, pythonPath);
-        HBox pythonBox = browse("Pfad zu den Pythonprogrammen:", projectPath, pythonTextField);
+        HBox pythonBox = browse("Pfad zu den Pythonprogrammen:", pythonPath, pythonTextField);
 
         Label projectLabel = new Label();
         projectLabel.setText("Pfad zu den Projekten:");
@@ -123,15 +123,17 @@ class Settings {
         Button browse = new Button();
         browse.setText("browse");
         browse.setOnAction(e -> {
-            DirectoryChooser chooser = new DirectoryChooser();
-            chooser.setTitle(labelText);
-            File defaultDirectory = new File(path);
-            chooser.setInitialDirectory(defaultDirectory);
-            File selectedDirectory = chooser.showDialog(new Stage());
-            textField.setText(selectedDirectory.toString());
+            textField.setText(directoryChooser(new File(path)));
         });
         hBox.getChildren().addAll(label, browse);
         hBox.setAlignment(Pos.CENTER);
         return hBox;
+    }
+
+    private static String directoryChooser(File defaultDirectory){
+        DirectoryChooser chooser = new DirectoryChooser();
+        chooser.setInitialDirectory(defaultDirectory);
+        File selectedDirectory = chooser.showDialog(new Stage());
+        return selectedDirectory.toString();
     }
 }

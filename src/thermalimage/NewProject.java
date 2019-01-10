@@ -42,7 +42,7 @@ public class NewProject {
         okButton.setText("Bestätigen");
         okButton.setOnAction(e -> {
             window.close();
-            mainWindow.setScene(oldScene);
+            mainWindow.setScene(nextScene);
             System.out.println(textField.getText());
         });
 
