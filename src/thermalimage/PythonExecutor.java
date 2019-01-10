@@ -43,6 +43,7 @@ public class PythonExecutor {
         return result;
     }
 
+
     public void evaluatePictures(List<String> pictures, String localDirectory) {
         for (String picture : pictures) {
             run("images.py", localDirectory + "/" + picture);

@@ -1,6 +1,6 @@
 package thermalimage;
 
-import com.sun.tools.internal.xjc.model.CEnumConstant;
+//import com.sun.tools.internal.xjc.model.CEnumConstant;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;

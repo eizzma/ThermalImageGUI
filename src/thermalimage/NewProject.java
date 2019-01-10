@@ -1,14 +1,10 @@
 package thermalimage;
 
-import com.sun.tools.internal.xjc.model.CEnumConstant;
-import com.sun.tools.internal.xjc.model.CEnumLeafInfo;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+//import com.sun.tools.internal.xjc.model.CEnumConstant;
+import com.sun.org.apache.bcel.internal.generic.GOTO;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -17,23 +13,26 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 
 public class NewProject {
 
-    static String newProject = null;
-
-    @FXML
+    static void display(Stage mainWindow, Scene nextScene) {
 
 
-    static String display(Stage mainWindow, Scene scene) {
+        String path = "C:/Users/Valdrin/Desktop/";
 
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
 
-        window.setMinWidth(300);
-        window.setMinHeight(300);
+        Scene oldScene = mainWindow.getScene();
+        double width = mainWindow.getWidth();
+        double height = mainWindow.getHeight() - 22; // mac os 22 pixel window title
+
+        window.setMinWidth(width / 2);
+        window.setMinHeight(height / 2);
 
         Label messageLabel = new Label();
         messageLabel.setText("Geben Sie dem neuen Projekt einen Namen:");
@@ -44,19 +43,36 @@ public class NewProject {
         Button okButton = new Button();
         okButton.setText("Bestätigen");
         okButton.setOnAction(e -> {
-            newProject = textField.getText();
-            if (newProject.length() < 3){
-                errorMessage();
-            }else {
-                mainWindow.setScene(scene);
-                window.close();
+
+            String iD = textField.getText();
+
+            try {
+                if(!checkDuplicate(iD, path)){
+                    createFolder(iD, path);
+                    window.close();
+                    mainWindow.setScene(nextScene);
+                }else{
+                    System.out.println("Duplikat! Versuche es erneut.");
+                    window.close();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Warning");
+                    alert.setHeaderText("Duplicate!");
+                    alert.setContentText("Try again");
+                    alert.showAndWait();
+                }
+
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
+
+
+
+            //System.out.println(textField.getText());
         });
 
         Button denyButton = new Button();
         denyButton.setText("Abbrechen");
         denyButton.setOnAction(e -> {
-            newProject = null;
             window.close();
         });
 
@@ -71,24 +87,31 @@ public class NewProject {
         window.setScene(new Scene(layout));
         window.showAndWait();
 
-        return newProject;
-
     }
 
-    private static void errorMessage(){
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setMinWidth(100);
-        stage.setMinHeight(100);
-        Label label = new Label("Der Projektname muss mindestens 3 Zeichen betragen!");
-        Button button = new Button("OK");
-        button.setOnAction(event -> stage.close());
-        VBox vBox = new VBox(5);
-        vBox.setAlignment(Pos.CENTER);
-        vBox.getChildren().addAll(label, button);
-        Scene scene = new Scene(vBox);
-        stage.setScene(scene);
-        stage.showAndWait();
+    public static void createFolder(String iD, String path) throws IOException {
+
+        //String fileName = "test.jpeg";
+
+        File dir = new File(path + iD);
+        //File file = new File(path + iD + "/" + fileName);
+
+        System.out.println(path);
+
+        if(dir.mkdir()){
+            System.out.println("Datei erstellt: " + dir.createNewFile());
+        }else{
+            System.out.println(dir + " Konnte nicht erstellt werden.");
+        }
     }
 
+    public static boolean checkDuplicate(String iD, String path) throws IOException{
+        File file = new File(path + iD);
+        if(!file.exists()){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
 }
