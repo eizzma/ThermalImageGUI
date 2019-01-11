@@ -1,6 +1,5 @@
 package thermalimage;
 
-//import com.sun.tools.internal.xjc.model.CEnumConstant;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
@@ -9,7 +8,6 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
-import javafx.stage.Window;
 
 import java.io.File;
 

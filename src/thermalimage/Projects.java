@@ -18,7 +18,33 @@ public class Projects {
         }
     }
 
-    public int activeProject;
+    public String activeProject;
+
+    public static void createFolder(String iD, String path) throws IOException {
+
+        //String fileName = "test.jpeg";
+
+        File dir = new File(path + iD);
+        //File file = new File(path + iD + "/" + fileName);
+
+        System.out.println(path);
+
+        if(dir.mkdir()){
+            System.out.println("Datei erstellt: " + dir.createNewFile());
+        }else{
+            System.out.println(dir + " Konnte nicht erstellt werden.");
+        }
+    }
+
+    public static boolean checkDuplicate(String iD, String path) throws IOException{
+        File file = new File(path + iD);
+        if(!file.exists()){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
 
     private void printMap() {
         //a map with key type : String, value type : String
@@ -76,5 +102,9 @@ public class Projects {
         } catch (IOException | DirectoryIteratorException x) {
             System.err.println(x);
         }
+    }
+
+    public String getActiveProject(){
+        projectMap.get()
     }
 }

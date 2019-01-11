@@ -1,7 +1,6 @@
 package thermalimage;
 
 //import com.sun.tools.internal.xjc.model.CEnumConstant;
-import com.sun.org.apache.bcel.internal.generic.GOTO;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -13,7 +12,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
 
@@ -47,8 +45,8 @@ public class NewProject {
             String iD = textField.getText();
 
             try {
-                if(!checkDuplicate(iD, path)){
-                    createFolder(iD, path);
+                if(!Projects.checkDuplicate(iD, path)){
+                    Projects.createFolder(iD, path);
                     window.close();
                     mainWindow.setScene(nextScene);
                 }else{
@@ -89,29 +87,4 @@ public class NewProject {
 
     }
 
-    public static void createFolder(String iD, String path) throws IOException {
-
-        //String fileName = "test.jpeg";
-
-        File dir = new File(path + iD);
-        //File file = new File(path + iD + "/" + fileName);
-
-        System.out.println(path);
-
-        if(dir.mkdir()){
-            System.out.println("Datei erstellt: " + dir.createNewFile());
-        }else{
-            System.out.println(dir + " Konnte nicht erstellt werden.");
-        }
-    }
-
-    public static boolean checkDuplicate(String iD, String path) throws IOException{
-        File file = new File(path + iD);
-        if(!file.exists()){
-            return false;
-        }else{
-            return true;
-        }
-
-    }
 }
