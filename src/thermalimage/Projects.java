@@ -18,16 +18,25 @@ public class Projects {
         }
     }
 
-    public String activeProject;
+    public String activeProject = null;
 
-    public static void createFolder(String iD, String path) throws IOException {
+    public static void createFolder(String projectName) throws IOException {
 
         //String fileName = "test.jpeg";
 
-        File dir = new File(path + iD);
-        //File file = new File(path + iD + "/" + fileName);
+        String path;
 
-        System.out.println(path);
+        // make sure there is an "/" at the end of the path...
+        if (!Settings.projectPath.endsWith("/")){
+            path = Settings.projectPath + "/";
+        }else {
+            path = Settings.projectPath;
+        }
+
+        File dir = new File(path + projectName);
+        //File file = new File(path + projectName + "/" + fileName);
+
+        System.out.println(Settings.projectPath);
 
         if(dir.mkdir()){
             System.out.println("Datei erstellt: " + dir.createNewFile());
@@ -104,7 +113,13 @@ public class Projects {
         }
     }
 
-    public String getActiveProject(){
-        projectMap.get()
+    public void addNewProject(String projektName){
+        projectMap.put(projektName, new HashSet<>());
+        activeProject = projektName;
+        try {
+            createFolder(projektName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
