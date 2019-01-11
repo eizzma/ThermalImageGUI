@@ -20,36 +20,36 @@ public class Projects {
 
     public String activeProject = null;
 
-    public static void createFolder(String projectName) throws IOException {
+    public static void createFolder(String folderName) throws IOException {
 
         //String fileName = "test.jpeg";
 
         String path;
 
         // make sure there is an "/" at the end of the path...
-        if (!Settings.projectPath.endsWith("/")){
+        if (!Settings.projectPath.endsWith("/")) {
             path = Settings.projectPath + "/";
-        }else {
+        } else {
             path = Settings.projectPath;
         }
 
-        File dir = new File(path + projectName);
-        //File file = new File(path + projectName + "/" + fileName);
+        File dir = new File(path + folderName);
+        //File file = new File(path + folderName + "/" + fileName);
 
         System.out.println(Settings.projectPath);
 
-        if(dir.mkdir()){
+        if (dir.mkdir()) {
             System.out.println("Datei erstellt: " + dir.createNewFile());
-        }else{
+        } else {
             System.out.println(dir + " Konnte nicht erstellt werden.");
         }
     }
 
-    public static boolean checkDuplicate(String iD, String path) throws IOException{
+    public static boolean checkDuplicate(String iD, String path) throws IOException {
         File file = new File(path + iD);
-        if(!file.exists()){
+        if (!file.exists()) {
             return false;
-        }else{
+        } else {
             return true;
         }
 
@@ -113,11 +113,25 @@ public class Projects {
         }
     }
 
-    public void addNewProject(String projektName){
+    public void addNewProject(String projektName) {
         projectMap.put(projektName, new HashSet<>());
         activeProject = projektName;
         try {
             createFolder(projektName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public HashSet<String> getExperiments() {
+        return projectMap.get(activeProject);
+    }
+
+    public void addExperiment(String dateAndTime) {
+        HashSet<String> experiments = getExperiments();
+        experiments.add(dateAndTime);
+        try {
+            createFolder(activeProject + "/" + dateAndTime);
         } catch (IOException e) {
             e.printStackTrace();
         }
