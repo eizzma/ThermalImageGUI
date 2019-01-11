@@ -17,16 +17,21 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        window = primaryStage;
-        Parent rootLayout = FXMLLoader.load(getClass().getResource("thermalImageStart.fxml"));
-        window.setTitle("Thermal Image");
-        Scene mainScene  = new Scene(rootLayout, width, heigth);
-        window.setScene(mainScene);
-        window.show();
+        new SceneManager(primaryStage);
+
+        SceneManager.showMainScene();
+
+        // window = primaryStage;
+        // Parent rootLayout = FXMLLoader.load(getClass().getResource("mainScene.fxml"));
+        // window.setTitle("Thermal Image");
+        // Scene mainScene  = new Scene(rootLayout, width, heigth);
+        // window.setScene(mainScene);
+        // window.show();
     }
 
     public static void main(String[] args) {
 
+        new Projects();
         launch(args);
 
 

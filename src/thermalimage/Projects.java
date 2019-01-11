@@ -105,16 +105,21 @@ public class Projects {
     }
 
     public static void addNewProject(String projektName) {
-        projectMap.put(projektName, new HashSet<>());
         activeProject = projektName;
-        try {
-            createFolder(projektName);
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        if (projectMap.containsKey(projektName)){
+            MessageWindow.displayError("Dieser Projektname ist bereits bekannt. Das gewünschte Projekt wird geöffnet.");
+        }else {
+            projectMap.put(projektName, new HashSet<>());
+            try {
+                createFolder(projektName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public HashSet<String> getExperiments() {
+    public static HashSet<String> getExperiments() {
         return projectMap.get(activeProject);
     }
 

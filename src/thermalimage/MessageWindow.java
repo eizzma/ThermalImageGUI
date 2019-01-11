@@ -1,5 +1,6 @@
 package thermalimage;
 
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,7 +9,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
-public class NextStep {
+public class MessageWindow {
 
     static void display(String message, Stage mainWindow, Scene nextScene) {
 
@@ -33,5 +34,18 @@ public class NextStep {
         window.setScene(scene);
         window.showAndWait();
 
+    }
+
+    static void displayError(String error) {
+        Stage errorStage = new Stage();
+        errorStage.initModality(Modality.APPLICATION_MODAL);
+        Label message = new Label(error);
+        Button okButton = new Button("Verstanden");
+        okButton.setOnAction(event -> errorStage.close());
+        VBox layout = new VBox(20);
+        layout.getChildren().addAll(message, okButton);
+        layout.setAlignment(Pos.CENTER);
+        errorStage.setScene(new Scene(layout, 500, 120));
+        errorStage.showAndWait();
     }
 }
