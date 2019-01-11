@@ -61,5 +61,15 @@ public class ControllerProject extends VBox {
 
     }
 
+    @FXML
+    private void deleteProject() {
+
+    }
+
+    @FXML
+    private void deleteExperiment() {
+
+    }
+
 
 }

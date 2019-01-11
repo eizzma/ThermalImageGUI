@@ -134,4 +134,20 @@ public class Projects {
         }
         projectMap.put(activeProject,experiments);
     }
+
+    public static void deleteProject(){
+        // the active Project will be deletet TODO delete folder of active Project
+    }
+
+    public static void addNewExperiment(String dateAndTime){
+        //TODO create another folder in activeproject folder
+
+    }
+
+    public static void deleteExperiment(String toBeDeleted){
+        // TODO delete the given Experiment
+    }
+
+
+
 }

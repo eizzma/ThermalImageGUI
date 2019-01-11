@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -11,7 +13,14 @@
 
   <AnchorPane prefHeight="82.0" prefWidth="600.0">
       <children>
-          <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#backToMainScreen" text="Zurück" />
+          <Button layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#backToMainScreen" text="Zurück">
+            <graphic>
+               <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@icons/icons8-go-back-48.png" />
+                  </image>
+               </ImageView>
+            </graphic></Button>
       <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="21.0" prefHeight="40.0" prefWidth="200.0" text="Label" />
       </children>
   </AnchorPane>
@@ -20,9 +29,13 @@
          <ListView fx:id="list" prefHeight="200.0" prefWidth="200.0" />
           <VBox alignment="CENTER" prefHeight="398.0" prefWidth="155.0" spacing="40.0">
               <children>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" onAction="#newExperiment" text="neuer Versuch" />
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" onAction="#showExperiment" text="Versuch betrachten" />
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" onAction="#evaluate" text="Auswertung" />
+               <Label text="Versuche" />
+                  <Button fx:id="newExperiment" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="neuer Versuch" />
+                  <Button fx:id="showExperiment" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Versuch betrachten" />
+               <Button fx:id="deleteExperiment" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Versuch Löschen" />
+               <Label text="Projekt" />
+                  <Button fx:id="evaluate" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Auswertung" />
+               <Button fx:id="deleteProject" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Projekt löschen" />
               </children>
           </VBox>
       </items>
