@@ -12,8 +12,7 @@ public class ControllerProject {
 
     @FXML
     private void initialize(){
-        label.setText("");
-
+        label.setText(Projects.activeProject);
     }
 
     @FXML
@@ -21,6 +20,11 @@ public class ControllerProject {
 
     @FXML
     private Label label;
+
+    @FXML
+    private void backToMainScreen(){
+        // TODO
+    }
 
 
 

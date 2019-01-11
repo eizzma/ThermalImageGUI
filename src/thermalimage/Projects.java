@@ -18,9 +18,9 @@ public class Projects {
         }
     }
 
-    public String activeProject = null;
+    public static String activeProject = null;
 
-    public String activeExperiment = null;
+    public static String activeExperiment = null;
 
     public static void createFolder(String folderName) throws IOException {
 
@@ -38,24 +38,13 @@ public class Projects {
         File dir = new File(path + folderName);
         //File file = new File(path + folderName + "/" + fileName);
 
-        System.out.println(Settings.projectPath);
-
-        if (dir.mkdir()) {
-            System.out.println("Datei erstellt: " + dir.createNewFile());
+        if (!dir.exists()) {
+            System.out.println("Datei erstellt: " + dir.mkdir());
         } else {
-            System.out.println(dir + " Konnte nicht erstellt werden.");
+            System.out.println(dir + " Verzeichnis existiert bereits");
         }
     }
 
-    public static boolean checkDuplicate(String iD, String path) throws IOException {
-        File file = new File(path + iD);
-        if (!file.exists()) {
-            return false;
-        } else {
-            return true;
-        }
-
-    }
 
     private void printMap() {
         //a map with key type : String, value type : String
@@ -115,7 +104,7 @@ public class Projects {
         }
     }
 
-    public void addNewProject(String projektName) {
+    public static void addNewProject(String projektName) {
         projectMap.put(projektName, new HashSet<>());
         activeProject = projektName;
         try {
@@ -138,5 +127,6 @@ public class Projects {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        projectMap.put(activeProject,experiments);
     }
 }

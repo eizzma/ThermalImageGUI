@@ -42,26 +42,7 @@ public class NewProject {
         okButton.setText("Bestätigen");
         okButton.setOnAction(e -> {
 
-            String iD = textField.getText();
-
-            try {
-                if(!Projects.checkDuplicate(iD, path)){
-                    Projects.createFolder(iD, path);
-                    window.close();
-                    mainWindow.setScene(nextScene);
-                }else{
-                    System.out.println("Duplikat! Versuche es erneut.");
-                    window.close();
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Warning");
-                    alert.setHeaderText("Duplicate!");
-                    alert.setContentText("Try again");
-                    alert.showAndWait();
-                }
-
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+            Projects.addNewProject(textField.getText());
 
 
 
