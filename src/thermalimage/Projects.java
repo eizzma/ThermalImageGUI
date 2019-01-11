@@ -20,6 +20,8 @@ public class Projects {
 
     public String activeProject = null;
 
+    public String activeExperiment = null;
+
     public static void createFolder(String folderName) throws IOException {
 
         //String fileName = "test.jpeg";
@@ -130,6 +132,7 @@ public class Projects {
     public void addExperiment(String dateAndTime) {
         HashSet<String> experiments = getExperiments();
         experiments.add(dateAndTime);
+        activeExperiment = dateAndTime;
         try {
             createFolder(activeProject + "/" + dateAndTime);
         } catch (IOException e) {
