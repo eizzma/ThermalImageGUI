@@ -23,7 +23,7 @@
                     </ImageView>
                 </graphic>
             </Button>
-            <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="21.0" prefHeight="40.0" prefWidth="200.0" text="Label">
+            <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="21.0" prefHeight="40.0" prefWidth="383.0" text="Label">
             <font>
                <Font size="25.0" />
             </font></Label>

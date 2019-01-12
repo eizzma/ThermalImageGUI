@@ -55,6 +55,8 @@ public class ControllerProject extends VBox {
     @FXML
     private void showExperiment() {
 
+        // TODO new scene
+
     }
 
     @FXML
@@ -66,6 +68,10 @@ public class ControllerProject extends VBox {
             // then the timestamp should be added to displayed list.
             list.getItems().add(timeStamp);
         }
+
+        // TODO implement optional functionality for STEP BY STEP procedure (Tutorial)
+
+        // TODO trigger ADB commands, and python for new files
 
 
     }
