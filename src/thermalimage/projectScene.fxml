@@ -8,36 +8,41 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <fx:root type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1">
 
-  <AnchorPane prefHeight="82.0" prefWidth="600.0">
-      <children>
-          <Button layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#backToMainScreen" text="Zurück">
-            <graphic>
-               <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@icons/icons8-go-back-48.png" />
-                  </image>
-               </ImageView>
-            </graphic></Button>
-      <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="21.0" prefHeight="40.0" prefWidth="200.0" text="Label" />
-      </children>
-  </AnchorPane>
-  <SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="600.0">
-      <items>
-         <ListView fx:id="list" prefHeight="200.0" prefWidth="200.0" />
-          <VBox alignment="CENTER" prefHeight="398.0" prefWidth="155.0" spacing="40.0">
-              <children>
-               <Label text="Versuche" />
-                  <Button fx:id="newExperiment" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="neuer Versuch" />
-                  <Button fx:id="showExperiment" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Versuch betrachten" />
-               <Button fx:id="deleteExperiment" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Versuch Löschen" />
-               <Label text="Projekt" />
-                  <Button fx:id="evaluate" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Auswertung" />
-               <Button fx:id="deleteProject" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Projekt löschen" />
-              </children>
-          </VBox>
-      </items>
-  </SplitPane>
+    <AnchorPane prefHeight="82.0" prefWidth="600.0">
+        <children>
+            <Button layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#backToMainScreen" text="Zurück">
+                <graphic>
+                    <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@icons/icons8-go-back-48.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="21.0" prefHeight="40.0" prefWidth="200.0" text="Label">
+            <font>
+               <Font size="25.0" />
+            </font></Label>
+        </children>
+    </AnchorPane>
+    <SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="600.0">
+        <items>
+            <ListView fx:id="list" prefHeight="200.0" prefWidth="200.0" />
+            <VBox alignment="CENTER" prefHeight="398.0" prefWidth="155.0" spacing="40.0">
+                <children>
+                    <Label text="Versuche" />
+                    <Button mnemonicParsing="false" onAction="#newExperiment" prefHeight="40.0" prefWidth="150.0" text="neuer Versuch" />
+                    <Button mnemonicParsing="false" onAction="#showExperiment" prefHeight="40.0" prefWidth="150.0" text="Versuch betrachten" />
+                    <Button mnemonicParsing="false" onAction="#deleteExperiment" prefHeight="40.0" prefWidth="150.0" text="Versuch Löschen" />
+                    <Label text="Projekt" />
+                    <Button mnemonicParsing="false" onAction="#evaluate" prefHeight="40.0" prefWidth="150.0" text="Auswertung" />
+                    <Button mnemonicParsing="false" onAction="#deleteProject" prefHeight="40.0" prefWidth="150.0" text="Projekt löschen" />
+                </children>
+            </VBox>
+        </items>
+    </SplitPane>
 </fx:root>

@@ -6,6 +6,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ControllerProject extends VBox {
 
@@ -13,7 +15,7 @@ public class ControllerProject extends VBox {
     private Label label;
 
     @FXML
-    ListView list;
+    private ListView list;
 
     public ControllerProject() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("projectScene.fxml"));
@@ -30,7 +32,6 @@ public class ControllerProject extends VBox {
 
         for (String experiment : Projects.getExperiments()) {
             list.getItems().add(experiment);
-            System.out.println(Projects.activeProject + " + " + experiment);
         }
 
         list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -59,17 +60,37 @@ public class ControllerProject extends VBox {
     @FXML
     private void newExperiment() {
 
+        String timeStamp = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy_HH:mm"));
+
+        if (Projects.addNewExperiment(timeStamp)){ // returns true if the directory has been created
+            // then the timestamp should be added to displayed list.
+            list.getItems().add(timeStamp);
+        }
+
+
     }
 
     @FXML
     private void deleteProject() {
+
+        Projects.deleteProject();
 
     }
 
     @FXML
     private void deleteExperiment() {
 
+        String experimentToBeDeleted = list.getSelectionModel().getSelectedItem().toString();
+
+        if (Projects.deleteExperiment(experimentToBeDeleted)){
+            int index = list.getSelectionModel().getSelectedIndex();
+            list.getItems().remove(index);
+        }else {
+            SceneManager.displayError("Der Versuch konnte nicht gelöscht werden.");
+        }
+
     }
+
 
 
 }

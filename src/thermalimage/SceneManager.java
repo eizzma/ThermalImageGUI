@@ -1,8 +1,6 @@
 package thermalimage;
 
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -12,7 +10,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
 
 public class SceneManager {
 
@@ -59,7 +56,7 @@ public class SceneManager {
         okButton.setText("Bestätigen");
         okButton.setOnAction(e -> {
             if (textField.getText().length() < 3) {
-                MessageWindow.displayError("Der Projektname muss mindestens drei Zeichen betragen!");
+                displayError("Der Projektname muss mindestens drei Zeichen betragen!");
             } else {
                 newProject.close();
                 Projects.addNewProject(textField.getText());
@@ -231,5 +228,18 @@ public class SceneManager {
         stage.setScene(new Scene(layout, 300, 300));
         stage.showAndWait();
 
+    }
+
+    static void displayError(String error) {
+        Stage errorStage = new Stage();
+        errorStage.initModality(Modality.APPLICATION_MODAL);
+        Label message = new Label(error);
+        Button okButton = new Button("Verstanden");
+        okButton.setOnAction(event -> errorStage.close());
+        VBox layout = new VBox(20);
+        layout.getChildren().addAll(message, okButton);
+        layout.setAlignment(Pos.CENTER);
+        errorStage.setScene(new Scene(layout, 500, 120));
+        errorStage.showAndWait();
     }
 }

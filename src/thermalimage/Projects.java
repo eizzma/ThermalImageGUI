@@ -22,7 +22,7 @@ public class Projects {
 
     public static String activeExperiment = null;
 
-    public static void createFolder(String folderName) throws IOException {
+    public static boolean createFolder(String folderName) throws IOException {
 
         //String fileName = "test.jpeg";
 
@@ -38,11 +38,14 @@ public class Projects {
         File dir = new File(path + folderName);
         //File file = new File(path + folderName + "/" + fileName);
 
+        boolean result = false;
+
         if (!dir.exists()) {
-            System.out.println("Datei erstellt: " + dir.mkdir());
+            result = dir.mkdir();
         } else {
             System.out.println(dir + " Verzeichnis existiert bereits");
         }
+        return result;
     }
 
 
@@ -107,9 +110,9 @@ public class Projects {
     public static void addNewProject(String projektName) {
         activeProject = projektName;
 
-        if (projectMap.containsKey(projektName)){
-            MessageWindow.displayError("Dieser Projektname ist bereits bekannt. Das gewünschte Projekt wird geöffnet.");
-        }else {
+        if (projectMap.containsKey(projektName)) {
+            SceneManager.displayError("Dieser Projektname ist bereits bekannt. Das gewünschte Projekt wird geöffnet.");
+        } else {
             projectMap.put(projektName, new HashSet<>());
             try {
                 createFolder(projektName);
@@ -123,31 +126,66 @@ public class Projects {
         return projectMap.get(activeProject);
     }
 
-    public void addExperiment(String dateAndTime) {
+
+    public static void deleteProject() {
+
+        // delete Directory
+        StringBuilder path = new StringBuilder().append(Settings.projectPath);
+        if (!Settings.projectPath.endsWith("/")) {
+            path.append("/");
+        }
+        path.append(activeProject);
+        File dirToBeDeleted = new File(path.toString());
+
+        // update activeProject, change scene, update projectsMap
+        boolean check = dirToBeDeleted.delete();
+        System.out.println("path: " + path.toString());
+        System.out.println("check: " + check);
+        if (check) {
+            SceneManager.showMainScene();
+            projectMap.remove(activeProject);
+            activeProject = null;
+        }
+
+    }
+
+    public static boolean addNewExperiment(String dateAndTime) {
         HashSet<String> experiments = getExperiments();
         experiments.add(dateAndTime);
         activeExperiment = dateAndTime;
+        boolean result = false;
         try {
-            createFolder(activeProject + "/" + dateAndTime);
+            result = createFolder(activeProject + "/" + dateAndTime);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        projectMap.put(activeProject,experiments);
+        projectMap.put(activeProject, experiments);
+
+
+        return result;
     }
 
-    public static void deleteProject(){
-        // the active Project will be deletet TODO delete folder of active Project
+    public static boolean deleteExperiment(String toBeDeleted) {
+
+        // delete Directory
+        boolean result = false;
+        StringBuilder path = new StringBuilder().append(Settings.projectPath);
+        if (!Settings.projectPath.endsWith("/")) {
+            path.append("/");
+        }
+        path.append(activeProject + "/" + toBeDeleted);
+        File dirToBeDeleted = new File(path.toString());
+        result = dirToBeDeleted.delete();
+
+        // update Hashset
+        if (result) {
+            HashSet hashSet = projectMap.get(activeProject);
+            hashSet.remove(toBeDeleted);
+            projectMap.put(activeProject, hashSet);
+        }
+
+        // return result to decide if list will be updated
+        return result;
+
     }
-
-    public static void addNewExperiment(String dateAndTime){
-        //TODO create another folder in activeproject folder
-
-    }
-
-    public static void deleteExperiment(String toBeDeleted){
-        // TODO delete the given Experiment
-    }
-
-
-
 }
