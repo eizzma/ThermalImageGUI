@@ -62,17 +62,29 @@ public class ControllerProject extends VBox {
     @FXML
     private void newExperiment() {
 
-        String timeStamp = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy_HH:mm"));
+        String timeStamp = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yy_HH:mm"));
 
         if (Projects.addNewExperiment(timeStamp)){ // returns true if the directory has been created
             // then the timestamp should be added to displayed list.
             list.getItems().add(timeStamp);
         }
 
-        // TODO implement optional functionality for STEP BY STEP procedure (Tutorial)
+        SceneManager.takeBackgroundImage();
 
-        // TODO trigger ADB commands, and python for new files
+  //     AdbExecutor adbExecutor = new AdbExecutor();
 
+  //     adbExecutor.connect();
+  //     for (String picture : adbExecutor.listPictures()){
+  //         System.out.println("/sdcard/DCIM/Google Photos" + "/" + picture);
+  //     }
+  //     // TODO message POP-UP: taking backgound image
+  //     adbExecutor.backgroundImg();
+  //     // TODO message POP-UP: before image
+  //     // TODO taking pictures and transferring them
+  //     adbExecutor.transferPictures(true);
+
+
+        // TODO run python for new files
 
     }
 

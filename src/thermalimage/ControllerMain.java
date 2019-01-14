@@ -35,15 +35,8 @@ public class ControllerMain extends GridPane {
 
     @FXML
     private void help() {
-        AdbExecutor adbExecutor = new AdbExecutor();
-        //adbExecutor.connect();
 
-
-        List<String> list = new ArrayList<>();
-        list = adbExecutor.listPictures();
-
-        //adbExecutor.testTransfer();
-        adbExecutor.transferPictures(false);
+        // TODO implement help screen or tutorial/video
 
     }
 

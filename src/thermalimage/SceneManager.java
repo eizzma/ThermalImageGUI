@@ -7,6 +7,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
+import javafx.scene.effect.DropShadow;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -137,12 +138,6 @@ public class SceneManager {
             window.close();
         });
 
-        // DirectoryChooser chooser = new DirectoryChooser();
-        // chooser.setTitle("JavaFX Projects");
-        // File defaultDirectory = new File("c:/dev/javafx");
-        // chooser.setInitialDirectory(defaultDirectory);
-        // File selectedDirectory = chooser.showDialog(new Stage());
-
         Button denyButton = new Button();
         denyButton.setText("Abbrechen");
         denyButton.setOnAction(e -> window.close());
@@ -191,7 +186,9 @@ public class SceneManager {
 
     private static String directoryChooser(File defaultDirectory) {
         DirectoryChooser chooser = new DirectoryChooser();
-        chooser.setInitialDirectory(defaultDirectory);
+        if (defaultDirectory.exists()){
+            chooser.setInitialDirectory(defaultDirectory);
+        }
         File selectedDirectory = chooser.showDialog(new Stage());
         return selectedDirectory.toString();
     }
@@ -232,14 +229,57 @@ public class SceneManager {
 
     static void displayError(String error) {
         Stage errorStage = new Stage();
-        errorStage.initModality(Modality.APPLICATION_MODAL);
         Label message = new Label(error);
         Button okButton = new Button("Verstanden");
         okButton.setOnAction(event -> errorStage.close());
+        constructAndShowStage(errorStage, okButton, message);
+    }
+
+    static void takeBackgroundImage() {
+        AdbExecutor adbExecutor = new AdbExecutor();
+        Stage stepStage = new Stage();
+        Label message = new Label("Zunächst muss ein Bild des Hintergrunds erstellt werden!");
+        Button okButton = new Button("Auslöser");
+        okButton.setOnAction(event -> {
+            adbExecutor.backgroundImg();
+            takeBeforeImage();
+            stepStage.close();
+        });
+        constructAndShowStage(stepStage, okButton, message);
+    }
+
+    private static void takeBeforeImage() {
+        AdbExecutor adbExecutor = new AdbExecutor();
+        Stage stepStage = new Stage();
+        Label message = new Label("Als nächstes machen Sie bitte ein Bild des initialen Zustandes, des Projektgegenstands");
+        Button okButton = new Button("Auslöser");
+        okButton.setOnAction(event -> {
+            adbExecutor.beforeImg();
+            takePicturesExperiment();
+            stepStage.close();
+        });
+        constructAndShowStage(stepStage, okButton, message);
+
+    }
+
+    private static void takePicturesExperiment() {
+        AdbExecutor adbExecutor = new AdbExecutor();
+        Stage stepStage = new Stage();
+        Label message = new Label("Berühren Sie nun den Gegenstand in dem gewünschten Zeitfenster und legen Sie ihn dann ab.");
+        Button okButton = new Button("Auslöser");
+        okButton.setOnAction(event -> {
+            adbExecutor.executeExperiment();
+            stepStage.close();
+        });
+        constructAndShowStage(stepStage, okButton, message);
+    }
+
+    static void constructAndShowStage(Stage stage, Button button, Label label) {
+        stage.initModality(Modality.APPLICATION_MODAL);
         VBox layout = new VBox(20);
-        layout.getChildren().addAll(message, okButton);
+        layout.getChildren().addAll(label, button);
         layout.setAlignment(Pos.CENTER);
-        errorStage.setScene(new Scene(layout, 500, 120));
-        errorStage.showAndWait();
+        stage.setScene(new Scene(layout, 500, 120));
+        stage.showAndWait();
     }
 }

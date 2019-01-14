@@ -183,9 +183,9 @@ public class Projects {
 
         // update Hashset
         if (result) {
-            HashSet hashSet = projectMap.get(activeProject);
-            hashSet.remove(toBeDeleted);
-            projectMap.put(activeProject, hashSet);
+            HashSet experiments = getExperiments();
+            experiments.remove(toBeDeleted);
+            projectMap.put(activeProject, experiments);
         }
 
         // return result to decide if list will be updated

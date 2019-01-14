@@ -15,6 +15,9 @@ public class Main extends Application {
     Stage window;
     Scene scene1, scene2;
 
+
+
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         new SceneManager(primaryStage);
@@ -29,10 +32,13 @@ public class Main extends Application {
         // window.show();
     }
 
+
+
     public static void main(String[] args) {
 
         new Projects();
         launch(args);
+
 
 
         // CWD: System.out.println("cwd: "+ System.getProperty("user.dir"));
@@ -42,8 +48,8 @@ public class Main extends Application {
         // AdbExecutor adbExecutor = new AdbExecutor(ipAddress);
         // adbExecutor.connect();
         // adbExecutor.devices();
-        // adbExecutor.keyEvent(1,1,Keycode.VOLUMEUP);
-        // adbExecutor.keyEvent(2,1,Keycode.MENU);
+        // adbExecutor.executeExperiment(1,1,Keycode.VOLUMEUP);
+        // adbExecutor.executeExperiment(2,1,Keycode.MENU);
         // System.out.println("list pictures");
         // List<String> pictures = adbExecutor.listPictures("/sdcard/DCIM/Camera");
         // adbExecutor.transferPictures("/Volumes/DiePlatte/test", "/sdcard/DCIM/Camera", pictures, false);

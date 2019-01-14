@@ -7,7 +7,8 @@ public class AdbExecutor {
 
     private String packageName = "georg.com.thermal_camera_plus";
 
-    private String imgPath = "/sdcard/DCIM/Thermal Camera/";
+    // private String imgPath = "/sdcard/DCIM/Thermal Camera/";
+    private String imgPath = "/sdcard/DCIM/Google Photos"; // TODO
 
     private SystemCommandExecutor commandExecutor = new SystemCommandExecutor();
 
@@ -36,7 +37,35 @@ public class AdbExecutor {
         System.out.println("ADB devices: " + commandExecutor.getStandardOutputFromCommand());
     }
 
-    void keyEvent(Keycode keycode) {
+    void executeExperiment() {
+
+        ProgressBarScene progressBarScene = new ProgressBarScene();
+
+        double duration = (double) Settings.duration / Settings.timer;
+        Timer timer = new Timer();
+        TimerTask repeatedTask = new TimerTask() {
+            double timesexecuted = 0;
+
+            public void run() {
+                System.out.println("picture number: " + timesexecuted);
+                inputKeyevent(Keycode.VOLUMEDOWN);
+
+                progressBarScene.setProgressBar(timesexecuted / duration);
+
+                timesexecuted++;
+                if (timesexecuted > duration) {
+
+                    progressBarScene.closeProgressBar();
+                    transferPictures(true);
+                    timer.cancel();
+                }
+            }
+        };
+        timer.schedule(repeatedTask, 0, Settings.timer * 1000);
+
+    }
+
+    void inputKeyevent(Keycode keycode) {
 
         List<String> command = new ArrayList<>();
         command.add("adb");
@@ -47,25 +76,10 @@ public class AdbExecutor {
 
         commandExecutor.executeCommand(command);
 
-
-        long duration = Settings.duration / Settings.timer;
-        Timer timer = new Timer();
-        TimerTask repeatedTask = new TimerTask() {
-            int timesexecuted = 0;
-
-            public void run() {
-                System.out.println("return: " + commandExecutor.executeCommand(command) + " executed: " + timesexecuted);
-                timesexecuted++;
-                if (timesexecuted > duration) {
-                    timer.cancel();
-                }
-            }
-        };
-        timer.schedule(repeatedTask, 0, Settings.timer * 1000);
     }
 
     void wakeUp() {
-        keyEvent(Keycode.POWER);
+        inputKeyevent(Keycode.POWER);
     }
 
 
@@ -107,25 +121,16 @@ public class AdbExecutor {
 
     void transferPictures(boolean deleteAfterTransfer) {
 
-        List<String> command = new ArrayList<>();
-        command.add("adb"); //index 0
-        command.add("pull"); // index 1
-        command.add("placeholder"); // index 2 will be overwritten for each picture
-        command.add(new File(Settings.projectPath).getAbsolutePath()); // index 3 //TODO ProjectPath + Projectname + Projectdir
+        String destinationDirectory = getActiveDirectory();
 
         List<String> pictures = listPictures();
 
         for (String picture : pictures) {
 
-            File img = new File(imgPath + picture);
+            File img = new File(imgPath + "/" + picture);
+            File destination = new File(destinationDirectory + "/" + picture);
 
-            command.set(2, img.getAbsoluteFile().toString()); // index 2
-
-
-            // TODO
-            int result = commandExecutor.executeCommand(command);
-            StringBuilder sb = commandExecutor.getStandardOutputFromCommand();
-            System.out.println("Output: " + sb.toString() + ", result: " + result);
+            adbPull(destination.getAbsolutePath(), img.getAbsolutePath());
 
         }
 
@@ -137,20 +142,50 @@ public class AdbExecutor {
         }
     }
 
-    void testTransfer(){
+    void backgroundImg() {
+
+        inputKeyevent(Keycode.VOLUMEDOWN);
+        List<String> list = listPictures();
+        for (String potentialBackground : list) {
+            if (potentialBackground.endsWith("orig.png")) { // only orig picture is interesting for background
+                adbPull(getActiveDirectory() + "/background.png"
+                        , imgPath + "/" + potentialBackground);
+            }else {
+                deletePicture(potentialBackground, imgPath);
+            }
+        }
+    }
+
+    private String getActiveDirectory(){
+
+        StringBuilder activeDirectory = new StringBuilder(2);
+        if (!Settings.projectPath.endsWith("/")) {
+            activeDirectory.append(Settings.projectPath + "/");
+        } else {
+            activeDirectory.append(Settings.projectPath);
+        }
+        activeDirectory.append(Projects.activeProject + "/" + Projects.activeExperiment);
+
+        return activeDirectory.toString();
+
+    }
+
+    private void adbPull(String destination, String source) {
+
         List<String> command = new ArrayList<>();
         command.add("adb");
         command.add("pull");
-        command.add("/sdcard/DCIM/Screenshots/1.jpg");
-        command.add(Settings.projectPath);
+        command.add(source);
+        command.add(destination);
 
         commandExecutor.executeCommand(command);
+
 
     }
 
     private void deletePicture(String picture, String directory) {
 
-        String filePath = directory + "/" + picture;
+        String filePath = directory.replace(" ", "\\ ") + "/" + picture;
 
         List<String> command = new ArrayList<String>();
         command.add("adb");
@@ -158,7 +193,11 @@ public class AdbExecutor {
         command.add("rm");
         command.add(filePath);
 
-        commandExecutor.executeCommand(command);
+        int value = commandExecutor.executeCommand(command);
+        System.out.println("delete:");
+        System.out.println("output: " + commandExecutor.getStandardOutputFromCommand().toString());
+        System.out.println("error: " + commandExecutor.getStandardErrorFromCommand().toString());
+        System.out.println("return: " + value);
     }
 
     List<String> listPictures() {
@@ -173,5 +212,12 @@ public class AdbExecutor {
         StringBuilder pictures = commandExecutor.getStandardOutputFromCommand();
 
         return Arrays.asList(pictures.toString().split("\\r?\\n"));
+    }
+
+    public void beforeImg() {
+
+        inputKeyevent(Keycode.VOLUMEDOWN);
+        transferPictures(true);
+
     }
 }

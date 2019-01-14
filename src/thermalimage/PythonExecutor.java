@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PythonExecutor {
+public class PythonExecutor{
 
     /*
     this will not work when build as a jar file, because the current working directory is depending on where the jar will
