@@ -7,7 +7,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
-import javafx.scene.effect.DropShadow;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -34,9 +33,6 @@ public class SceneManager {
     }
 
     static void displayNewProject() {
-
-
-        String path = "C:/Users/Valdrin/Desktop/";
 
         Stage newProject = new Stage();
         newProject.initModality(Modality.APPLICATION_MODAL);
@@ -85,6 +81,7 @@ public class SceneManager {
     }
 
     static void displaySettings() {
+
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
@@ -135,6 +132,7 @@ public class SceneManager {
             System.out.println("duration: " + Settings.duration + ", timer: " + Settings.timer + ", pythonPath: "
                     + Settings.pythonPath + ", projectPath: " + Settings.projectPath + ", Ip Addresse: "
                     + Settings.ipAddress);
+            Projects.scan();
             window.close();
         });
 
@@ -190,7 +188,11 @@ public class SceneManager {
             chooser.setInitialDirectory(defaultDirectory);
         }
         File selectedDirectory = chooser.showDialog(new Stage());
-        return selectedDirectory.toString();
+        if (selectedDirectory.exists()){
+            return selectedDirectory.toString();
+        }else {
+            return Settings.projectPath;
+        }
     }
 
     static void displayLoadProject() {
@@ -237,6 +239,7 @@ public class SceneManager {
 
     static void takeBackgroundImage() {
         AdbExecutor adbExecutor = new AdbExecutor();
+        adbExecutor.connect();
         Stage stepStage = new Stage();
         Label message = new Label("Zunächst muss ein Bild des Hintergrunds erstellt werden!");
         Button okButton = new Button("Auslöser");
@@ -254,7 +257,7 @@ public class SceneManager {
         Label message = new Label("Als nächstes machen Sie bitte ein Bild des initialen Zustandes, des Projektgegenstands");
         Button okButton = new Button("Auslöser");
         okButton.setOnAction(event -> {
-            adbExecutor.beforeImg();
+            adbExecutor.takeAndTransferImg();
             takePicturesExperiment();
             stepStage.close();
         });

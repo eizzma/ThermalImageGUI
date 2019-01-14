@@ -78,7 +78,7 @@ public class Projects {
         System.out.println();
     }
 
-    public void scan() {
+    public static void scan() {
 
         Path dir = Paths.get(Settings.projectPath);
 

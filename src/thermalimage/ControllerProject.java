@@ -62,6 +62,7 @@ public class ControllerProject extends VBox {
     @FXML
     private void newExperiment() {
 
+
         String timeStamp = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yy_HH:mm"));
 
         if (Projects.addNewExperiment(timeStamp)){ // returns true if the directory has been created

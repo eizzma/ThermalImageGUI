@@ -7,8 +7,7 @@ public class AdbExecutor {
 
     private String packageName = "georg.com.thermal_camera_plus";
 
-    // private String imgPath = "/sdcard/DCIM/Thermal Camera/";
-    private String imgPath = "/sdcard/DCIM/Google Photos"; // TODO
+    private String imgPath = "/sdcard/DCIM/Thermal Camera/";
 
     private SystemCommandExecutor commandExecutor = new SystemCommandExecutor();
 
@@ -39,24 +38,21 @@ public class AdbExecutor {
 
     void executeExperiment() {
 
-        ProgressBarScene progressBarScene = new ProgressBarScene();
 
         double duration = (double) Settings.duration / Settings.timer;
         Timer timer = new Timer();
         TimerTask repeatedTask = new TimerTask() {
             double timesexecuted = 0;
-
+            ProgressBarScene progressBarScene = new ProgressBarScene();
             public void run() {
                 System.out.println("picture number: " + timesexecuted);
-                inputKeyevent(Keycode.VOLUMEDOWN);
+                takeAndTransferImg();
 
                 progressBarScene.setProgressBar(timesexecuted / duration);
 
                 timesexecuted++;
                 if (timesexecuted > duration) {
-
                     progressBarScene.closeProgressBar();
-                    transferPictures(true);
                     timer.cancel();
                 }
             }
@@ -148,8 +144,14 @@ public class AdbExecutor {
         List<String> list = listPictures();
         for (String potentialBackground : list) {
             if (potentialBackground.endsWith("orig.png")) { // only orig picture is interesting for background
-                adbPull(getActiveDirectory() + "/background.png"
+                int value = adbPull(getActiveDirectory() + "/background.png"
                         , imgPath + "/" + potentialBackground);
+                while (true){
+                    if (value == 0){
+                        deletePicture(potentialBackground, imgPath);
+                        break;
+                    }
+                }
             }else {
                 deletePicture(potentialBackground, imgPath);
             }
@@ -170,7 +172,7 @@ public class AdbExecutor {
 
     }
 
-    private void adbPull(String destination, String source) {
+    private int adbPull(String destination, String source) {
 
         List<String> command = new ArrayList<>();
         command.add("adb");
@@ -178,8 +180,13 @@ public class AdbExecutor {
         command.add(source);
         command.add(destination);
 
-        commandExecutor.executeCommand(command);
+        int value = commandExecutor.executeCommand(command);
 
+        System.out.println("adb pull:");
+        System.out.println("return: " + value);
+        System.out.println("output: " + commandExecutor.getStandardOutputFromCommand());
+
+        return value;
 
     }
 
@@ -214,7 +221,7 @@ public class AdbExecutor {
         return Arrays.asList(pictures.toString().split("\\r?\\n"));
     }
 
-    public void beforeImg() {
+    public void takeAndTransferImg() {
 
         inputKeyevent(Keycode.VOLUMEDOWN);
         transferPictures(true);

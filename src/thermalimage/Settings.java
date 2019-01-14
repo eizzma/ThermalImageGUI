@@ -13,7 +13,7 @@ import java.io.File;
 
 class Settings {
 
-    static String ipAddress = "192.168.178.22";
+    static String ipAddress = "10.90.1.223";
 
     static int duration = 60;
 
