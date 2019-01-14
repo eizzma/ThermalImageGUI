@@ -44,6 +44,7 @@ public class AdbExecutor {
         TimerTask repeatedTask = new TimerTask() {
             double timesexecuted = 0;
             ProgressBarScene progressBarScene = new ProgressBarScene();
+
             public void run() {
                 System.out.println("picture number: " + timesexecuted);
                 takeAndTransferImg();
@@ -117,7 +118,7 @@ public class AdbExecutor {
 
     void transferPictures(boolean deleteAfterTransfer) {
 
-        String destinationDirectory = getActiveDirectory();
+        String destinationDirectory = Projects.getActiveDirectory();
 
         List<String> pictures = listPictures();
 
@@ -144,33 +145,20 @@ public class AdbExecutor {
         List<String> list = listPictures();
         for (String potentialBackground : list) {
             if (potentialBackground.endsWith("orig.png")) { // only orig picture is interesting for background
-                int value = adbPull(getActiveDirectory() + "/background.png"
+                adbPull(Projects.getActiveDirectory() + "/background.png"
                         , imgPath + "/" + potentialBackground);
-                while (true){
-                    if (value == 0){
-                        deletePicture(potentialBackground, imgPath);
-                        break;
-                    }
-                }
-            }else {
+
+
+                deletePicture(potentialBackground, imgPath);
+
+            } else {
                 deletePicture(potentialBackground, imgPath);
             }
         }
     }
 
-    private String getActiveDirectory(){
 
-        StringBuilder activeDirectory = new StringBuilder(2);
-        if (!Settings.projectPath.endsWith("/")) {
-            activeDirectory.append(Settings.projectPath + "/");
-        } else {
-            activeDirectory.append(Settings.projectPath);
-        }
-        activeDirectory.append(Projects.activeProject + "/" + Projects.activeExperiment);
 
-        return activeDirectory.toString();
-
-    }
 
     private int adbPull(String destination, String source) {
 
@@ -185,6 +173,13 @@ public class AdbExecutor {
         System.out.println("adb pull:");
         System.out.println("return: " + value);
         System.out.println("output: " + commandExecutor.getStandardOutputFromCommand());
+
+        try {
+            Thread.sleep(250);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         return value;
 

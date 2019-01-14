@@ -192,4 +192,18 @@ public class Projects {
         return result;
 
     }
+
+    static String getActiveDirectory() {
+
+        StringBuilder activeDirectory = new StringBuilder(2);
+        if (!Settings.projectPath.endsWith("/")) {
+            activeDirectory.append(Settings.projectPath + "/");
+        } else {
+            activeDirectory.append(Settings.projectPath);
+        }
+        activeDirectory.append(Projects.activeProject + "/" + Projects.activeExperiment);
+
+        return activeDirectory.toString();
+
+    }
 }
