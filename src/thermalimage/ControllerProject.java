@@ -90,7 +90,7 @@ public class ControllerProject extends VBox {
     }
 
     @FXML
-    private void deleteProject() {
+    private void deleteProject() throws IOException {
 
         Projects.deleteProject();
 

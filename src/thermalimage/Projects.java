@@ -3,7 +3,10 @@ package thermalimage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
+
+import static sun.plugin.util.ProgressMonitor.get;
 
 public class Projects {
 
@@ -127,14 +130,53 @@ public class Projects {
     }
 
 
-    public static void deleteProject() {
+    public static void deleteProject() throws IOException {
 
-        // TODO handle deletion of directories that are not empty
+        String folder = getJustActiveDirectory();
+        System.out.println(folder);
+        Path pathFolder = Paths.get(folder);
 
+        System.out.println(pathFolder.toString());
+
+
+        FileVisitor visitor = new SimpleFileVisitor<Path>() {
+
+            @Override
+            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                Files.delete(file);
+                return FileVisitResult.CONTINUE;
+            }
+
+            @Override
+            public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
+                Files.delete(file);
+                return FileVisitResult.CONTINUE;
+            }
+
+            @Override
+            public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+                if (exc != null) {
+                    throw exc;
+                }
+                Files.delete(dir);
+                return FileVisitResult.CONTINUE;
+            }
+        };
+
+
+        Files.walkFileTree(pathFolder, visitor);
+        String parentPath = pathFolder.getParent().toString();
+        boolean check1 = !parentPath.isEmpty(); //geschummelt
+
+        System.out.println(pathFolder.getParent());
+        System.out.println("path: " + pathFolder.toString());
+        System.out.println("check: " + check1);
+
+        /**
         // delete Directory
         StringBuilder path = new StringBuilder().append(Settings.projectPath);
-        if (!Settings.projectPath.endsWith("/")) {
-            path.append("/");
+        if (!Settings.projectPath.endsWith("\\")) {
+            path.append("\\");
         }
         path.append(activeProject);
         File dirToBeDeleted = new File(path.toString());
@@ -143,7 +185,9 @@ public class Projects {
         boolean check = dirToBeDeleted.delete();
         System.out.println("path: " + path.toString());
         System.out.println("check: " + check);
-        if (check) {
+         */
+
+        if (check1) {
             SceneManager.showMainScene();
             projectMap.remove(activeProject);
             activeProject = null;
@@ -171,6 +215,7 @@ public class Projects {
 
         // TODO handle deletion of directories that are not empty
 
+
         // delete Directory
         boolean result = false;
         StringBuilder path = new StringBuilder().append(Settings.projectPath);
@@ -178,7 +223,33 @@ public class Projects {
             path.append("/");
         }
         path.append(activeProject + "/" + toBeDeleted);
-        File dirToBeDeleted = new File(path.toString());
+
+
+        File folder = new File(path.toString());
+        File parentFolder = new File(activeProject);
+        File[] allFiles = folder.listFiles();
+
+        for(int i = 0; i < allFiles.length; i++){
+            if(allFiles[i].isFile()){
+                allFiles[i].delete();
+                System.out.println(path.toString() + " gelöscht.");
+                result = true;
+                /** Kein PopUp bei gelöschten Dateien?
+                 * */
+
+            }else {
+            }
+
+        }
+        if(folder.isDirectory() && folder.listFiles().length < 1){
+            folder.delete();
+            System.out.println("Ordner " + parentFolder.toString() + " gelöscht.");
+            return true;
+        }
+
+
+        /**File dirToBeDeleted = new File(path.toString());
+        dirToBeDeleted.delete();
         result = dirToBeDeleted.delete();
 
         // update Hashset
@@ -188,7 +259,7 @@ public class Projects {
             projectMap.put(activeProject, experiments);
         }
 
-        // return result to decide if list will be updated
+        // return result to decide if list will be updated*/
         return result;
 
     }
@@ -202,6 +273,20 @@ public class Projects {
             activeDirectory.append(Settings.projectPath);
         }
         activeDirectory.append(Projects.activeProject + "/" + Projects.activeExperiment);
+
+        return activeDirectory.toString();
+
+    }
+
+    static String getJustActiveDirectory() {
+
+        StringBuilder activeDirectory = new StringBuilder(2);
+        if (!Settings.projectPath.endsWith("/")) {
+            activeDirectory.append(Settings.projectPath + "/");
+        } else {
+            activeDirectory.append(Settings.projectPath);
+        }
+        activeDirectory.append(Projects.activeProject);
 
         return activeDirectory.toString();
 
