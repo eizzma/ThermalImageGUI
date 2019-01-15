@@ -55,7 +55,7 @@ public class ControllerProject extends VBox {
     @FXML
     private void showExperiment() {
 
-        SceneManager.showViewExperiment();
+        // TODO new scene
 
     }
 
