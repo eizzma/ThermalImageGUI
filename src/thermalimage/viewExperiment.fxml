@@ -9,7 +9,7 @@
    <children>
       <SplitPane fx:id="splitPane" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" >
                <children>
                   <ListView fx:id="listPictures" prefHeight="398.0" prefWidth="175.0" />
                </children>
