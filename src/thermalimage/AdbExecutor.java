@@ -3,7 +3,7 @@ package thermalimage;
 import java.io.File;
 import java.util.*;
 
-public class AdbExecutor {
+public class AdbExecutor extends SystemCommandExecutor {
 
     private String packageName = "georg.com.thermal_camera_plus";
 
@@ -21,11 +21,11 @@ public class AdbExecutor {
         command.add("connect");
         command.add(Settings.ipAddress);
         int returnvalue = commandExecutor.executeCommand(command);
-        System.out.println("returnvalue: " + returnvalue);
         System.out.println("ADB connection: " + commandExecutor.getStandardOutputFromCommand());
-        if (commandExecutor.getStandardErrorFromCommand().length() > 1) {
-            System.out.println("Error: \n" + commandExecutor.getStandardErrorFromCommand());
-        }
+        System.out.println("\treturnvalue: " + returnvalue);
+
+        // the return value seems to be still zero even if the connection failed
+
     }
 
     public void devices() {
@@ -38,22 +38,17 @@ public class AdbExecutor {
 
     void executeExperiment() {
 
-
         double duration = (double) Settings.duration / Settings.timer;
         Timer timer = new Timer();
         TimerTask repeatedTask = new TimerTask() {
             double timesexecuted = 0;
-            ProgressBarScene progressBarScene = new ProgressBarScene();
 
             public void run() {
                 System.out.println("picture number: " + timesexecuted);
                 takeAndTransferImg();
 
-                progressBarScene.setProgressBar(timesexecuted / duration);
-
                 timesexecuted++;
                 if (timesexecuted > duration) {
-                    progressBarScene.closeProgressBar();
                     timer.cancel();
                 }
             }
@@ -62,7 +57,7 @@ public class AdbExecutor {
 
     }
 
-    void inputKeyevent(Keycode keycode) {
+    private void inputKeyevent(Keycode keycode) {
 
         List<String> command = new ArrayList<>();
         command.add("adb");
@@ -116,9 +111,9 @@ public class AdbExecutor {
         commandExecutor.executeCommand(command);
     }
 
-    void transferPictures(boolean deleteAfterTransfer) {
+    void transferPictures() {
 
-        String destinationDirectory = Projects.getActiveDirectory();
+        String destinationDirectory = Projects.getActiveExperimentDirectory();
 
         List<String> pictures = listPictures();
 
@@ -131,33 +126,29 @@ public class AdbExecutor {
 
         }
 
-        if (deleteAfterTransfer) {
-            for (String picture : pictures) {
-                deletePicture(picture, imgPath);
-            }
-
-        }
     }
 
     void backgroundImg() {
+        String pathForBackgroundImg;
+        if (!Settings.projectPath.endsWith("/")) {
+            pathForBackgroundImg = Settings.projectPath + "/" + Projects.activeProject + "/";
+        } else {
+            pathForBackgroundImg = Settings.projectPath + Projects.activeProject + "/";
+        }
+
 
         inputKeyevent(Keycode.VOLUMEDOWN);
         List<String> list = listPictures();
         for (String potentialBackground : list) {
             if (potentialBackground.endsWith("orig.png")) { // only orig picture is interesting for background
-                adbPull(Projects.getActiveDirectory() + "/background.png"
+                adbPull(pathForBackgroundImg + "/background.png"
                         , imgPath + "/" + potentialBackground);
 
-
-                deletePicture(potentialBackground, imgPath);
-
             } else {
-                deletePicture(potentialBackground, imgPath);
+                deletePicture(potentialBackground);
             }
         }
     }
-
-
 
 
     private int adbPull(String destination, String source) {
@@ -185,9 +176,9 @@ public class AdbExecutor {
 
     }
 
-    private void deletePicture(String picture, String directory) {
+    private void deletePicture(String picture) {
 
-        String filePath = directory.replace(" ", "\\ ") + "/" + picture;
+        String filePath = imgPath.replace(" ", "\\ ") + "/" + picture;
 
         List<String> command = new ArrayList<String>();
         command.add("adb");
@@ -218,8 +209,16 @@ public class AdbExecutor {
 
     public void takeAndTransferImg() {
 
+        // first of all lets delete all the old Pictures in the Directory
+        List<String> oldPictures = listPictures();
+        for (String oldPicture : oldPictures){
+            deletePicture(oldPicture);
+        }
+
+        // then take the new picture
         inputKeyevent(Keycode.VOLUMEDOWN);
-        transferPictures(true);
+
+        transferPictures();
 
     }
 }

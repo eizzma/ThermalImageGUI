@@ -32,6 +32,11 @@ public class SceneManager {
         window.setScene(new Scene(controllerProject, 600, 600));
     }
 
+    public static void showNewExperimentScene(){
+        ControllerNewExperiments controllerNewExperiments = new ControllerNewExperiments();
+        window.setScene(new Scene(controllerNewExperiments, 600, 600));
+    }
+
     static void displayNewProject() {
 
         Stage newProject = new Stage();
@@ -235,46 +240,6 @@ public class SceneManager {
         Button okButton = new Button("Verstanden");
         okButton.setOnAction(event -> errorStage.close());
         constructAndShowStage(errorStage, okButton, message);
-    }
-
-    static void takeBackgroundImage() {
-        AdbExecutor adbExecutor = new AdbExecutor();
-        adbExecutor.connect();
-        Stage stepStage = new Stage();
-        Label message = new Label("Zunächst muss ein Bild des Hintergrunds erstellt werden!");
-        Button okButton = new Button("Auslöser");
-        okButton.setOnAction(event -> {
-            adbExecutor.backgroundImg();
-            takeBeforeImage();
-            stepStage.close();
-        });
-        constructAndShowStage(stepStage, okButton, message);
-    }
-
-    private static void takeBeforeImage() {
-        AdbExecutor adbExecutor = new AdbExecutor();
-        Stage stepStage = new Stage();
-        Label message = new Label("Als nächstes machen Sie bitte ein Bild des initialen Zustandes, des Projektgegenstands");
-        Button okButton = new Button("Auslöser");
-        okButton.setOnAction(event -> {
-            adbExecutor.takeAndTransferImg();
-            takePicturesExperiment();
-            stepStage.close();
-        });
-        constructAndShowStage(stepStage, okButton, message);
-
-    }
-
-    private static void takePicturesExperiment() {
-        AdbExecutor adbExecutor = new AdbExecutor();
-        Stage stepStage = new Stage();
-        Label message = new Label("Berühren Sie nun den Gegenstand in dem gewünschten Zeitfenster und legen Sie ihn dann ab.");
-        Button okButton = new Button("Auslöser");
-        okButton.setOnAction(event -> {
-            adbExecutor.executeExperiment();
-            stepStage.close();
-        });
-        constructAndShowStage(stepStage, okButton, message);
     }
 
     static void constructAndShowStage(Stage stage, Button button, Label label) {

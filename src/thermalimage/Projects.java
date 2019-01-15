@@ -1,12 +1,12 @@
 package thermalimage;
 
+import javafx.scene.Parent;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
-
-import static sun.plugin.util.ProgressMonitor.get;
 
 public class Projects {
 
@@ -132,11 +132,8 @@ public class Projects {
 
     public static void deleteProject() throws IOException {
 
-        String folder = getJustActiveDirectory();
-        System.out.println(folder);
+        String folder = getActiveProjectDirectory();
         Path pathFolder = Paths.get(folder);
-
-        System.out.println(pathFolder.toString());
 
 
         FileVisitor visitor = new SimpleFileVisitor<Path>() {
@@ -166,11 +163,11 @@ public class Projects {
 
         Files.walkFileTree(pathFolder, visitor);
         String parentPath = pathFolder.getParent().toString();
-        boolean check1 = !parentPath.isEmpty(); //geschummelt
+        boolean check = !parentPath.isEmpty(); //geschummelt
 
         System.out.println(pathFolder.getParent());
         System.out.println("path: " + pathFolder.toString());
-        System.out.println("check: " + check1);
+        System.out.println("check: " + check);
 
         /**
         // delete Directory
@@ -181,13 +178,16 @@ public class Projects {
         path.append(activeProject);
         File dirToBeDeleted = new File(path.toString());
 
-        // update activeProject, change scene, update projectsMap
+        String folderToBeDeleted = getActiveExperimentDirectory();
+        File test = new File(folderToBeDeleted);
+
         boolean check = dirToBeDeleted.delete();
         System.out.println("path: " + path.toString());
         System.out.println("check: " + check);
          */
 
-        if (check1) {
+        // if has been successfully deleted update activeProject, change scene, update projectsMap
+        if (check) {
             SceneManager.showMainScene();
             projectMap.remove(activeProject);
             activeProject = null;
@@ -218,39 +218,28 @@ public class Projects {
 
         // delete Directory
         boolean result = false;
-        StringBuilder path = new StringBuilder().append(Settings.projectPath);
-        if (!Settings.projectPath.endsWith("/")) {
-            path.append("/");
-        }
-        path.append(activeProject + "/" + toBeDeleted);
 
+        String path = getActiveProjectDirectory() + "/" + toBeDeleted;
 
-        File folder = new File(path.toString());
-        File parentFolder = new File(activeProject);
+        File folder = new File(path);
         File[] allFiles = folder.listFiles();
 
-        for(int i = 0; i < allFiles.length; i++){
-            if(allFiles[i].isFile()){
-                allFiles[i].delete();
-                System.out.println(path.toString() + " gelöscht.");
-                result = true;
-                /** Kein PopUp bei gelöschten Dateien?
-                 * */
-
-            }else {
+        for(File file : allFiles){
+            if(file.isFile()){
+                file.delete();
+                System.out.println(file.getAbsolutePath() + " deleted.");
             }
-
         }
+
         if(folder.isDirectory() && folder.listFiles().length < 1){
-            folder.delete();
-            System.out.println("Ordner " + parentFolder.toString() + " gelöscht.");
-            return true;
+            result = folder.delete();
+            System.out.println("Ordner " + folder.toString() + " gelöscht.");
         }
 
 
         /**File dirToBeDeleted = new File(path.toString());
         dirToBeDeleted.delete();
-        result = dirToBeDeleted.delete();
+        result = dirToBeDeleted.delete();*/
 
         // update Hashset
         if (result) {
@@ -259,26 +248,20 @@ public class Projects {
             projectMap.put(activeProject, experiments);
         }
 
-        // return result to decide if list will be updated*/
+        // return result to decide if list will be updated
         return result;
 
     }
 
-    static String getActiveDirectory() {
+    static String getActiveExperimentDirectory() {
 
-        StringBuilder activeDirectory = new StringBuilder(2);
-        if (!Settings.projectPath.endsWith("/")) {
-            activeDirectory.append(Settings.projectPath + "/");
-        } else {
-            activeDirectory.append(Settings.projectPath);
-        }
-        activeDirectory.append(Projects.activeProject + "/" + Projects.activeExperiment);
+        String activeDirectory = getActiveProjectDirectory() + "/" + activeExperiment;
 
-        return activeDirectory.toString();
+        return activeDirectory;
 
     }
 
-    static String getJustActiveDirectory() {
+    static String getActiveProjectDirectory() {
 
         StringBuilder activeDirectory = new StringBuilder(2);
         if (!Settings.projectPath.endsWith("/")) {

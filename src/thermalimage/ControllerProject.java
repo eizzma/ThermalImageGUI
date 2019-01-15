@@ -70,18 +70,15 @@ public class ControllerProject extends VBox {
             list.getItems().add(timeStamp);
         }
 
-        SceneManager.takeBackgroundImage();
 
-  //     AdbExecutor adbExecutor = new AdbExecutor();
+        SceneManager.showNewExperimentScene();
 
-  //     adbExecutor.connect();
   //     for (String picture : adbExecutor.listPictures()){
   //         System.out.println("/sdcard/DCIM/Google Photos" + "/" + picture);
   //     }
-  //     // TODO message POP-UP: taking backgound image
+  //
   //     adbExecutor.backgroundImg();
-  //     // TODO message POP-UP: before image
-  //     // TODO taking pictures and transferring them
+  //
   //     adbExecutor.transferPictures(true);
 
 

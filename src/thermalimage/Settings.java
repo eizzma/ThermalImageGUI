@@ -21,6 +21,6 @@ class Settings {
 
     static String pythonPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/python/";
 
-    static String projectPath = "C:\\Users\\Valdrin\\Dropbox\\Dropbox\\MES-Praktikum\\ThermalImageGUI\\thermalImageProjects";
+    static String projectPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/thermalImageProjects";
 
 }
