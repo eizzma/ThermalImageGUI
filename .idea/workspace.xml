@@ -6,14 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="new Experiments">
-      <change afterPath="$PROJECT_DIR$/src/thermalimage/ControllerView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/thermalimage/ControllerProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/ControllerProject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/thermalimage/Projects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/Projects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/thermalimage/SceneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/SceneManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/thermalimage/viewExperiment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/viewExperiment.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="new Experiments" />
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -68,7 +61,7 @@
     <session id="1672838192">
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="391" />
+          <entry key="JAVA" value="397" />
           <entry key="XML" value="109" />
         </counts>
       </usages-collector>
@@ -125,7 +118,7 @@
         <entry file="file://$PROJECT_DIR$/src/thermalimage/ControllerProject.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="320">
-              <caret line="57" column="42" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
+              <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,8 +129,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/thermalimage/ControllerNewExperiments.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="69" lean-forward="true" selection-start-line="64" selection-start-column="6" selection-end-line="69" />
+            <state relative-caret-position="578">
+              <caret line="40" column="51" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -159,7 +152,7 @@
         <entry file="file://$PROJECT_DIR$/src/thermalimage/ControllerView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="493">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
+              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -171,8 +164,8 @@
         <entry file="file://$PROJECT_DIR$/src/thermalimage/viewExperiment.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="75" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
+            <state relative-caret-position="187">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -292,7 +285,6 @@
         <option value="$PROJECT_DIR$/src/thermalimage/ProgressBarScene.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/Settings.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/AdbExecutor.java" />
-        <option value="$PROJECT_DIR$/src/thermalimage/ControllerNewExperiments.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/Projects.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/viewExperiments.fxml" />
         <option value="$USER_HOME$/Dropbox/Dropbox/MES-Praktikum/ThermalImageGUI/src/thermalimage/viewExperiment.fxml" />
@@ -300,6 +292,7 @@
         <option value="$PROJECT_DIR$/src/thermalimage/SceneManager.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/viewExperiment.fxml" />
         <option value="$PROJECT_DIR$/src/thermalimage/ControllerProject.java" />
+        <option value="$PROJECT_DIR$/src/thermalimage/ControllerNewExperiments.java" />
       </list>
     </option>
   </component>
@@ -363,7 +356,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547561642493" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547562212044" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/Dropbox/MES-Praktikum/ThermalImageGUI/src/thermalimage" />
@@ -514,28 +507,7 @@
       <workItem from="1547552818601" duration="1572000" />
       <workItem from="1547558580090" duration="973000" />
       <workItem from="1547559562991" duration="61000" />
-      <workItem from="1547559706450" duration="1844000" />
-    </task>
-    <task id="LOCAL-00007" summary="code refactoring">
-      <created>1546530797969</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1546530797969</updated>
-    </task>
-    <task id="LOCAL-00008" summary="code refactoring">
-      <created>1546530843977</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1546530843977</updated>
-    </task>
-    <task id="LOCAL-00009" summary="code refactoring">
-      <created>1546532661429</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1546532661429</updated>
+      <workItem from="1547559706450" duration="2381000" />
     </task>
     <task id="LOCAL-00010" summary="code refactoring">
       <created>1546532713824</created>
@@ -859,11 +831,32 @@
       <option name="project" value="LOCAL" />
       <updated>1547467114679</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="new Experiments">
+      <created>1547561614698</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1547561614699</updated>
+    </task>
+    <task id="LOCAL-00057" summary="new Experiments">
+      <created>1547561741832</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1547561741832</updated>
+    </task>
+    <task id="LOCAL-00058" summary="new Experiments">
+      <created>1547561790179</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1547561790179</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163506000" />
+    <option name="totallyTimeSpent" value="164043000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -878,7 +871,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19669509" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19669509" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -888,13 +881,13 @@
       <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.32970452" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3281493" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.28741866" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.28741866" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32970452" />
       <window_info anchor="bottom" id="Application Servers" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.2657267" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.2657267" />
       <window_info anchor="bottom" id="Problems" order="10" />
       <window_info anchor="bottom" id="Changes" order="11" />
       <window_info anchor="bottom" id="Profiler" order="12" />
@@ -1137,16 +1130,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/thermalimage/ControllerNewExperiments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="69" lean-forward="true" selection-start-line="64" selection-start-column="6" selection-end-line="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Dropbox/Dropbox/MES-Praktikum/ThermalImageGUI/src/thermalimage/viewExperiment.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
@@ -1166,18 +1149,8 @@
     <entry file="file://$PROJECT_DIR$/src/thermalimage/viewExperiment.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="75" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/thermalimage/ControllerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
@@ -1193,10 +1166,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/ControllerView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/ControllerNewExperiments.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="40" column="51" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/thermalimage/ControllerProject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
-          <caret line="57" column="42" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
+          <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

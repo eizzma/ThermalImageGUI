@@ -6,12 +6,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 import javax.swing.text.html.ImageView;
 import javax.swing.text.html.ListView;
 import java.io.IOException;
 
-public class ControllerView extends SplitPane {
+public class ControllerView extends VBox {
 
 
 
