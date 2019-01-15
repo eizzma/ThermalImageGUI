@@ -213,9 +213,6 @@ public class Projects {
 
     public static boolean deleteExperiment(String toBeDeleted) {
 
-        // TODO handle deletion of directories that are not empty
-
-
         // delete Directory
         boolean result = false;
 

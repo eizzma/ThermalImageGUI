@@ -32,6 +32,11 @@ public class SceneManager {
         window.setScene(new Scene(controllerProject, 600, 600));
     }
 
+    public static void showViewExperiment(){
+        ControllerView controllerView = new ControllerView();
+        window.setScene(new Scene(controllerView, 600, 600));
+    }
+
     public static void showNewExperimentScene(){
         ControllerNewExperiments controllerNewExperiments = new ControllerNewExperiments();
         window.setScene(new Scene(controllerNewExperiments, 600, 600));
