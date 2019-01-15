@@ -1,6 +1,7 @@
 import cv2
 import csv
 import sys
+import os
 from datetime import datetime
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -31,7 +32,7 @@ def convert_to_celsius(x):
 
 def background_substraction(imgPath):
     # accepts path for thermal image
-    backgroundPath = imgPath[:-41] + "background.png"
+    backgroundPath = imgPath[:-56] + "background.png"
     background = cv2.imread(backgroundPath)
     orig = imgPath[:-4] + "-orig.png"
     img = cv2.imread(orig)
@@ -55,18 +56,18 @@ def draw_circle(img, point):
 
 
 def img_write(path, img, name):
-    cv2.imwrite(path + name, img, [cv2.IMWRITE_PNG_COMPRESSION, 0])
+    cv2.imwrite(path + name, img, [cv2.IMWRITE_PNG_COMPRESSION, 9])
 
 
 def print_csv(thermalimgpath, temp, maxLoc):
     directory = thermalimgpath[:-41]
     date = thermalimgpath[-28:-9]
     with open(directory + "results.csv", 'a', newline='') as csvfile:
-        testwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        testwriter.writerow([date] + [temp])
+        test_writer = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        test_writer.writerow([date] + [temp])
 
 
-path = sys.argv[1]
+path = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/thermalImageProjects/check/15-01-19_13:47/ThermalCamera2019-01-15_13-47-44+0100.png"
 mask = background_substraction(path)
 masked_img = read_masked_img(path, mask)
 point = get_hottest_point_robust(masked_img, 41)
@@ -74,3 +75,5 @@ temp = convert_to_celsius(masked_img[point[1], point[0]])
 control_img = draw_circle(masked_img, point)
 img_write(path[:-4], control_img, "-check.png")
 print_csv(path, temp, point)
+os.remove(path)
+os.remove(path[:-4] + "-orig.png")

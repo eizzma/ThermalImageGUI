@@ -136,14 +136,17 @@ public class AdbExecutor extends SystemCommandExecutor {
             pathForBackgroundImg = Settings.projectPath + Projects.activeProject + "/";
         }
 
-
         inputKeyevent(Keycode.VOLUMEDOWN);
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         List<String> list = listPictures();
         for (String potentialBackground : list) {
             if (potentialBackground.endsWith("orig.png")) { // only orig picture is interesting for background
                 adbPull(pathForBackgroundImg + "/background.png"
                         , imgPath + "/" + potentialBackground);
-
             } else {
                 deletePicture(potentialBackground);
             }
@@ -187,10 +190,26 @@ public class AdbExecutor extends SystemCommandExecutor {
         command.add(filePath);
 
         int value = commandExecutor.executeCommand(command);
-        System.out.println("delete:");
-        System.out.println("output: " + commandExecutor.getStandardOutputFromCommand().toString());
-        System.out.println("error: " + commandExecutor.getStandardErrorFromCommand().toString());
-        System.out.println("return: " + value);
+        // System.out.println("delete:");
+        // System.out.println("output: " + commandExecutor.getStandardOutputFromCommand().toString());
+        // System.out.println("error: " + commandExecutor.getStandardErrorFromCommand().toString());
+        // System.out.println("return: " + value);
+    }
+
+    public void deletePictures() {
+
+        List<String> pictureList = listPictures();
+        List<String> command = new ArrayList<String>();
+        command.add("adb");
+        command.add("shell");
+        command.add("rm");
+        command.add("placeholder");
+
+        for (String picture : pictureList) {
+            String filePath = imgPath.replace(" ", "\\ ") + "/" + picture;
+            command.set(3, filePath);
+            int value = commandExecutor.executeCommand(command);
+        }
     }
 
     List<String> listPictures() {
@@ -210,14 +229,18 @@ public class AdbExecutor extends SystemCommandExecutor {
     public void takeAndTransferImg() {
 
         // first of all lets delete all the old Pictures in the Directory
-        List<String> oldPictures = listPictures();
-        for (String oldPicture : oldPictures){
-            deletePicture(oldPicture);
-        }
+     //   List<String> oldPictures = listPictures();
+     //   for (String oldPicture : oldPictures){
+     //       deletePicture(oldPicture);
+     //   }
 
         // then take the new picture
         inputKeyevent(Keycode.VOLUMEDOWN);
-
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         transferPictures();
 
     }

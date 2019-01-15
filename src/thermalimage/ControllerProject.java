@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -48,7 +49,7 @@ public class ControllerProject extends VBox {
     @FXML
     private void evaluate() {
 
-        System.out.println(list.getSelectionModel().getSelectedItem().toString());
+        System.out.println(getSelectedItem());
 
     }
 
@@ -56,6 +57,17 @@ public class ControllerProject extends VBox {
     private void showExperiment() {
 
         // TODO new scene
+        PythonExecutor pythonExecutor = new PythonExecutor();
+
+        String selected = getSelectedItem();
+        selected = Projects.getActiveProjectDirectory() + "/" + selected;
+
+        File experimentDirectory = new File(selected);
+        File[] pictureList = experimentDirectory.listFiles();
+        for (File picture : pictureList){
+            pythonExecutor.run("images.py",picture.getAbsolutePath());
+        }
+
 
     }
 
@@ -82,8 +94,6 @@ public class ControllerProject extends VBox {
   //     adbExecutor.transferPictures(true);
 
 
-        // TODO run python for new files
-
     }
 
     @FXML
@@ -96,7 +106,7 @@ public class ControllerProject extends VBox {
     @FXML
     private void deleteExperiment() {
 
-        String experimentToBeDeleted = list.getSelectionModel().getSelectedItem().toString();
+        String experimentToBeDeleted = getSelectedItem();
 
         if (Projects.deleteExperiment(experimentToBeDeleted)){
             int index = list.getSelectionModel().getSelectedIndex();
@@ -107,6 +117,10 @@ public class ControllerProject extends VBox {
 
     }
 
+    private String getSelectedItem(){
 
+        return list.getSelectionModel().getSelectedItem().toString();
+
+    }
 
 }

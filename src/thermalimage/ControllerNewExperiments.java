@@ -1,5 +1,6 @@
 package thermalimage;
 
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class ControllerNewExperiments extends VBox {
 
@@ -81,10 +83,14 @@ public class ControllerNewExperiments extends VBox {
             labelInstruction.setText("Bitte machen Sie ein Bild vom unberührten Objekt");
         }
 
+        pythonExecutor = new PythonExecutor();
+
     }
 
     @FXML
     private void backgroundImg() {
+
+        adbExecutor.deletePictures();
 
         adbExecutor.backgroundImg();
 
@@ -98,6 +104,7 @@ public class ControllerNewExperiments extends VBox {
     @FXML
     private void initialImage() {
 
+        adbExecutor.deletePictures();
         adbExecutor.takeAndTransferImg();
 
         startExperimentstartExperimentButton.setDisable(false);
@@ -127,13 +134,20 @@ public class ControllerNewExperiments extends VBox {
         progressbarTimeLine.play();
         progressbarTimeLine.setOnFinished(event -> {
             SceneManager.showProjectScene();
-            // TODO run python
+
+            File experimentDirectory = new File(Projects.getActiveExperimentDirectory());
+            File[] pictureList = experimentDirectory.listFiles();
+            for (File picture : pictureList){
+                pythonExecutor.run("images.py",picture.getAbsolutePath());
+            }
+
         });
 
     }
 
     @FXML
     private void abbort() {
+
 
         // TODO abbrechen wenn timeline noch nicht gestartet wurde
 

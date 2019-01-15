@@ -15,9 +15,9 @@ class Settings {
 
     static String ipAddress = "10.90.1.223";
 
-    static int duration = 60;
+    static int duration = 12;
 
-    static int timer = 2;
+    static int timer = 3;
 
     static String pythonPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/python/";
 
