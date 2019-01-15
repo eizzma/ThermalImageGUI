@@ -148,12 +148,11 @@ public class ControllerNewExperiments extends VBox {
     @FXML
     private void abbort() {
 
-
         // TODO abbrechen wenn timeline noch nicht gestartet wurde
 
-        progressbarTimeLine.stop();
-
         SceneManager.showMainScene();
+
+        progressbarTimeLine.stop();
 
     }
 

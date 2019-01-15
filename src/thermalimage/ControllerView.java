@@ -35,9 +35,6 @@ public class ControllerView extends VBox {
     private TextField textField;
 
     @FXML
-    private AnchorPane anchorPane;
-
-    @FXML
     private SplitPane splitPane;
 
 
@@ -53,7 +50,7 @@ public class ControllerView extends VBox {
             throw new RuntimeException(exception);
         }
 
-
     }
+
 }
 
