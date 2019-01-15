@@ -38,7 +38,7 @@ public class ControllerNewExperiments extends VBox {
     private Button backgroundButton;
 
     @FXML
-    private Button initialImageinitialImageButton;
+    private Button initialImageinitialImageButton; //gh
 
     @FXML
     private Button startExperimentstartExperimentButton;
