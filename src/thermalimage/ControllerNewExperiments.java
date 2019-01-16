@@ -46,6 +46,9 @@ public class ControllerNewExperiments extends VBox {
     @FXML
     private Button abbortButton;
 
+    @FXML
+    private Button backToProject;
+
 
     public ControllerNewExperiments() {
 
@@ -70,7 +73,7 @@ public class ControllerNewExperiments extends VBox {
             throw new RuntimeException(exception);
         }
 
-
+        abbortButton.setDisable(true);
         startExperimentstartExperimentButton.setDisable(true);
 
         File background = new File(Projects.getActiveProjectDirectory() + "/background.png");
@@ -120,6 +123,8 @@ public class ControllerNewExperiments extends VBox {
         initialImageinitialImageButton.setDisable(true);
         startExperimentstartExperimentButton.setDisable(true);
         backgroundButton.setDisable(true);
+        backToProject.setDisable(true);
+        abbortButton.setDisable(false);
 
         double progressLevel = 0.8 / (double) (Settings.duration / Settings.timer);
         System.out.println("progressLevel " + progressLevel);
@@ -148,11 +153,13 @@ public class ControllerNewExperiments extends VBox {
     @FXML
     private void abbort() {
 
-        // TODO abbrechen wenn timeline noch nicht gestartet wurde
-
-        SceneManager.showMainScene();
-
         progressbarTimeLine.stop();
+
+        // back to projects Scene and delete the active Project
+        Projects.deleteExperiment(Projects.activeExperiment);
+        Projects.activeExperiment = null;
+
+        SceneManager.showProjectScene();
 
     }
 
@@ -161,6 +168,16 @@ public class ControllerNewExperiments extends VBox {
         progressbarlevel = progressbarlevel + newProgress;
 
         progressBar.setProgress(progressbarlevel);
+
+    }
+
+    @FXML
+    private void backToProject(){
+
+        Projects.deleteExperiment(Projects.activeExperiment);
+        Projects.activeExperiment = null;
+
+        SceneManager.showProjectScene();
 
     }
 }

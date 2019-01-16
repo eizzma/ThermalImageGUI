@@ -5,9 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ControllerProject extends VBox {
 
@@ -18,6 +21,7 @@ public class ControllerProject extends VBox {
     private ListView list;
 
     public ControllerProject() {
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("projectScene.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -48,7 +52,15 @@ public class ControllerProject extends VBox {
     @FXML
     private void evaluate() {
 
-        System.out.println(list.getSelectionModel().getSelectedItem().toString());
+        PythonExecutor pythonExecutor = new PythonExecutor();
+
+        File experimentsFolder = new File(Projects.getActiveProjectDirectory() + "/" + list.getSelectionModel().getSelectedItem().toString());
+        File[] measurements = experimentsFolder.listFiles();
+        List<String> pictureList = new ArrayList<>();
+        for (File measurment : measurements){
+            pictureList.add(measurment.getAbsolutePath());
+        }
+        pythonExecutor.evaluatePictures(pictureList);
 
     }
 
@@ -62,7 +74,6 @@ public class ControllerProject extends VBox {
     @FXML
     private void newExperiment() {
 
-
         String timeStamp = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yy_HH:mm"));
 
         if (Projects.addNewExperiment(timeStamp)){ // returns true if the directory has been created
@@ -70,17 +81,7 @@ public class ControllerProject extends VBox {
             list.getItems().add(timeStamp);
         }
 
-
         SceneManager.showNewExperimentScene();
-
-  //     for (String picture : adbExecutor.listPictures()){
-  //         System.out.println("/sdcard/DCIM/Google Photos" + "/" + picture);
-  //     }
-  //
-  //     adbExecutor.backgroundImg();
-  //
-  //     adbExecutor.transferPictures(true);
-
 
         // TODO run python for new files
 
@@ -104,7 +105,6 @@ public class ControllerProject extends VBox {
         }else {
             SceneManager.displayError("Der Versuch konnte nicht gelöscht werden.");
         }
-
     }
 
 

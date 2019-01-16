@@ -67,13 +67,17 @@ def print_csv(thermalimgpath, temp, maxLoc):
         test_writer.writerow([date] + [temp])
 
 
-path = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/thermalImageProjects/check/15-01-19_13:47/ThermalCamera2019-01-15_13-47-44+0100.png"
+path = sys.argv[1]
 mask = background_substraction(path)
 masked_img = read_masked_img(path, mask)
 point = get_hottest_point_robust(masked_img, 41)
 temp = convert_to_celsius(masked_img[point[1], point[0]])
 control_img = draw_circle(masked_img, point)
+print("imwrite checkimg")
 img_write(path[:-4], control_img, "-check.png")
+print("print csv")
 print_csv(path, temp, point)
+print("remove thermal")
 os.remove(path)
+print("remove orig")
 os.remove(path[:-4] + "-orig.png")

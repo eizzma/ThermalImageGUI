@@ -4,19 +4,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PythonExecutor{
-
-    /*
-    this will not work when build as a jar file, because the current working directory is depending on where the jar will
-    be executed. When working with a jar-file for end-production the path to all python programms must be set static
-    */
-    //private String cwd = System.getProperty("user.dir");
+public class PythonExecutor {
 
     public int run(String programmName, String args) {
 
         List<String> commands = new ArrayList<String>();
-        commands.add("python");
-        if (!Settings.pythonPath.endsWith("/")){
+        commands.add("python3");
+        if (!Settings.pythonPath.endsWith("/")) {
             Settings.pythonPath = Settings.pythonPath + "/";
         }
         if (new File(Settings.pythonPath + programmName).exists()) {
@@ -39,20 +33,20 @@ public class PythonExecutor{
         // print the stdout and stderr
         System.out.println("STDOUT:");
         System.out.println(stdout);
-        if (stderr.length() < 2) {
-            System.out.println("STDERR:");
-            System.out.println(stderr);
-        }
+
+        System.out.println("STDERR:");
+        System.out.println(stderr);
+
         return result;
     }
 
 
-    public void evaluatePictures(List<String> pictures, String localDirectory) {
+    public void evaluatePictures(List<String> pictures) {
         // takes a list of all the pictures and evaluates only the thermal images
         for (String picture : pictures) {
             // only the thermal images end with this suffix
-            if (picture.endsWith("0.png")){
-                run("images.py", localDirectory + "/" + picture);
+            if (picture.endsWith("0.png")) {
+                run("images.py", picture);
             }
         }
     }
