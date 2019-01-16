@@ -24,7 +24,7 @@ public class ControllerProject extends VBox {
 
     public ControllerProject() {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("thermalimage/gui/projectScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("projectScene.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

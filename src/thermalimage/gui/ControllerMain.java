@@ -12,7 +12,7 @@ public class ControllerMain extends GridPane {
 
     public ControllerMain() {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("thermalimage/gui/mainScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainScene.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

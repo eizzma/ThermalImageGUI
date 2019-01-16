@@ -65,7 +65,7 @@ public class ControllerNewExperiments extends VBox {
 
         progressbarlevel = 0.0;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("thermalimage/gui/newExperiment.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("newExperiment.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

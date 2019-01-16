@@ -14,7 +14,7 @@ public class AdbExecutor extends SystemCommandExecutor {
 
     private SystemCommandExecutor commandExecutor = new SystemCommandExecutor();
 
-    AdbExecutor() {
+    public AdbExecutor() {
 
     }
 
@@ -131,7 +131,7 @@ public class AdbExecutor extends SystemCommandExecutor {
 
     }
 
-    void backgroundImg() {
+    public void backgroundImg() {
         String pathForBackgroundImg;
         if (!Settings.projectPath.endsWith("/")) {
             pathForBackgroundImg = Settings.projectPath + "/" + Projects.activeProject + "/";

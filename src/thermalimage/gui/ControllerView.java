@@ -39,7 +39,7 @@ public class ControllerView extends VBox {
 
     public ControllerView(){
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("thermalimage/gui/viewExperiment.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("viewExperiment.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
