@@ -50,7 +50,10 @@ public class ControllerView extends VBox {
             throw new RuntimeException(exception);
         }
 
+
+
     }
+
 
 }
 

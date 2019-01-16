@@ -16,6 +16,9 @@ public class PythonExecutor{
 
         List<String> commands = new ArrayList<String>();
         commands.add("python");
+        if (!Settings.pythonPath.endsWith("/")){
+            Settings.pythonPath = Settings.pythonPath + "/";
+        }
         if (new File(Settings.pythonPath + programmName).exists()) {
             commands.add(Settings.pythonPath + programmName);
         } else {
@@ -45,8 +48,12 @@ public class PythonExecutor{
 
 
     public void evaluatePictures(List<String> pictures, String localDirectory) {
+        // takes a list of all the pictures and evaluates only the thermal images
         for (String picture : pictures) {
-            run("images.py", localDirectory + "/" + picture);
+            // only the thermal images end with this suffix
+            if (picture.endsWith("0.png")){
+                run("images.py", localDirectory + "/" + picture);
+            }
         }
     }
 
