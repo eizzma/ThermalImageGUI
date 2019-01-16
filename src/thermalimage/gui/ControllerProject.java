@@ -81,9 +81,12 @@ public class ControllerProject extends VBox {
         if (Projects.addNewExperiment(timeStamp)){ // returns true if the directory has been created
             // then the timestamp should be added to displayed list.
             list.getItems().add(timeStamp);
+            SceneManager.showNewExperimentScene();
+
+        }else {
+            SceneManager.displayError("konnte keinen neuen Ordner erstellen");
         }
 
-        SceneManager.showNewExperimentScene();
 
         // TODO run python for new files
 

@@ -60,7 +60,7 @@ public class AdbExecutor extends SystemCommandExecutor {
 
     }
 
-    private void inputKeyevent(Keycode keycode) {
+    public void inputKeyevent(Keycode keycode) {
 
         List<String> command = new ArrayList<>();
         command.add("adb");
@@ -114,11 +114,9 @@ public class AdbExecutor extends SystemCommandExecutor {
         commandExecutor.executeCommand(command);
     }
 
-    void transferPictures() {
+    public List<String> pullPictures(List<String> pictures) {
 
         String destinationDirectory = Projects.getActiveExperimentDirectory();
-
-        List<String> pictures = listPictures();
 
         for (String picture : pictures) {
 
@@ -129,9 +127,12 @@ public class AdbExecutor extends SystemCommandExecutor {
 
         }
 
+        return pictures;
+
     }
 
     public void backgroundImg() {
+
         String pathForBackgroundImg;
         if (!Settings.projectPath.endsWith("/")) {
             pathForBackgroundImg = Settings.projectPath + "/" + Projects.activeProject + "/";
@@ -141,7 +142,7 @@ public class AdbExecutor extends SystemCommandExecutor {
 
         inputKeyevent(Keycode.VOLUMEDOWN);
         try {
-            Thread.sleep(300);
+            Thread.sleep(600);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -157,7 +158,7 @@ public class AdbExecutor extends SystemCommandExecutor {
     }
 
 
-    private int adbPull(String destination, String source) {
+    private void adbPull(String destination, String source) {
 
         List<String> command = new ArrayList<>();
         command.add("adb");
@@ -176,9 +177,6 @@ public class AdbExecutor extends SystemCommandExecutor {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
-        return value;
 
     }
 
@@ -199,23 +197,34 @@ public class AdbExecutor extends SystemCommandExecutor {
         // System.out.println("return: " + value);
     }
 
-    public void deletePictures() {
+   // public void deletePictures() {
+   //     List<String> pictureList = listPictures();
+   //     List<String> command = new ArrayList<String>();
+   //     command.add("adb");
+   //     command.add("shell");
+   //     command.add("rm");
+   //     command.add("placeholder");
+   //     for (String picture : pictureList) {
+   //         String filePath = imgPath.replace(" ", "\\ ") + "/" + picture;
+   //         command.set(3, filePath);
+   //         int value = commandExecutor.executeCommand(command);
+   //     }
+   // }
 
-        List<String> pictureList = listPictures();
+    public void delete(List<String> deletionList){
         List<String> command = new ArrayList<String>();
         command.add("adb");
         command.add("shell");
         command.add("rm");
         command.add("placeholder");
-
-        for (String picture : pictureList) {
+        for (String picture : deletionList) {
             String filePath = imgPath.replace(" ", "\\ ") + "/" + picture;
             command.set(3, filePath);
-            int value = commandExecutor.executeCommand(command);
+            commandExecutor.executeCommand(command);
         }
     }
 
-    List<String> listPictures() {
+    public List<String> listPictures() {
 
         List<String> command = new ArrayList<>();
         command.add("adb");
@@ -225,8 +234,16 @@ public class AdbExecutor extends SystemCommandExecutor {
 
         commandExecutor.executeCommand(command);
         StringBuilder pictures = commandExecutor.getStandardOutputFromCommand();
+        List<String> pictureList = Arrays.asList(pictures.toString().split("\\r?\\n"));
 
-        return Arrays.asList(pictures.toString().split("\\r?\\n"));
+        // maybe there is a blank line in the list
+        for (String picture : pictureList){
+            if (picture.length() < 5){
+                pictureList.remove(picture);
+            }
+        }
+
+        return pictureList;
     }
 
     public void takeAndTransferImg() {
@@ -244,7 +261,8 @@ public class AdbExecutor extends SystemCommandExecutor {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        transferPictures();
+        List<String > list = listPictures();
+        pullPictures(list);
 
     }
 }

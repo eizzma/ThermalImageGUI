@@ -169,23 +169,6 @@ public class Projects {
         System.out.println("path: " + pathFolder.toString());
         System.out.println("check: " + check);
 
-        /**
-        // delete Directory
-        StringBuilder path = new StringBuilder().append(Settings.projectPath);
-        if (!Settings.projectPath.endsWith("\\")) {
-            path.append("\\");
-        }
-        path.append(activeProject);
-        File dirToBeDeleted = new File(path.toString());
-
-        String folderToBeDeleted = getActiveExperimentDirectory();
-        File test = new File(folderToBeDeleted);
-
-        boolean check = dirToBeDeleted.delete();
-        System.out.println("path: " + path.toString());
-        System.out.println("check: " + check);
-         */
-
         // if has been successfully deleted update activeProject, change scene, update projectsMap
         if (check) {
             SceneManager.showMainScene();
@@ -196,9 +179,10 @@ public class Projects {
     }
 
     public static boolean addNewExperiment(String dateAndTime) {
-        HashSet<String> experiments = getExperiments();
-        experiments.add(dateAndTime);
-        activeExperiment = dateAndTime;
+
+        HashSet<String> experiments = getExperiments(); // get all experiments from current project
+        experiments.add(dateAndTime); // add this one
+        activeExperiment = dateAndTime; // make it the active one
         boolean result = false;
         try {
             result = createFolder(activeProject + "/" + dateAndTime);

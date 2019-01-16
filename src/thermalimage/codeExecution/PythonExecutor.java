@@ -1,5 +1,6 @@
 package thermalimage.codeExecution;
 
+import thermalimage.Projects;
 import thermalimage.Settings;
 
 import java.io.File;
@@ -48,7 +49,7 @@ public class PythonExecutor {
         for (String picture : pictures) {
             // only the thermal images end with this suffix
             if (picture.endsWith("0.png")) {
-                run("images.py", picture);
+                run("images.py", Projects.getActiveExperimentDirectory() + "/" + picture);
             }
         }
     }
