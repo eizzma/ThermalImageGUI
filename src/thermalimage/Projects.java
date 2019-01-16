@@ -1,6 +1,6 @@
 package thermalimage;
 
-import javafx.scene.Parent;
+import thermalimage.gui.SceneManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -250,7 +250,7 @@ public class Projects {
 
     }
 
-    static String getActiveExperimentDirectory() {
+    public static String getActiveExperimentDirectory() {
 
         String activeDirectory = getActiveProjectDirectory() + "/" + activeExperiment;
 
@@ -258,7 +258,7 @@ public class Projects {
 
     }
 
-    static String getActiveProjectDirectory() {
+    public static String getActiveProjectDirectory() {
 
         StringBuilder activeDirectory = new StringBuilder(2);
         if (!Settings.projectPath.endsWith("/")) {

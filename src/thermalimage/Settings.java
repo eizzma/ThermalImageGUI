@@ -11,16 +11,12 @@ import javafx.scene.control.*;
 
 import java.io.File;
 
-class Settings {
+public class Settings {
 
-    static String ipAddress = "10.90.1.223";
-
-    static int duration = 12;
-
-    static int timer = 3;
-
-    static String pythonPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/python/";
-
-    static String projectPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/thermalImageProjects";
+    static public String ipAddress = "10.90.1.223";
+    static public int duration = 12;
+    static public int timer = 3;
+    static public String pythonPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/python/";
+    static public String projectPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/thermalImageProjects";
 
 }

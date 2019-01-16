@@ -1,11 +1,10 @@
-package thermalimage;
+package thermalimage.gui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import javax.swing.text.html.ImageView;
@@ -40,7 +39,7 @@ public class ControllerView extends VBox {
 
     public ControllerView(){
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("viewExperiment.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("thermalimage/gui/viewExperiment.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

@@ -1,10 +1,8 @@
 package thermalimage;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import thermalimage.gui.SceneManager;
 
 public class Main extends Application {
 

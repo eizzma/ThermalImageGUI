@@ -1,4 +1,4 @@
-package thermalimage;
+package thermalimage.gui;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -8,6 +8,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import thermalimage.Projects;
+import thermalimage.Settings;
 
 import java.io.File;
 
@@ -15,7 +17,7 @@ public class SceneManager {
 
     private static Stage window;
 
-    SceneManager(Stage window) {
+    public SceneManager(Stage window) {
         this.window = window;
     }
 
@@ -239,7 +241,7 @@ public class SceneManager {
 
     }
 
-    static void displayError(String error) {
+    public static void displayError(String error) {
         Stage errorStage = new Stage();
         Label message = new Label(error);
         Button okButton = new Button("Verstanden");

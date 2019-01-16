@@ -1,6 +1,5 @@
-package thermalimage;
+package thermalimage.gui;
 
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -8,12 +7,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import thermalimage.codeExecution.AdbExecutor;
+import thermalimage.Projects;
+import thermalimage.codeExecution.PythonExecutor;
+import thermalimage.Settings;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 public class ControllerNewExperiments extends VBox {
 
@@ -63,7 +65,7 @@ public class ControllerNewExperiments extends VBox {
 
         progressbarlevel = 0.0;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("newExperiment.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("thermalimage/gui/newExperiment.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

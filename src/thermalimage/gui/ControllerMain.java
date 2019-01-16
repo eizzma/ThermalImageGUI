@@ -1,4 +1,4 @@
-package thermalimage;
+package thermalimage.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,14 +7,12 @@ import javafx.scene.layout.GridPane;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ControllerMain extends GridPane {
 
     public ControllerMain() {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("thermalimage/gui/mainScene.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

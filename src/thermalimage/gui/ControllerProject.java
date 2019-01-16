@@ -1,9 +1,11 @@
-package thermalimage;
+package thermalimage.gui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import thermalimage.Projects;
+import thermalimage.codeExecution.PythonExecutor;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +24,7 @@ public class ControllerProject extends VBox {
 
     public ControllerProject() {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("projectScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("thermalimage/gui/projectScene.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

@@ -1,4 +1,4 @@
-package thermalimage;
+package thermalimage.codeExecution;
 
 
 import java.io.*;

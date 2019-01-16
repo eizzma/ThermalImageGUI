@@ -1,4 +1,7 @@
-package thermalimage;
+package thermalimage.codeExecution;
+
+import thermalimage.Projects;
+import thermalimage.Settings;
 
 import java.io.File;
 import java.util.*;

@@ -1,4 +1,6 @@
-package thermalimage;
+package thermalimage.codeExecution;
+
+import thermalimage.Settings;
 
 import java.io.File;
 import java.util.ArrayList;
