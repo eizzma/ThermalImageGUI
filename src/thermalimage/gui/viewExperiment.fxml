@@ -25,7 +25,7 @@
                <children>
                   <AnchorPane prefHeight="109.0" prefWidth="400.0">
                      <children>
-                        <TextField fx:id="textField" layoutX="56.0" layoutY="42.0" prefHeight="25.0" prefWidth="288.0" promptText="Beschreibung..." />
+                        <TextField fx:id="textField" layoutX="56.0" layoutY="42.0" prefHeight="25.0" prefWidth="288.0" promptText="Beschreibung..." onAction="#textField" />
                      </children>
                   </AnchorPane>
                   <ImageView fx:id="imageView" fitHeight="347.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" />
