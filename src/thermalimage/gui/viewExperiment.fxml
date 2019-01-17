@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root alignment="BOTTOM_CENTER" prefHeight="600.0" prefWidth="600.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="BOTTOM_CENTER" prefHeight="600.0" prefWidth="600.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="50.0" prefWidth="600.0">
          <children>
