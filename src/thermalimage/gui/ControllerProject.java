@@ -1,5 +1,8 @@
 package thermalimage.gui;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -25,6 +28,11 @@ public class ControllerProject extends VBox {
     @FXML
     private Button showExperiment;
 
+    @FXML
+    private Button evaluateExperiment;
+
+    private SimpleListProperty<String> listProperty = new SimpleListProperty(FXCollections.<String>observableArrayList());
+
     public ControllerProject() {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("projectScene.fxml"));
@@ -46,6 +54,7 @@ public class ControllerProject extends VBox {
         list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         showExperiment.disableProperty().bind(list.getSelectionModel().selectedItemProperty().isNull());
+        evaluateExperiment.disableProperty().bind(Bindings.size(list.getItems()).lessThan(10));
 
     }
 

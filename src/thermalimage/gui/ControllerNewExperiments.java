@@ -65,8 +65,6 @@ public class ControllerNewExperiments extends VBox {
         newPictures = new ArrayList<>();
         pulledPictures = new ArrayList<>();
 
-        labelName.setText(Projects.activeProject + " " + Projects.activeExperiment);
-
         adbExecutor = new AdbExecutor();
         adbExecutor.connect();
         //   if (connectOutput.contains("failed")){
@@ -85,6 +83,8 @@ public class ControllerNewExperiments extends VBox {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        labelName.setText("neues Experiment für: " + Projects.activeProject);
 
         abbortButton.setDisable(true);
         startExperimentstartExperimentButton.setDisable(true);

@@ -26,11 +26,7 @@ public class ControllerView extends VBox {
 
     ObservableList<ThermalData> thermalData;
 
-    @FXML
-    private Button okButton;
 
-    @FXML
-    private Button abbruch;
 
     @FXML
     private Button plotButton;
@@ -42,14 +38,7 @@ public class ControllerView extends VBox {
     private TableView<ThermalData> tableView;
 
     @FXML
-    private ListView listPictures;
-
-    @FXML
-    private TextField textField;
-
-    @FXML
-    private SplitPane splitPane;
-
+    private Label projectLabel;
 
     public ControllerView() {
 
@@ -65,6 +54,8 @@ public class ControllerView extends VBox {
 
         csvFile = Projects.getActiveExperimentDirectory() + "/data.csv";
         thermalData = readDataFromCSV();
+
+        projectLabel.setText("Projekt: "+ Projects.activeProject + "\nVersuch: " + Projects.activeExperiment);
 
         // Temp Column
         TableColumn<ThermalData, Double> tempColumn = new TableColumn<>("Temp");
@@ -115,6 +106,14 @@ public class ControllerView extends VBox {
         // clear selection and show plot
         tableView.getSelectionModel().clearSelection();
         setImageView("plot");
+
+    }
+
+    @FXML
+    private void deleteExperiment(){
+
+        Projects.deleteExperiment(Projects.activeExperiment);
+        SceneManager.showProjectScene();
 
     }
 
