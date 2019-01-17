@@ -58,13 +58,13 @@ public class ControllerView extends VBox {
         projectLabel.setText("Projekt: "+ Projects.activeProject + "\nVersuch: " + Projects.activeExperiment);
 
         // Temp Column
-        TableColumn<ThermalData, Double> tempColumn = new TableColumn<>("Temp");
-        tempColumn.setMinWidth(100);
+        TableColumn<ThermalData, Double> tempColumn = new TableColumn<>("Temperatur");
+        tempColumn.setMinWidth(95);
         tempColumn.setCellValueFactory(new PropertyValueFactory<>("temp"));
 
         // Seconds Column
-        TableColumn<ThermalData, Double> secondsColumn = new TableColumn<>("Seconds");
-        secondsColumn.setMinWidth(100);
+        TableColumn<ThermalData, Double> secondsColumn = new TableColumn<>("Sekunden");
+        secondsColumn.setMinWidth(95);
         secondsColumn.setCellValueFactory(new PropertyValueFactory<>("seconds"));
 
         // disable multiple selection

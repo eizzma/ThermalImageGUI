@@ -15,7 +15,7 @@
       <AnchorPane prefHeight="50.0" prefWidth="600.0">
          <children>
             <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#backToProject" text="Zurück" />
-            <Label fx:id="projectLabel" alignment="CENTER" layoutX="149.0" layoutY="6.0" prefHeight="40.0" prefWidth="302.0" text="Label">
+            <Label fx:id="projectLabel" alignment="CENTER" layoutX="149.0" layoutY="6.0" prefHeight="40.0" prefWidth="302.0" text="Label" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font></Label>
