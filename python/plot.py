@@ -1,3 +1,4 @@
+import os
 import sys
 from datetime import datetime
 import pandas as pd
@@ -7,13 +8,12 @@ import matplotlib.pyplot as plt
 def pd_read_csv(path):
     headers = ['DateTime', 'Temperatur']
     df = pd.read_csv(path, names=headers)
-    df['DateTime'] = df['DateTime'].map(lambda x: datetime.strptime(str(x), '%Y-%m-%d_%H-%M-%S'))
     return df
 
 
 def pd_write_csv(path, df):
-    directory = path[:-14]
-    df.to_csv(directory + "data.csv")
+    directory = path[:-11]
+    df.to_csv(directory + "data.csv", index=False, header=False)
 
 
 def pd_drop(df, index):
@@ -22,9 +22,11 @@ def pd_drop(df, index):
 
 
 def pd_generate_t0(index, df):
-    df['delta'] = df['DateTime'] - df['DateTime'].iloc[index]
+    df['DateTimeTemp'] = df['DateTime'].map(lambda x: datetime.strptime(str(x), '%Y-%m-%d_%H-%M-%S'))
+    df['delta'] = df['DateTimeTemp'] - df['DateTimeTemp'].iloc[index]
     df['total_seconds'] = df['delta'].dt.total_seconds()
     df = df.drop(columns=['delta'])
+    df = df.drop(columns=['DateTimeTemp'])
     return df
 
 
@@ -33,7 +35,7 @@ def pd_hottest_point(df):
 
 
 def plot(df, path):
-    directory = path[:-14]
+    directory = path[:-11]
     # df['DateTime'] = df['DateTime'].map(lambda x: datetime.strptime(str(x), '%Y-%m-%d_%H-%M-%S'))
     y = df['Temperatur']
     x = df['total_seconds']
@@ -45,9 +47,11 @@ def plot(df, path):
     # plt.show()
 
 
-csvpath = sys.argv[1]
+# csvpath = sys.argv[1] TODO
+csvpath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/thermalImageProjects/check/15-01-19_14:43/results.csv"
 df = pd_read_csv(csvpath)
 index = pd_hottest_point(df)
 df = pd_generate_t0(index, df)
+os.remove(csvpath)
 plot(df, csvpath)
 pd_write_csv(csvpath, df)

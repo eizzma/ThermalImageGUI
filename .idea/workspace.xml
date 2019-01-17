@@ -6,13 +6,17 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="refactoring">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="new order for adb and python">
+      <change afterPath="$PROJECT_DIR$/src/thermalimage/ThermalData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/thermalimage/Projects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/Projects.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/images.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/images.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/plot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/thermalimage/codeExecution/AdbExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/codeExecution/AdbExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/thermalimage/codeExecution/PythonExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/codeExecution/PythonExecutor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/thermalimage/gui/ControllerNewExperiments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/gui/ControllerNewExperiments.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/thermalimage/gui/ControllerProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/gui/ControllerProject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/thermalimage/gui/ControllerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/gui/ControllerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/thermalimage/gui/projectScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/gui/projectScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/thermalimage/gui/viewExperiment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/thermalimage/gui/viewExperiment.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,119 +72,7 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/thermalimage/codeExecution/AdbExecutor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1952">
-              <caret line="265" lean-forward="true" selection-start-line="265" selection-end-line="265" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#6453#6461#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/ControllerProject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="82" column="43" lean-forward="true" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#deleteProject#0;class#ControllerProject#0" />
-                <element signature="method#deleteExperiment#0;class#ControllerProject#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/ControllerMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="34" column="25" lean-forward="true" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#646#647#0" expanded="true" />
-                <element signature="e#695#696#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/ControllerView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="41" column="71" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/ControllerNewExperiments.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="193" column="13" lean-forward="true" selection-start-line="193" selection-start-column="13" selection-end-line="193" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/viewExperiment.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/evaluateProject.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/thermalimage/codeExecution/PythonExecutor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="51" column="82" selection-start-line="51" selection-start-column="82" selection-end-line="51" selection-end-column="82" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1778#1779#0" expanded="true" />
-                <element signature="e#1819#1820#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/thermalimage/codeExecution/SystemCommandExecutor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="945">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -226,9 +118,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/thermalimage/ThreadedStreamHandler.java" />
-        <option value="$PROJECT_DIR$/src/thermalimage/PythonProgramm.java" />
-        <option value="$PROJECT_DIR$/src/thermalimage/ADBProcess.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/Keycode.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/test.fxml" />
         <option value="$PROJECT_DIR$/src/thermalimage/gui.fxml" />
@@ -271,12 +160,15 @@
         <option value="$PROJECT_DIR$/src/thermalimage/gui/SceneManager.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/Settings.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/gui/ControllerMain.java" />
-        <option value="$PROJECT_DIR$/src/thermalimage/gui/ControllerView.java" />
-        <option value="$PROJECT_DIR$/src/thermalimage/gui/ControllerProject.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/Projects.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/codeExecution/PythonExecutor.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/codeExecution/AdbExecutor.java" />
         <option value="$PROJECT_DIR$/src/thermalimage/gui/ControllerNewExperiments.java" />
+        <option value="$PROJECT_DIR$/src/thermalimage/gui/projectScene.fxml" />
+        <option value="$PROJECT_DIR$/src/thermalimage/gui/ControllerProject.java" />
+        <option value="$PROJECT_DIR$/src/thermalimage/ThermalData.java" />
+        <option value="$PROJECT_DIR$/src/thermalimage/gui/ControllerView.java" />
+        <option value="$PROJECT_DIR$/src/thermalimage/gui/viewExperiment.fxml" />
       </list>
     </option>
   </component>
@@ -356,7 +248,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547653629420" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547731554761" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/Dropbox/MES-Praktikum/ThermalImageGUI/src/thermalimage" />
@@ -512,14 +404,7 @@
       <workItem from="1547558580090" duration="973000" />
       <workItem from="1547559562991" duration="61000" />
       <workItem from="1547559706450" duration="1844000" />
-      <workItem from="1547563093548" duration="16241000" />
-    </task>
-    <task id="LOCAL-00012" summary="keycode updated">
-      <created>1546542925268</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1546542925268</updated>
+      <workItem from="1547563093548" duration="27374000" />
     </task>
     <task id="LOCAL-00013" summary="uncommented gui start">
       <created>1546605337088</created>
@@ -857,11 +742,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547635879664</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="new order for adb and python">
+      <created>1547655784796</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1547655784797</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180419000" />
+    <option name="totallyTimeSpent" value="191552000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -874,9 +766,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.22859451" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.22859451" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -886,11 +777,11 @@
       <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.32970452" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3281493" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.2830482" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.2830482" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" visible="true" weight="0.32970452" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.32970452" />
       <window_info anchor="bottom" id="Application Servers" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.2657267" />
       <window_info anchor="bottom" id="Problems" order="10" />
@@ -964,7 +855,6 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="working on scene settings" />
     <MESSAGE value="settings scene implemented" />
     <MESSAGE value="schönheitskorrektur" />
     <MESSAGE value="improved settings" />
@@ -989,7 +879,8 @@
     <MESSAGE value="commit" />
     <MESSAGE value="running python scripts repaired&#10;&amp;&amp; minor changes in the GUI" />
     <MESSAGE value="refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
+    <MESSAGE value="new order for adb and python" />
+    <option name="LAST_COMMIT_MESSAGE" value="new order for adb and python" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -999,13 +890,6 @@
     <entry file="file://$PROJECT_DIR$/src/thermalimage/ProcessbuilderOwn.java" />
     <entry file="file://$PROJECT_DIR$/src/thermalimage/ThreadedStreamHandler.java" />
     <entry file="file://$PROJECT_DIR$/src/thermalimage/test.java" />
-    <entry file="file://$PROJECT_DIR$/src/thermalimage/codeExecution/Keycode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/thermalimage/sample.fxml" />
     <entry file="file://$PROJECT_DIR$/python/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -1056,14 +940,6 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/projectScene.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="118" selection-start-line="12" selection-end-line="12" selection-end-column="118" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/python/images.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
@@ -1103,18 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/SceneManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1641">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#displaySettings#0;class#SceneManager#0" />
-            <element signature="method#directoryChooser#0;class#SceneManager#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/ControllerMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -1135,42 +999,52 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/viewExperiment.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/ControllerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="41" column="71" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/ControllerProject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="82" column="43" lean-forward="true" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#deleteProject#0;class#ControllerProject#0" />
-            <element signature="method#deleteExperiment#0;class#ControllerProject#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/thermalimage/Projects.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
           <caret line="182" column="56" selection-start-line="182" selection-start-column="56" selection-end-line="182" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/codeExecution/Keycode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/ControllerNewExperiments.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3031">
+          <caret line="239" column="5" selection-start-line="239" selection-start-column="5" selection-end-line="239" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/codeExecution/AdbExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3540">
+          <caret line="238" column="67" selection-start-line="238" selection-start-column="67" selection-end-line="238" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6453#6461#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/codeExecution/PythonExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="51" column="82" selection-start-line="51" selection-start-column="82" selection-end-line="51" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1778#1779#0" expanded="true" />
+            <element signature="e#1819#1820#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1185,38 +1059,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/thermalimage/codeExecution/PythonExecutor.java">
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/viewExperiment.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="51" column="82" selection-start-line="51" selection-start-column="82" selection-end-line="51" selection-end-column="82" />
+        <state relative-caret-position="342">
+          <caret line="27" column="10" lean-forward="true" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/SceneManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1778#1779#0" expanded="true" />
-            <element signature="e#1819#1820#0" expanded="true" />
+            <element signature="method#displaySettings#0;class#SceneManager#0" />
+            <element signature="method#directoryChooser#0;class#SceneManager#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/thermalimage/codeExecution/AdbExecutor.java">
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/ControllerView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1952">
-          <caret line="265" lean-forward="true" selection-start-line="265" selection-end-line="265" />
+        <state relative-caret-position="249">
+          <caret line="156" lean-forward="true" selection-start-line="156" selection-end-line="156" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6453#6461#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/ControllerNewExperiments.java">
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/ThermalData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="193" column="13" lean-forward="true" selection-start-line="193" selection-start-column="13" selection-end-line="193" selection-end-column="13" />
+        <state relative-caret-position="221">
+          <caret line="18" column="66" selection-start-line="18" selection-start-column="66" selection-end-line="18" selection-end-column="66" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
+            <element signature="e#523#524#0" expanded="true" />
+            <element signature="e#555#556#0" expanded="true" />
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#613#614#0" expanded="true" />
+            <element signature="e#653#654#0" expanded="true" />
+            <element signature="e#685#686#0" expanded="true" />
+            <element signature="e#716#717#0" expanded="true" />
+            <element signature="e#746#747#0" expanded="true" />
+            <element signature="e#789#790#0" expanded="true" />
+            <element signature="e#827#828#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/ControllerProject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="763">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#deleteProject#0;class#ControllerProject#0" />
+            <element signature="method#deleteExperiment#0;class#ControllerProject#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/thermalimage/gui/projectScene.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="38" column="73" selection-start-line="38" selection-start-column="59" selection-end-line="38" selection-end-column="73" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
   </component>
   <component name="masterDetails">

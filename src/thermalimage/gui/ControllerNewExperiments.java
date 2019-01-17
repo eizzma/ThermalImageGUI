@@ -15,14 +15,12 @@ import thermalimage.Settings;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerNewExperiments extends VBox {
 
-    private double progressbarlevel;
+    private double progressBarLevel;
 
     private Timeline timeLine;
 
@@ -76,7 +74,7 @@ public class ControllerNewExperiments extends VBox {
         //       SceneManager.showProjectScene();
         //   }
 
-        progressbarlevel = 0.0;
+        progressBarLevel = 0.0;
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("newExperiment.fxml"));
         fxmlLoader.setRoot(this);
@@ -194,6 +192,8 @@ public class ControllerNewExperiments extends VBox {
             }
             pythonExecutor.evaluatePictures(pulledPictures);
 
+            pythonExecutor.plotGraph(Projects.getActiveExperimentDirectory() + "/results.csv");
+
 
             SceneManager.showProjectScene();
 
@@ -220,13 +220,6 @@ public class ControllerNewExperiments extends VBox {
 
     }
 
-    private void updateProgressBar(double newProgress) {
-
-        progressbarlevel = progressbarlevel + newProgress;
-
-        progressBar.setProgress(progressbarlevel);
-
-    }
 
     @FXML
     private void backToProject() {
@@ -235,6 +228,14 @@ public class ControllerNewExperiments extends VBox {
         Projects.activeExperiment = null;
 
         SceneManager.showProjectScene();
+
+    }
+
+    private void updateProgressBar(double newProgress) {
+
+        progressBarLevel = progressBarLevel + newProgress;
+
+        progressBar.setProgress(progressBarLevel);
 
     }
 }

@@ -55,8 +55,9 @@ def draw_circle(img, point):
     return color
 
 
-def img_write(path, img, name):
-    cv2.imwrite(path + name, img, [cv2.IMWRITE_PNG_COMPRESSION, 9])
+def img_write(absolute_path, img):
+    name = absolute_path[:-41] + absolute_path[-28:-9] + ".png"
+    cv2.imwrite(name, img, [cv2.IMWRITE_PNG_COMPRESSION, 9])
 
 
 def print_csv(thermalimgpath, temp, maxLoc):
@@ -73,11 +74,12 @@ masked_img = read_masked_img(path, mask)
 point = get_hottest_point_robust(masked_img, 41)
 temp = convert_to_celsius(masked_img[point[1], point[0]])
 control_img = draw_circle(masked_img, point)
-print("imwrite checkimg")
-img_write(path[:-4], control_img, "-check.png")
-print("print csv")
-print_csv(path, temp, point)
 print("remove thermal")
 os.remove(path)
 print("remove orig")
 os.remove(path[:-4] + "-orig.png")
+print("imwrite checkimg")
+img_write(path, control_img)
+print("print csv")
+print_csv(path, temp, point)
+

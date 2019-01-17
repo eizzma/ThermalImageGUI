@@ -236,7 +236,7 @@ public class AdbExecutor extends SystemCommandExecutor {
         StringBuilder pictures = commandExecutor.getStandardOutputFromCommand();
         List<String> pictureList = Arrays.asList(pictures.toString().split("\\r?\\n"));
 
-        // maybe there is a blank line in the list
+        // maybe there is a blank line in the list better remove it
         for (String picture : pictureList){
             if (picture.length() < 5){
                 pictureList.remove(picture);

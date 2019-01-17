@@ -22,6 +22,9 @@ public class ControllerProject extends VBox {
     @FXML
     private ListView list;
 
+    @FXML
+    private Button showExperiment;
+
     public ControllerProject() {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("projectScene.fxml"));
@@ -41,6 +44,8 @@ public class ControllerProject extends VBox {
         }
 
         list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+        showExperiment.disableProperty().bind(list.getSelectionModel().selectedItemProperty().isNull());
 
     }
 
@@ -69,6 +74,7 @@ public class ControllerProject extends VBox {
     @FXML
     private void showExperiment() {
 
+        Projects.activeExperiment = list.getSelectionModel().getSelectedItem().toString();
         SceneManager.showViewExperiment();
 
     }
@@ -86,9 +92,6 @@ public class ControllerProject extends VBox {
         }else {
             SceneManager.displayError("konnte keinen neuen Ordner erstellen");
         }
-
-
-        // TODO run python for new files
 
     }
 
