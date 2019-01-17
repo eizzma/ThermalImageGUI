@@ -2,7 +2,7 @@ package thermalimage;
 
 public class ThermalData {
 
-    private String date;
+    private String name;
 
     private double temp;
 
@@ -10,26 +10,26 @@ public class ThermalData {
 
     public ThermalData() {
 
-        this.date = "";
+        this.name = "";
         this.temp = 0.0;
         this.seconds = 0.0;
 
     }
 
-    public ThermalData(String date, double temp, double seconds) {
+    public ThermalData(String name, double temp, double seconds) {
 
-        this.date = date;
+        this.name = name;
         this.temp = temp;
         this.seconds = seconds;
 
     }
 
-    public String getDate() {
-        return date;
+    public String getName() {
+        return name;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getTemp() {
@@ -44,7 +44,7 @@ public class ThermalData {
         return seconds;
     }
 
-    public void setSeconds(int seconds) {
+    public void setSeconds(double seconds) {
         this.seconds = seconds;
     }
 }

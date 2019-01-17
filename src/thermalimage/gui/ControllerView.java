@@ -66,64 +66,55 @@ public class ControllerView extends VBox {
         csvFile = Projects.getActiveExperimentDirectory() + "/data.csv";
         thermalData = readDataFromCSV();
 
-
-        // DateTime Column
-        TableColumn<ThermalData, String> dateTimeColumn = new TableColumn<>("DateTime");
-        dateTimeColumn.setMinWidth(200);
-        dateTimeColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-
-
         // Temp Column
         TableColumn<ThermalData, Double> tempColumn = new TableColumn<>("Temp");
         tempColumn.setMinWidth(100);
         tempColumn.setCellValueFactory(new PropertyValueFactory<>("temp"));
-
 
         // Seconds Column
         TableColumn<ThermalData, Double> secondsColumn = new TableColumn<>("Seconds");
         secondsColumn.setMinWidth(100);
         secondsColumn.setCellValueFactory(new PropertyValueFactory<>("seconds"));
 
+        // disable multiple selection
         tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        // set tableview content
         tableView.setItems(thermalData);
         tableView.getColumns().addAll(tempColumn, secondsColumn); // show only temp and time in seconds
-
+        // click on item in tableview to display images
         tableView.setOnMouseClicked(event -> {
-            SceneManager.displayError(tableView.getSelectionModel().getSelectedItem().getDate());
+            setImageView(tableView.getSelectionModel().getSelectedItem().getName());
         });
-
+        // navigate threw tableview to display images
         tableView.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if(event.getCode() == KeyCode.UP || event.getCode() == KeyCode.DOWN) {
-                    SceneManager.displayError(tableView.getSelectionModel().getSelectedItem().getTemp()+"");
+                if (event.getCode() == KeyCode.UP || event.getCode() == KeyCode.DOWN) {
+                    setImageView(tableView.getSelectionModel().getSelectedItem().getName());
                 }
                 event.consume();
             }
         });
 
-
-
-        //imageView = new ImageView("icons/test.jpg");
-
+        // display the plot at first
+        setImageView("plot");
     }
 
     @FXML
     private void backToProject() {
 
+        // back to the old scene and reset the activeExperiment
         SceneManager.showProjectScene();
         Projects.activeExperiment = null;
 
     }
 
     @FXML
-    private void showPlot(){
+    private void showPlot() {
 
+        // clear selection and show plot
         tableView.getSelectionModel().clearSelection();
-        File plot = new File(Projects.getActiveExperimentDirectory() + "/plot.png");
-        System.out.println(plot.exists());
-        imageView.setImage(new Image(plot.toURI().toString()));
-        // imageView = new ImageView(Projects.getActiveExperimentDirectory() + "/plot.png");
+        setImageView("plot");
 
     }
 
@@ -138,15 +129,11 @@ public class ControllerView extends VBox {
 
         try {
             br = new BufferedReader(new FileReader(csvFile));
-
             String line;
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(fieldDelimiter, -1);
-
                 observableList.add(new ThermalData(fields[0], Double.parseDouble(fields[1]), Double.parseDouble(fields[2])));
-
             }
-
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } catch (IOException ex) {
@@ -154,7 +141,11 @@ public class ControllerView extends VBox {
         }
 
         return observableList;
+    }
 
+    private void setImageView(String imgName) {
+        File img = new File(Projects.getActiveExperimentDirectory() + "/" + imgName + ".png");
+        imageView.setImage(new Image(img.toURI().toString()));
     }
 
 }
