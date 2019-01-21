@@ -13,7 +13,7 @@ import java.io.File;
 
 public class Settings {
 
-    static public String ipAddress = "10.90.1.223";
+    static public String ipAddress = "192.168.178.3";
     static public int duration = 12;
     static public int timer = 3;
     static public String pythonPath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/python/";

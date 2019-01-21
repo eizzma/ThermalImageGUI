@@ -34,6 +34,8 @@ public class ControllerNewExperiments extends VBox {
 
     private List<String> pulledPictures;
 
+    boolean backgroundExists;
+
     @FXML
     private Label labelName;
 
@@ -67,10 +69,8 @@ public class ControllerNewExperiments extends VBox {
 
         adbExecutor = new AdbExecutor();
         adbExecutor.connect();
-        //   if (connectOutput.contains("failed")){
-        //       SceneManager.displayError(connectOutput);
-        //       SceneManager.showProjectScene();
-        //   }
+
+        adbExecutor.delete(adbExecutor.listPictures()); // delete the old Images on the Android Phone
 
         progressBarLevel = 0.0;
 
@@ -86,12 +86,9 @@ public class ControllerNewExperiments extends VBox {
 
         labelName.setText("neues Experiment für: " + Projects.activeProject);
 
-        abbortButton.setDisable(true);
-        startExperimentstartExperimentButton.setDisable(true);
+        backgroundExists = new File(Projects.getActiveProjectDirectory() + "/background.png").exists();
 
-        File background = new File(Projects.getActiveProjectDirectory() + "/background.png");
-
-        if (!background.exists()) {
+        if (!backgroundExists) {
             initialImageinitialImageButton.setDisable(true);
             labelInstruction.setText("Bitte machen Sie zuerst ein Hintergrundbild!");
         } else {
@@ -106,16 +103,13 @@ public class ControllerNewExperiments extends VBox {
     @FXML
     private void backgroundImg() {
 
-        oldPictures = adbExecutor.listPictures();
-
-        adbExecutor.delete(oldPictures);
-
-        oldPictures = new ArrayList<>();
-
         adbExecutor.backgroundImg();
 
         initialImageinitialImageButton.setDisable(false);
-        updateProgressBar(0.1);
+        if (!backgroundExists) {
+            updateProgressBar(0.1);
+            backgroundExists = true;
+        }
 
         labelInstruction.setText("Bitte machen Sie ein Bild vom unberührten Objekt");
 
@@ -124,7 +118,7 @@ public class ControllerNewExperiments extends VBox {
     @FXML
     private void initialImage() throws InterruptedException {
 
-        oldPictures = adbExecutor.listPictures();
+        pulledPictures = adbExecutor.listPictures(); //if background image is in the Folder it has been pulled already
 
         adbExecutor.inputKeyevent(Keycode.VOLUMEDOWN);
 
@@ -132,8 +126,20 @@ public class ControllerNewExperiments extends VBox {
 
         newPictures = adbExecutor.listPictures();
 
-        pulledPictures = adbExecutor.pullPictures(newPictures);
+        for (String string : pulledPictures) {
+            System.out.println("pulled: " + string);
+        }
 
+        System.out.println();
+
+        for (String string : newPictures) {
+            System.out.println("string " + string);
+        }
+
+        newPictures.removeAll(pulledPictures);
+
+        initialImageinitialImageButton.setDisable(true);
+        backgroundButton.setDisable(true);
         startExperimentstartExperimentButton.setDisable(false);
         updateProgressBar(0.1);
 
@@ -154,14 +160,24 @@ public class ControllerNewExperiments extends VBox {
 
         timeLine = new Timeline(new KeyFrame(Duration.seconds(Settings.timer), event -> {
 
-            adbExecutor.inputKeyevent(Keycode.VOLUMEDOWN);              //   FOTO                   FOTO2
-            adbExecutor.delete(oldPictures);                            //   lösche BKG             lösche initial
-            pythonExecutor.evaluatePictures(pulledPictures);            //   evaluiere initial      evaluiere FOTO
-            updateProgressBar(progressLevel);                           //   upgrade                --
-            oldPictures = newPictures;                                  //   alte Bilder = initial  alteBilder = FOTO
-            newPictures = adbExecutor.listPictures();                   //   neubild =FOTO+initial  neu Bilder = FOTO2+1
-            newPictures.remove(oldPictures);                            //   neubild =FOTO          neu Bilder = FOTO2
-            pulledPictures = adbExecutor.pullPictures(newPictures);     //   pull FOTO              pull FOTO2
+            adbExecutor.inputKeyevent(Keycode.VOLUMEDOWN); // take a new picture
+            oldPictures = newPictures; // set the newPictures from the round before to the oldPictures this round
+            adbExecutor.delete(pulledPictures); // delete the pictures that have been pulled last round already
+            newPictures = adbExecutor.listPictures(); // set the new pictures
+            newPictures.removeAll(oldPictures); // exclude the old pictures that are still on the phone but will be pulled this round
+            pythonExecutor.evaluatePictures(pulledPictures); // evaluate the pictures that have been pulled last round
+            pulledPictures = adbExecutor.pullPictures(oldPictures); // pull the oldPictures and set them as pulled for next round
+            updateProgressBar(progressLevel);
+
+
+            // adbExecutor.inputKeyevent(Keycode.VOLUMEDOWN);              //   FOTO                   FOTO2
+            // adbExecutor.delete(oldPictures);                            //   lösche BKG             lösche initial
+            // pythonExecutor.evaluatePictures(pulledPictures);            //   evaluiere initial      evaluiere FOTO
+            // updateProgressBar(progressLevel);                           //   upgrade                --
+            // oldPictures = newPictures;                                  //   alte Bilder = initial  alteBilder = FOTO
+            // newPictures = adbExecutor.listPictures();                   //   neubild =FOTO+initial  neu Bilder = FOTO2+1
+            // newPictures.remove(oldPictures);                            //   neubild =FOTO          neu Bilder = FOTO2
+            // pulledPictures = adbExecutor.pullPictures(newPictures);     //   pull FOTO              pull FOTO2
 
 
             // if (oldPictures.isEmpty()) {
@@ -183,14 +199,24 @@ public class ControllerNewExperiments extends VBox {
         timeLine.play();
         timeLine.setOnFinished(event -> {
 
-            adbExecutor.delete(newPictures);
+            pythonExecutor.evaluatePictures(pulledPictures);
+            adbExecutor.delete(pulledPictures);
+            pulledPictures = adbExecutor.pullPictures(adbExecutor.listPictures());
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            pythonExecutor.evaluatePictures(pulledPictures);
+            adbExecutor.delete(pulledPictures);
 
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            pythonExecutor.evaluatePictures(pulledPictures);
 
             pythonExecutor.plotGraph(Projects.getActiveExperimentDirectory() + "/results.csv");
 

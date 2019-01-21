@@ -142,7 +142,7 @@ public class AdbExecutor extends SystemCommandExecutor {
 
         inputKeyevent(Keycode.VOLUMEDOWN);
         try {
-            Thread.sleep(600);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -197,30 +197,32 @@ public class AdbExecutor extends SystemCommandExecutor {
         // System.out.println("return: " + value);
     }
 
-   // public void deletePictures() {
-   //     List<String> pictureList = listPictures();
-   //     List<String> command = new ArrayList<String>();
-   //     command.add("adb");
-   //     command.add("shell");
-   //     command.add("rm");
-   //     command.add("placeholder");
-   //     for (String picture : pictureList) {
-   //         String filePath = imgPath.replace(" ", "\\ ") + "/" + picture;
-   //         command.set(3, filePath);
-   //         int value = commandExecutor.executeCommand(command);
-   //     }
-   // }
+    // public void deletePictures() {
+    //     List<String> pictureList = listPictures();
+    //     List<String> command = new ArrayList<String>();
+    //     command.add("adb");
+    //     command.add("shell");
+    //     command.add("rm");
+    //     command.add("placeholder");
+    //     for (String picture : pictureList) {
+    //         String filePath = imgPath.replace(" ", "\\ ") + "/" + picture;
+    //         command.set(3, filePath);
+    //         int value = commandExecutor.executeCommand(command);
+    //     }
+    // }
 
-    public void delete(List<String> deletionList){
+    public void delete(List<String> deletionList) {
         List<String> command = new ArrayList<String>();
         command.add("adb");
         command.add("shell");
         command.add("rm");
         command.add("placeholder");
-        for (String picture : deletionList) {
-            String filePath = imgPath.replace(" ", "\\ ") + "/" + picture;
-            command.set(3, filePath);
-            commandExecutor.executeCommand(command);
+        if (!deletionList.isEmpty()) {
+            for (String picture : deletionList) {
+                String filePath = imgPath.replace(" ", "\\ ") + "/" + picture;
+                command.set(3, filePath);
+                commandExecutor.executeCommand(command);
+            }
         }
     }
 
@@ -234,25 +236,29 @@ public class AdbExecutor extends SystemCommandExecutor {
 
         commandExecutor.executeCommand(command);
         StringBuilder pictures = commandExecutor.getStandardOutputFromCommand();
-        List<String> pictureList = Arrays.asList(pictures.toString().split("\\r?\\n"));
+        List<String> pictureList = new LinkedList<>(Arrays.asList(pictures.toString().split("\\r?\\n")));
+
+        //List<String> list = new LinkedList<>(Arrays.asList(split));
 
         // maybe there is a blank line in the list better remove it
-        for (String picture : pictureList){
-            if (picture.length() < 5){
+
+        for (String picture : pictureList) {
+            if (picture.length() < 5) {
                 pictureList.remove(picture);
             }
         }
 
         return pictureList;
+
     }
 
     public void takeAndTransferImg() {
 
         // first of all lets delete all the old Pictures in the Directory
-     //   List<String> oldPictures = listPictures();
-     //   for (String oldPicture : oldPictures){
-     //       deletePicture(oldPicture);
-     //   }
+        //   List<String> oldPictures = listPictures();
+        //   for (String oldPicture : oldPictures){
+        //       deletePicture(oldPicture);
+        //   }
 
         // then take the new picture
         inputKeyevent(Keycode.VOLUMEDOWN);
@@ -261,7 +267,7 @@ public class AdbExecutor extends SystemCommandExecutor {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        List<String > list = listPictures();
+        List<String> list = listPictures();
         pullPictures(list);
 
     }

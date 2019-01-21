@@ -47,7 +47,7 @@ def plot(df, path):
     # plt.show()
 
 
-csvpath = sys.argv[1] TODO
+csvpath = sys.argv[1]
 # csvpath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/thermalImageProjects/check/15-01-19_14:43/results.csv"
 df = pd_read_csv(csvpath)
 index = pd_hottest_point(df)
