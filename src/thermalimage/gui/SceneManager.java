@@ -200,7 +200,7 @@ public class SceneManager {
             chooser.setInitialDirectory(defaultDirectory);
         }
         File selectedDirectory = chooser.showDialog(new Stage());
-        if (selectedDirectory.exists()){
+        if (selectedDirectory != null){
             return selectedDirectory.toString();
         }else {
             return Settings.projectPath;
