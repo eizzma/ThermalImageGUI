@@ -29,8 +29,9 @@
                   <ImageView fx:id="imageView" fitHeight="450.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Button fx:id="plotButton" alignment="CENTER" mnemonicParsing="false" onAction="#showPlot" prefHeight="40.0" prefWidth="150.0" text="Plot anzeigen" />
-                        <Button mnemonicParsing="false" onAction="#deleteExperiment" prefHeight="40.0" prefWidth="150.0" text="Versuch Löschen" />
+                        <Button fx:id="plotButton" alignment="CENTER" mnemonicParsing="false" onAction="#showPlot" prefHeight="30.0" prefWidth="125.0" text="Plot anzeigen" />
+                        <Button fx:id="deleteEntryButton" mnemonicParsing="false" onAction="#deleteEntry" prefHeight="30.0" prefWidth="125.0" text="Messung löschen" />
+                        <Button mnemonicParsing="false" onAction="#deleteExperiment" prefHeight="30.0" prefWidth="125.0" text="Versuch Löschen" />
                      </children>
                   </HBox>
                </children>

@@ -47,11 +47,13 @@ def plot(df, path):
     # plt.show()
 
 
+# takes results.csv and plots the data and converts to data.csv
 csvpath = sys.argv[1]
 # csvpath = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/thermalImageProjects/check/15-01-19_14:43/results.csv"
 df = pd_read_csv(csvpath)
 index = pd_hottest_point(df)
 df = pd_generate_t0(index, df)
 os.remove(csvpath)
+print("csv deleted")
 plot(df, csvpath)
 pd_write_csv(csvpath, df)

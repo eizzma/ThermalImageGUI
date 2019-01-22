@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -12,6 +13,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import thermalimage.Projects;
 import thermalimage.ThermalData;
 import thermalimage.codeExecution.PythonExecutor;
@@ -20,13 +23,9 @@ import java.io.*;
 
 public class ControllerView extends VBox {
 
-    private PythonExecutor pythonExecutor;
-
     String csvFile;
 
     ObservableList<ThermalData> thermalData;
-
-
 
     @FXML
     private Button plotButton;
@@ -39,6 +38,9 @@ public class ControllerView extends VBox {
 
     @FXML
     private Label projectLabel;
+
+    @FXML
+    private Button deleteEntryButton;
 
     public ControllerView() {
 
@@ -87,6 +89,9 @@ public class ControllerView extends VBox {
             }
         });
 
+        deleteEntryButton.disableProperty().bind(tableView.getSelectionModel().selectedItemProperty().isNull());
+
+
         // display the plot at first
         setImageView("plot");
     }
@@ -114,6 +119,22 @@ public class ControllerView extends VBox {
 
         Projects.deleteExperiment(Projects.activeExperiment);
         SceneManager.showProjectScene();
+
+    }
+
+    @FXML
+    private void deleteEntry(){
+
+        PythonExecutor pythonExecutor = new PythonExecutor();
+
+
+        // get te the chosen picture
+        String toBeDeleted = tableView.getSelectionModel().getSelectedItem().getName();
+
+
+        // then refresh the Scene by calling it again
+        SceneManager.showViewExperiment();
+
 
     }
 
