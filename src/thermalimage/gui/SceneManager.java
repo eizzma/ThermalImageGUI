@@ -1,8 +1,11 @@
 package thermalimage.gui;
 
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
@@ -10,6 +13,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import thermalimage.Projects;
 import thermalimage.Settings;
+import thermalimage.codeExecution.PythonExecutor;
 
 import java.io.File;
 
@@ -34,12 +38,12 @@ public class SceneManager {
         window.setScene(new Scene(controllerProject, 600, 600));
     }
 
-    public static void showViewExperiment(){
+    public static void showViewExperiment() {
         ControllerView controllerView = new ControllerView();
         window.setScene(new Scene(controllerView, 600, 600));
     }
 
-    public static void showNewExperimentScene(){
+    public static void showNewExperimentScene() {
         ControllerNewExperiments controllerNewExperiments = new ControllerNewExperiments();
         window.setScene(new Scene(controllerNewExperiments, 600, 600));
     }
@@ -196,13 +200,13 @@ public class SceneManager {
 
     private static String directoryChooser(File defaultDirectory) {
         DirectoryChooser chooser = new DirectoryChooser();
-        if (defaultDirectory.exists()){
+        if (defaultDirectory.exists()) {
             chooser.setInitialDirectory(defaultDirectory);
         }
         File selectedDirectory = chooser.showDialog(new Stage());
-        if (selectedDirectory != null){
+        if (selectedDirectory != null) {
             return selectedDirectory.toString();
-        }else {
+        } else {
             return Settings.projectPath;
         }
     }

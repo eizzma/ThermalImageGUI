@@ -68,17 +68,8 @@ public class ControllerProject extends VBox {
     @FXML
     private void evaluate() {
 
-        // TODO evaluate whole Project
-
         PythonExecutor pythonExecutor = new PythonExecutor();
-
-        File experimentsFolder = new File(Projects.getActiveProjectDirectory() + "/" + list.getSelectionModel().getSelectedItem().toString());
-        File[] measurements = experimentsFolder.listFiles();
-        List<String> pictureList = new ArrayList<>();
-        for (File measurment : measurements){
-            pictureList.add(measurment.getAbsolutePath());
-        }
-        pythonExecutor.evaluatePictures(pictureList);
+        pythonExecutor.run("evaluateProject.py", Projects.getActiveProjectDirectory());
 
     }
 
