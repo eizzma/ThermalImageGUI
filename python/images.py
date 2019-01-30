@@ -68,13 +68,27 @@ def print_csv(thermalimgpath, temp, maxLoc):
         test_writer.writerow([date] + [temp])
 
 
-# path = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/thermalImageProjects/Abdeckung/18-01-19_14:06/ThermalCamera2019-01-18_14-06-23+0100.png"
+def neighbourhood(img, point):
+    x = point[1]
+    y = point[0]
+    temp = 0
+    summe = 0
+    for i in range(-2, 3):
+        for j in range(-2, 3):
+            pixel = (x + i, y + j)
+            temp = temp + img[pixel]
+            summe = summe + 1
+    return temp / summe
+
+
 path = sys.argv[1]
 print(path)
 mask = background_substraction(path)
 masked_img = read_masked_img(path, mask)
 point = get_hottest_point_robust(masked_img, 41)
-temp = convert_to_celsius(masked_img[point[1], point[0]])
+neighbours = neighbourhood(cv2.imread(path, cv2.IMREAD_GRAYSCALE), point)
+# temp = convert_to_celsius(masked_img[point[1], point[0]])
+temp = convert_to_celsius(neighbours)
 control_img = draw_circle(masked_img, point)
 print("remove thermal")
 os.remove(path)

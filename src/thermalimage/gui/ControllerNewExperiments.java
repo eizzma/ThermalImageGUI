@@ -96,6 +96,8 @@ public class ControllerNewExperiments extends VBox {
             labelInstruction.setText("Bitte machen Sie ein Bild vom unberührten Objekt");
         }
 
+        startExperimentstartExperimentButton.setDisable(true);
+
         pythonExecutor = new PythonExecutor();
 
     }

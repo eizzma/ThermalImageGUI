@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -13,10 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import thermalimage.Projects;
-import thermalimage.ThermalData;
 import thermalimage.codeExecution.PythonExecutor;
 
 import java.io.*;
@@ -130,6 +126,7 @@ public class ControllerView extends VBox {
 
         // get te the chosen picture
         String toBeDeleted = tableView.getSelectionModel().getSelectedItem().getName();
+        pythonExecutor.run("deleteEntry.py", toBeDeleted + " " + Projects.getActiveExperimentDirectory());
 
 
         // then refresh the Scene by calling it again

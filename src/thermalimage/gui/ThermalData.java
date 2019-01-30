@@ -1,4 +1,4 @@
-package thermalimage;
+package thermalimage.gui;
 
 public class ThermalData {
 

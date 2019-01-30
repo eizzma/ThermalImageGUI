@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy.polynomial.polynomial as polyNew
+import random
 
 
 def pd_read_csv(path):
@@ -18,13 +19,8 @@ def highest_temp(df):
     return temp
 
 
-def merge_dataframe(dfold, dfnew):
-    a = 0
-    return a
-
-
 path = sys.argv[1]
-# path = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/thermalImageProjects/Abdeckung"
+# path = "/Volumes/DiePlatte/uni/WS18_19/DropBoxTeamordner/ThermalImageGUI/thermalImageProjects/Steckbrett2"
 projectname = path.split("/")
 paths = []
 csv_adder = dict()
@@ -40,7 +36,12 @@ for csv in paths:
     while df['t0'][0] < 0.0:
         df = df.drop([0]).reset_index(drop=True)
     df = df.round({'temp': 1})
-    csv_adder[highest_temp(df)] = df
+    name = csv.split("/")[-2]
+    print(name)
+    df['color'] = "#" + ''.join([random.choice('0123456789ABCDEF') for j in range(6)])
+    df['name'] = name
+
+    csv_adder[df['temp'][0]] = df
     # if t0 is not on the second place correct it!
 
 # assembling the csv data to one dataframe
@@ -50,8 +51,6 @@ for key in csv_dict.keys():
     if df.empty:  #
         df = csv_dict.get(key)
         df_temp = key
-        print(df)
-        print(len(df))
     else:
         next_df = csv_dict.get(key)
         df.append(next_df).reset_index(drop=True)
@@ -64,19 +63,25 @@ for key in csv_dict.keys():
 
                 break
         # i marks the tempe in the bigger dataframe
+        # print(df)
+        # print("i: ", i)
+        # print(next_df)
         # print(df['temp'][i - 1], ">", key, ">", df['temp'][i])
         full_diff = np.absolute(df['temp'][i - 1] - np.absolute(df['temp'][i]))  # difference between inserting temps
         insert_diff = np.absolute(df['temp'][i] - key)
-        percentage = insert_diff / full_diff
-        time_diff = np.absolute(df['t0'][i - 1] - df['t0'][i])
-        insert_time = df['t0'][i] - (time_diff * percentage / 100)
+        if full_diff == 0.0:
+            insert_time = df['t0'][i]
+        else:
+            percentage = insert_diff / full_diff
+            time_diff = np.absolute(df['t0'][i - 1] - df['t0'][i])
+            insert_time = df['t0'][i] - (time_diff * percentage / 100)
         # print(df['t0'][i - 1], insert_time, df['t0'][i])
         # print(percentage, "%")
+        # print(insert_time)
         next_df['t0'] = next_df['t0'] + insert_time
         df = df.append(next_df).reset_index(drop=True)
         # print(next_df)
 df = df.sort_values('t0').reset_index(drop=True)
-print(df)
 
 # plotting dataframe
 fig = plt.figure()
@@ -90,8 +95,15 @@ plt.title(projectname[-1])
 plt.xlabel("Zeit in [Sekunden]")
 plt.ylabel("Temperatur in [°C]")
 
-orig = plt.plot(x_values, df['temp'], color='blue', marker='o'
-                , linestyle='dashed', linewidth=1, markersize=4, alpha=0.4, label="gemessene Werte")
+for csv in csv_dict:
+    print("forloop")
+    print(csv_dict.get(csv)['name'])
+    plt.plot(csv_dict.get(csv)['t0'], csv_dict.get(csv)['temp'], color=csv_dict.get(csv)['color'][0], marker='o'
+             , linestyle='dashed', linewidth=1, markersize=4, alpha=0.4, label=csv_dict.get(csv)['name'][0])
+
+# orig = plt.plot(x_values, df['temp'], color=df['color'], marker='o'
+#                 , linestyle='dashed', linewidth=0, markersize=4, alpha=0.4, label="gemessene Werte")
+
 poly = plt.plot(x_values, y_values, 'r', label="gemittelte Werte")
 plt.legend()
 # show grid

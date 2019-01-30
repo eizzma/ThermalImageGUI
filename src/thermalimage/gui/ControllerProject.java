@@ -54,7 +54,7 @@ public class ControllerProject extends VBox {
         list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         showExperiment.disableProperty().bind(list.getSelectionModel().selectedItemProperty().isNull());
-        evaluateExperiment.disableProperty().bind(Bindings.size(list.getItems()).lessThan(10));
+        evaluateExperiment.disableProperty().bind(Bindings.size(list.getItems()).lessThan(3));
 
     }
 
