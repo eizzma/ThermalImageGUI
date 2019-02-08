@@ -96,9 +96,8 @@ plt.xlabel("Zeit in [Sekunden]")
 plt.ylabel("Temperatur in [°C]")
 
 for csv in csv_dict:
-    print("forloop")
-    print(csv_dict.get(csv)['name'])
-    plt.plot(csv_dict.get(csv)['t0'], csv_dict.get(csv)['temp'], color=csv_dict.get(csv)['color'][0], marker='o'
+    temp_df = csv_dict.get(csv)
+    plt.plot(temp_df['t0'], temp_df['temp'], color=temp_df['color'][0], marker='o'
              , linestyle='dashed', linewidth=1, markersize=4, alpha=0.4, label=csv_dict.get(csv)['name'][0])
 
 # orig = plt.plot(x_values, df['temp'], color=df['color'], marker='o'
