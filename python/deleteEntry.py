@@ -22,4 +22,17 @@ df = pd.read_csv(csvpath, header=None).set_index([0])
 df = df.drop(name)
 df.to_csv(path + "/data.csv", header=False)
 
-plot(df, path)  # draw the new plot
+
+directory = csvpath[:-8]
+# df['DateTime'] = df['DateTime'].map(lambd
+y = df[1]
+x = df[2]
+# plot
+fig = plt.figure()
+axes = plt.axes()
+plt.plot(x, y, label="Abkühlung", color="orange")
+plt.ylabel("Temperatur in [°C]")
+plt.xlabel("Zeit in [Sekunden]")
+plt.legend()
+
+fig.savefig(directory + 'plot.png')

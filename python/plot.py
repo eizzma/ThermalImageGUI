@@ -54,7 +54,6 @@ df = pd_read_csv(csvpath)
 index = 1  # second element is the first of the measurement
 df = pd_generate_t0(index, df)
 os.remove(csvpath)
-plot(df, csvpath)
 
 directory = csvpath[:-11]
 # df['DateTime'] = df['DateTime'].map(lambd

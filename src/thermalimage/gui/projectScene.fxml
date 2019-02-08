@@ -37,7 +37,7 @@
                     <Label text="Versuche" />
                     <Button mnemonicParsing="false" onAction="#newExperiment" prefHeight="40.0" prefWidth="150.0" text="neuer Versuch" />
                     <Button mnemonicParsing="false" fx:id="showExperiment" onAction="#showExperiment" prefHeight="40.0" prefWidth="150.0" text="Versuch betrachten" />
-                    <Button mnemonicParsing="false" onAction="#deleteExperiment" prefHeight="40.0" prefWidth="150.0" text="Versuch Löschen" />
+                    <Button mnemonicParsing="false" fx:id="deleteExperiment" onAction="#deleteExperiment" prefHeight="40.0" prefWidth="150.0" text="Versuch Löschen" />
                     <Label text="Projekt" />
                     <Button mnemonicParsing="false" fx:id="evaluateExperiment" onAction="#evaluate" prefHeight="40.0" prefWidth="150.0" text="Auswertung" />
                     <Button mnemonicParsing="false" onAction="#deleteProject" prefHeight="40.0" prefWidth="150.0" text="Projekt löschen" />

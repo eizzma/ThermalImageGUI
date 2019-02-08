@@ -25,7 +25,7 @@ def convert_to_celsius(x):
     max = 37
     min = 11.4
     a = min
-    b = ((max - min) / 256)
+    b = ((max - min) / 255)
     # b = (1 / 17)
     return (a + (b * x))
 

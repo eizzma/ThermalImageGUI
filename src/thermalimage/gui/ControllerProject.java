@@ -31,6 +31,9 @@ public class ControllerProject extends VBox {
     @FXML
     private Button evaluateExperiment;
 
+    @FXML
+    private Button deleteExperiment;
+
     private SimpleListProperty<String> listProperty = new SimpleListProperty(FXCollections.<String>observableArrayList());
 
     public ControllerProject() {
@@ -54,6 +57,7 @@ public class ControllerProject extends VBox {
         list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         showExperiment.disableProperty().bind(list.getSelectionModel().selectedItemProperty().isNull());
+        deleteExperiment.disableProperty().bind(list.getSelectionModel().selectedItemProperty().isNull());
         evaluateExperiment.disableProperty().bind(Bindings.size(list.getItems()).lessThan(3));
 
     }
