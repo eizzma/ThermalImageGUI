@@ -34,7 +34,7 @@ public class ControllerMain extends GridPane {
     @FXML
     private void help() {
 
-        // TODO implement help screen or tutorial/video
+        SceneManager.displayHelp();
 
     }
 

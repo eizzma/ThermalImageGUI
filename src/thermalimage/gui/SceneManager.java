@@ -8,6 +8,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -260,5 +263,45 @@ public class SceneManager {
         layout.setAlignment(Pos.CENTER);
         stage.setScene(new Scene(layout, 500, 120));
         stage.showAndWait();
+    }
+
+    static void displayHelp() {
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        Label label0 = new Label();
+        label0.setText("Tutorial Video:");
+
+        String path = "/Volumes/DiePlatte/uni/WS18_19/praktikumAbgabe/Thermalcamerakonzept.mp4";
+        Media media = new Media(new File(path).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        MediaView mediaView = new MediaView(mediaPlayer);
+        mediaView.setFitWidth(600);
+        //mediaPlayer.setAutoPlay(true);  //uncomment -> Video starts automatically
+
+        Button closeButton = new Button("Zurück");
+        closeButton.setOnAction(event -> {
+            stage.close();
+            mediaPlayer.stop();
+        });
+
+        HBox buttonBox = new HBox(15);
+        Button pauseButton = new Button("Pause");
+        pauseButton.setOnAction(event -> mediaPlayer.pause());
+        Button playButton = new Button("Play");
+        playButton.setOnAction(event -> mediaPlayer.play());
+        Button stopButton = new Button ("Stop");
+        stopButton.setOnAction(event -> mediaPlayer.stop());
+        buttonBox.getChildren().addAll(pauseButton, playButton, stopButton);
+        buttonBox.setAlignment(Pos.CENTER);
+
+        VBox layout = new VBox(15);
+        layout.getChildren().addAll(label0, mediaView, buttonBox, closeButton);
+        layout.setAlignment(Pos.BASELINE_CENTER);
+
+
+        stage.setScene(new Scene(layout, 600, 500));
+        stage.showAndWait();
+
     }
 }
